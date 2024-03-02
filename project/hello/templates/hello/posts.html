@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>!TJOBS 14:46</title>
+<style>
+
+  /* Your existing CSS styles */
+
+  /* Additional CSS styles for black rectangles around buttons */
+  .navbar-buttons {
+    display: flex;
+    border: 1px solid black; /* Add black border around buttons */
+    border-radius: 5px; /* Add border radius to buttons */
+  }
+
+  .navbar-buttons a {
+    text-decoration: none;
+    padding: 10px;
+    margin-right: 10px;
+  }
+
+  /* Additional CSS styles for dropdown menu */
+  .dropdown-container {
+    position: relative; /* Set position relative to allow absolute positioning of dropdown */
+    display: inline-block; /* Ensure inline block display for proper alignment */
+    margin-left: 20px; /* Adjust margin as needed */
+  }
+
+  .dropdown-menu {
+    display: none; /* Hide dropdown menu by default */
+    position: absolute; /* Position the dropdown menu */
+    top: 100%; /* Position the menu below the dropdown container */
+    left: 0; /* Align the menu with the left edge of the container */
+    background-color: #fff; /* Set background color */
+    border: 1px solid #ccc; /* Add border */
+    border-radius: 5px; /* Add border radius */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add box shadow */
+    padding: 10px; /* Add padding */
+    z-index: 1; /* Ensure the menu appears above other elements */
+  }
+
+  .dropdown-container.active .dropdown-menu {
+    display: block; /* Show dropdown menu when parent container has 'active' class */
+  }
+
+  .dropdown-item {
+    display: block; /* Display dropdown items as block elements */
+    padding: 8px 12px; /* Add padding */
+    color: #333; /* Set text color */
+    text-decoration: none; /* Remove underline */
+    transition: background-color 0.3s; /* Add transition for hover effect */
+  }
+
+  .dropdown-item:hover {
+    background-color: #f0f0f0; /* Change background color on hover */
+  }
+
+  /* Your existing CSS styles */
+
+  /* Additional CSS styles for posts container */
+  .posts-container {
+    max-height: 400px; /* Set maximum height for posts container */
+    overflow-y: auto; /* Add vertical scrollbar when content exceeds container height */
+  }
+
+  .posts {
+    display: flex;
+    flex-wrap: wrap; /* Allow posts to wrap to the next row */
+    gap: 20px; /* Add space between posts */
+  }
+
+  .post {
+    width: calc(33.33% - 20px); /* Set width for each post (3 posts in a row) */
+    border: 1px solid black;
+    padding: 10px;
+    box-sizing: border-box; /* Include padding and border in the total width */
+  }
+
+  .post-image {
+    width: 100px;
+    height: 100px;
+    background-color: #ccc; /* Placeholder background color */
+    margin-bottom: 10px;
+  }
+
+  .post-content {
+    font-size: 14px;
+  }
+
+  /* Additional CSS styles for favorites button */
+  .favorites-button {
+    position: absolute; /* Position the button */
+    top: 10px; /* Adjust top position */
+    right: 10px; /* Adjust right position */
+    cursor: pointer; /* Change cursor to pointer on hover */
+  }
+</style>
+</head>
+<body>
+<!-- Start of navigation bar -->
+<div class="section-regular neutral-100">
+<div class="w-layout-blockcontainer w-container">
+<div class="navbar-buttons">
+  <!-- Navigation links -->
+  <a href="/" aria-current="page" class="nav-link w-nav-link w--current">Home</a>
+  <a href="/about" class="nav-link w-nav-link">Profile</a>
+  <a href="/browse" class="nav-link w-nav-link">My Posts</a>
+  <a href="/blog" class="nav-link w-nav-link">Help</a>
+
+
+</div>
+<!-- End of navigation bar -->
+
+<!-- Start of search form -->
+<form action="/search" class="search-2 w-form" style="position: relative; margin-top: 30px;margin-bottom: 30px;">
+  <label for="search">Search</label>
+  <input class="w-input" maxlength="256" name="query" placeholder="Search…" type="search" id="search" required=""/>
+  <input type="submit" class="w-button" value="Search"/>
+  <!-- Start of dropdown menu container -->
+  <div class="dropdown-container">
+    <!-- Button to open dropdown menu -->
+    <button class="dropdown-button">Menu</button>
+    <!-- Dropdown menu -->
+    <div class="dropdown-menu">
+      <!-- Dropdown items -->
+      <a href="#" class="dropdown-item">Option 1</a>
+      <a href="#" class="dropdown-item">Option 2</a>
+      <a href="#" class="dropdown-item">Option 3</a>
+    </div>
+  </div>
+  <!-- End of dropdown menu container -->
+</form>
+<!-- End of search form -->
+</div>
+</div>
+
+<div class="user-input-area">
+  <!-- User input area can go here -->
+</div>
+
+<!-- Start of posts container -->
+<div class="posts-container">
+  <div class="posts">
+    <!-- Add more posts -->
+    <div class="post">
+      <div class="post-image"></div>
+      <div class="post-content">
+        <!-- Post information -->
+        <div class="post-info">Name: John Doe</div>
+         <!-- Favorites button -->
+        <div class="favorites-button">☆</div>
+        <div class="post-info">Title: Frontend Developer</div>
+        <div class="post-info">Location: San Francisco</div>
+        <div class="post-info">Salary: $100k - $120k</div>
+
+      </div>
+    </div>
+
+    <div class="post">
+      <div class="post-image"></div>
+      <div class="post-content">
+        <!-- Post information -->
+        <div class="post-info">Name: John Doe</div>
+        <div class="post-info">Title: Frontend Developer</div>
+        <div class="post-info">Location: San Francisco</div>
+        <div class="post-info">Salary: $100k - $120k</div>
+         <!-- Favorites button -->
+        <div class="favorites-button">☆</div>
+      </div>
+    </div>
+
+    <div class="post">
+      <div class="post-image"></div>
+      <div class="post-content">
+        <!-- Post information -->
+        <div class="post-info">Name: John Doe</div>
+
+        <div class="post-info">Title: Frontend Developer</div>
+        <div class="post-info">Location: San Francisco</div>
+        <div class="post-info">Salary: $100k - $120k</div>
+         <!-- Favorites button -->
+        <div class="favorites-button">☆</div>
+      </div>
+    </div>
+
+    <!-- Repeat the above post structure to add more posts -->
+  </div>
+</div>
+<!-- End of posts container -->
+
+<!-- JavaScript to handle dropdown menu -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const dropdownButton = document.querySelector('.dropdown-button');
+    const dropdownMenu = document.querySelector('.dropdown-menu');
+
+    dropdownButton.addEventListener('click', function() {
+      // Toggle 'active' class on dropdown container to show/hide dropdown menu
+      dropdownMenu.parentElement.classList.toggle('active');
+    });
+  });
+
+   const favoritesButtons = document.querySelectorAll('.favorites-button');
+</script>
+
+</body>
+</html>
