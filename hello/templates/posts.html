@@ -75,6 +75,7 @@
     border: 1px solid black;
     padding: 10px;
     box-sizing: border-box; /* Include padding and border in the total width */
+    position: relative; /* Ensure position relative for absolute positioning */
   }
 
   .post-image {
@@ -88,13 +89,25 @@
     font-size: 14px;
   }
 
-  /* Additional CSS styles for favorites button */
-  .favorites-button {
-    position: absolute; /* Position the button */
-    top: 10px; /* Adjust top position */
-    right: 10px; /* Adjust right position */
+  /* Additional CSS styles for plus button */
+  .create-post-button {
+    position: fixed; /* Position the button */
+    bottom: 20px; /* Adjust bottom position */
+    right: 20px; /* Adjust right position */
+    background-color: #4caf50; /* Button background color */
+    color: #fff; /* Button text color */
+    border: none; /* Remove button border */
+    border-radius: 50%; /* Make button round */
+    width: 50px; /* Set button width */
+    height: 50px; /* Set button height */
+    font-size: 24px; /* Set button font size */
     cursor: pointer; /* Change cursor to pointer on hover */
+    display: flex; /* Make the button a flex container */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    z-index: 999; /* Ensure the button appears above other elements */
   }
+
 </style>
 </head>
 <body>
@@ -148,12 +161,9 @@
       <div class="post-content">
         <!-- Post information -->
         <div class="post-info">Name: John Doe</div>
-         <!-- Favorites button -->
-        <div class="favorites-button">☆</div>
         <div class="post-info">Title: Frontend Developer</div>
         <div class="post-info">Location: San Francisco</div>
         <div class="post-info">Salary: $100k - $120k</div>
-
       </div>
     </div>
 
@@ -165,8 +175,6 @@
         <div class="post-info">Title: Frontend Developer</div>
         <div class="post-info">Location: San Francisco</div>
         <div class="post-info">Salary: $100k - $120k</div>
-         <!-- Favorites button -->
-        <div class="favorites-button">☆</div>
       </div>
     </div>
 
@@ -175,12 +183,9 @@
       <div class="post-content">
         <!-- Post information -->
         <div class="post-info">Name: John Doe</div>
-
         <div class="post-info">Title: Frontend Developer</div>
         <div class="post-info">Location: San Francisco</div>
         <div class="post-info">Salary: $100k - $120k</div>
-         <!-- Favorites button -->
-        <div class="favorites-button">☆</div>
       </div>
     </div>
 
@@ -188,6 +193,9 @@
   </div>
 </div>
 <!-- End of posts container -->
+
+<!-- Plus button for creating new posts -->
+<a href="create_post.html" class="create-post-button">+</a>
 
 <!-- JavaScript to handle dropdown menu -->
 <script>
@@ -200,8 +208,6 @@
       dropdownMenu.parentElement.classList.toggle('active');
     });
   });
-
-   const favoritesButtons = document.querySelectorAll('.favorites-button');
 </script>
 
 </body>
