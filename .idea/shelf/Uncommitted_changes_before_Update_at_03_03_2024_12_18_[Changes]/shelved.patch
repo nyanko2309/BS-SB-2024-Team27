@@ -1,0 +1,27 @@
+Index: README.md
+===================================================================
+diff --git a/README.md b/README.md
+deleted file mode 100644
+--- a/README.md	(revision e659e47fe88538b463b376eb40a3b44028c3a33c)
++++ /dev/null	(revision e659e47fe88538b463b376eb40a3b44028c3a33c)
+@@ -1,1 +0,0 @@
+-# BS-SB-2024-Team27
+\ No newline at end of file
+Index: hello/templates/VitalyTest.html
+===================================================================
+diff --git a/hello/templates/VitalyTest.html b/hello/templates/VitalyTest.html
+deleted file mode 100644
+--- a/hello/templates/VitalyTest.html	(revision e659e47fe88538b463b376eb40a3b44028c3a33c)
++++ /dev/null	(revision e659e47fe88538b463b376eb40a3b44028c3a33c)
+@@ -1,10 +0,0 @@
+-<!DOCTYPE html>
+-<html lang="en">
+-<head>
+-    <meta charset="UTF-8">
+-    <title>Title</title>
+-</head>
+-<body>
+-
+-</body>
+-</html>
+\ No newline at end of file
