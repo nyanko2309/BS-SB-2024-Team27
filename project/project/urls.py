@@ -18,6 +18,7 @@ from django.contrib import admin
 from .views import login, profile
 from django.urls import path
 from login.views import register
+
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("login/", login, name="login"),
