@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="17b05228-a801-4f64-a2c6-a7e172e53ba5" name="Changes" comment="test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/project/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/project/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/project/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/project/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/project/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/templates/Login.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/Login.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,6 +32,20 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;OmerGitHub99&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="4232f988-7720-46c6-9d05-327207f2ed30" />
+        <option name="url" value="https://github.com/nyanko2309/BS-SB-2024-Team27.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -44,21 +61,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-
-
-    &quot;git-widget-placeholder&quot;: &quot;hakaton&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;hakatonomer&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-
-
     &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -123,7 +135,31 @@
       <option name="project" value="LOCAL" />
       <updated>1709811930518</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL‎-00007" summary="test">
+      <option name="closed" value="true" />
+      <created>1709812940308</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL‎-00007" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1709812940308</updated>
+    </task>
+    <task id="LOCAL‎-00008" summary="test">
+      <option name="closed" value="true" />
+      <created>1709831707585</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL‎-00008" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1709831707585</updated>
+    </task>
+    <task id="LOCAL‎-00009" summary="test">
+      <option name="closed" value="true" />
+      <created>1709833579603</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL‎-00009" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1709833579603</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
