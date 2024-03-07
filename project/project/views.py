@@ -1,9 +1,8 @@
-from django.core.checks import templates
-from django.http import HttpResponse
-from django.template.loader import get_template, render_to_string
-from django.shortcuts import render, redirect
+
 from login.models import User
 from django.core.exceptions import ObjectDoesNotExist # for helper function
+from django.http import JsonResponse
+from django.shortcuts import render, redirect
 
 cuser_id=2
 
@@ -30,51 +29,45 @@ def getIdByUserCredentials(mail, password) -> int | str:
             return "user does not exist"
 
 #==============================================================
-def login(request):
-
-    HTML = render_to_string('Login.html', )  # Render the template
-   # user_id=getIdByUserCredentials(mail, password)
-    return HttpResponse(HTML)
-
-
-
-
-
-
-from django.shortcuts import render, redirect
-
 def profile(request):
-    # Fetch the user with the specified cuser_id
-    user =User.objects.first()
 
-    if request.method == 'POST':
-        # Extract updated values from the form submission
-        name = request.POST.get('name')
-        age = request.POST.get('age')
-        mail = request.POST.get('mail')
-        description = request.POST.get('description')
+    # Fetch the user with the specified user_id (assuming User model)
+    user = User.objects.get(id=2)  # Assuming user ID is fixed for demonstration
 
-        # Update the user object with the new values
-        user.name = name
-        user.age = age
-        user.mail = mail
-        user.description = description
-
-        # Save the user object to persist the changes in the database
-        user.save()
-
-        # Redirect to the profile page
-        return redirect('profile')
     # Prepare the initial context for the template
     context = {"mail": user.mail, "name": user.name, "age": user.age, "description": user.description}
 
     # Render the profile page template with the context
     return render(request, 'profilepage.html', context=context)
 
-
 def homepage(request):
     return render(request, 'project/homepage.html')
 
+def login(request):
+    return render(request, 'Login.html')
+# views.py
 
 # views.py
 
+
+def save_profile_changes(request):
+    if request.method == 'POST':
+        # Extract the form data from the POST request
+        name = request.POST.get('name')
+        age = request.POST.get('age')
+        mail = request.POST.get('mail')
+        description = request.POST.get('description')
+
+        # Assuming you have a UserProfile model, update the user's profile with the new values
+        user_profile = User.objects.get(id=2)  # Assuming user ID is used as profile ID
+        user_profile.name = name
+        user_profile.age = age
+        user_profile.mail = mail
+        user_profile.description = description
+        user_profile.save()
+
+        # Optionally, you can return a JSON response to indicate success
+        return JsonResponse({'message': 'Profile changes saved successfully'})
+    else:
+        # If the request method is not POST, return an error response
+        return JsonResponse({'error': 'Method not allowed'}, status=405)

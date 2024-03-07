@@ -17,6 +17,8 @@ Including another URLconf
 from django.contrib import admin
 
 from posts.views import create_post
+
+from . import views
 from .views import login, profile
 from django.urls import path,include
 from login.views import register
@@ -28,6 +30,8 @@ urlpatterns = [
     path("profile/", profile, name="profile"),
     path("register/", register, name="register"),
     path('create_post/', create_post, name='create_post'),
+    path("register/", register, name="register"),
+    path('save_profile_changes/', views.save_profile_changes, name='save_profile_changes'),
 ]
 
 
