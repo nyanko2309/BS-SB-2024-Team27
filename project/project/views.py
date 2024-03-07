@@ -29,7 +29,7 @@ def getIdByUserCredentials(mail, password) -> int | str:
         except ObjectDoesNotExist:
             return "user does not exist"
 
-
+#==============================================================
 def login(request):
 
     HTML = render_to_string('Login.html', )  # Render the template
@@ -45,19 +45,19 @@ from django.shortcuts import render, redirect
 
 def profile(request):
     # Fetch the user with the specified cuser_id
-    user = User.objects.get(pk=cuser_id)
+    user =User.objects.first()
 
     if request.method == 'POST':
         # Extract updated values from the form submission
         name = request.POST.get('name')
         age = request.POST.get('age')
-        email = request.POST.get('email')
+        mail = request.POST.get('mail')
         description = request.POST.get('description')
 
         # Update the user object with the new values
         user.name = name
         user.age = age
-        user.email = email
+        user.mail = mail
         user.description = description
 
         # Save the user object to persist the changes in the database
@@ -65,7 +65,6 @@ def profile(request):
 
         # Redirect to the profile page
         return redirect('profile')
-
     # Prepare the initial context for the template
     context = {"mail": user.mail, "name": user.name, "age": user.age, "description": user.description}
 
