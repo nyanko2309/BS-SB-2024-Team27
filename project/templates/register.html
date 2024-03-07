@@ -119,16 +119,28 @@
     </style>
 </head>
 <body>
-    <form action="#" method="POST">
-        <h2>עמוד הרשמה</h2>
+
+   <form method="POST" action="{% url 'register' %}">
         {% csrf_token %}
+        <h2>עמוד הרשמה</h2>
+
         <label for="email">Email:</label>
         <input type="email" id="email" name="mail" placeholder="הכנס כתובת מייל" required>
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" placeholder="הכנס סיסמא חדשה" required>
-        <label for="confirm_password">Confirm Password:</label>
-        <input type="password" id="confirm_password" name="confirm_password" placeholder="הכנס סיסמא חדשה שוב" required>
-        <input type="submit" value="הרשם">
-    </form>
+
+
+        <button type="submit" class="save-button">register</button>    </form>
+{% if form.errors %}
+<div class="errors">
+    <ul>
+        {% for field, errors in form.errors.items %}
+        {% for error in errors %}
+        <li>{{ error }}</li>
+        {% endfor %}
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
 </body>
 </html>

@@ -3,6 +3,7 @@ from posts.models import Post
 from django.core.exceptions import ObjectDoesNotExist  # for helper function
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
+from login.forms import RegistrationForm
 
 global global_user_id  # Global variable declaration should be avoided make it global maybe
 
@@ -82,3 +83,30 @@ def login_button(request):
 
     # If the request method is not POST, render the login form
     return render(request, 'login.html')
+
+
+from django.shortcuts import render, redirect
+from login.forms import RegistrationForm
+
+def register(request):
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            user = form.save(commit=False)
+            user.mail = form.cleaned_data['mail']  # Correct the field name to 'mail'
+            user.save()
+            print("User registered successfully!")  # Add a print statement for confirmation
+            return redirect('registration_success')
+        else:
+            print("Form is not valid!")  # Add a print statement for debugging form validation
+    else:
+        form = RegistrationForm()
+    return render(request, 'register.html', {'form': form})
+
+
+def registration_success(request):
+    return render(request, 'registration_success.html')
+
+
+def registration_success(request):
+    return render(request, 'regpass.html')

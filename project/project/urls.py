@@ -29,11 +29,11 @@ urlpatterns = [
     path("login/", login, name="login"),
     path("profile/", profile, name="profile"),
     path('create_post/', create_post, name='create_post'),
-    path("register/", register, name="register"),
     path('save_profile_changes/', views.save_profile_changes, name='save_profile_changes'),
     path('login_button/', views.login_button, name='login_button'),
     path('homepage/', views.homepage, name='homepage'),
-
+    path('register/', views.register, name="register"),
+    path('registration_success/', views.registration_success, name="registration_success"),
 ]
 
 
