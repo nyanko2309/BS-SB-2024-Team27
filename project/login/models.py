@@ -10,7 +10,7 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 #pythone manage.py migratem
 class User(models.Model):
         name:models.TextField()
-        email = models.EmailField(unique=True)
+        mail = models.EmailField(unique=True)
         password = models.CharField(max_length=100)
         # pic = models.ImageField(upload_to='profile_pics/')
         age = models.IntegerField()
