@@ -14,5 +14,5 @@ class User(models.Model):
    age = models.IntegerField()
    description = models.TextField()
    favorites = models.JSONField(default=list)
-   my_posts = models.ManyToManyField(Post, related_name='authored_by', symmetrical=False)
+   my_posts = models.JSONField(default=list)
 
