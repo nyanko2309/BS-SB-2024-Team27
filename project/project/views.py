@@ -4,11 +4,11 @@ from django.core.exceptions import ObjectDoesNotExist # for helper function
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 
-cuser_id=2
+cuser_id=1
 
 def getIdByUserCredentials(mail, password) -> int | str:
     """returns id of a user after receiving mail and password, returns string of 'user doesn't exist' or 'mail or password are incorrect' otherwise"""
-    userid = 2
+    userid = 1
 
     try:
         user = User.objects.get(id=userid)
@@ -32,7 +32,7 @@ def getIdByUserCredentials(mail, password) -> int | str:
 def profile(request):
 
     # Fetch the user with the specified user_id (assuming User model)
-    user = User.objects.get(id=2)  # Assuming user ID is fixed for demonstration
+    user = User.objects.get(cuser_id)  # Assuming user ID is fixed for demonstration
 
     # Prepare the initial context for the template
     context = {"mail": user.mail, "name": user.name, "age": user.age, "description": user.description}
@@ -42,6 +42,11 @@ def profile(request):
 
 def homepage(request):
     return render(request, 'project/homepage.html')
+while(user_id)
+    context = {"mail": user.mail, "name": user.name, "age": user.age, "description": user.description}
+
+
+
 
 def login(request):
     return render(request, 'Login.html')
@@ -71,3 +76,5 @@ def save_profile_changes(request):
     else:
         # If the request method is not POST, return an error response
         return JsonResponse({'error': 'Method not allowed'}, status=405)
+
+
