@@ -72,7 +72,7 @@ def login_button(request):
         user_id = getIdByUserCredentials(mail, password)
 
         if isinstance(user_id, int):
-            print("YOU LITTLE FUCKER")
+
             global_user_id = user_id
             # Successful login, redirect to homepage or any desired page
             return render(request, 'homepage.html')
