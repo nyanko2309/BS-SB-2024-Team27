@@ -81,30 +81,28 @@
             <button class="edit-button" onclick="removeImage()">Remove Image</button>
         </div>
         <div class="profile-info">
-            <div class="profile-info">
-                <label for="name">Name:</label>
-                <input type="text" id="name" value={{name}} readonly>
-                <button class="edit-button" onclick="toggleEditMode('name')">Edit</button>
-            </div>
-            <div class="profile-info">
-                <label for="age">Age:</label>
-                <input type="text" id="age" value={{age}} readonly>
-                <button class="edit-button" onclick="toggleEditMode('age')">Edit</button>
-            </div>
-            <div class="profile-info">
-                <label for="email">Email:</label>
-                <input type="text" id="email" value={{mail}} readonly>
-                <button class="edit-button" onclick="toggleEditMode('email')">Edit</button>
-            </div>
-
-             <div class="profile-info">
-                <label for="description">Description:</label>
-                <input type="text" id="description" value={{description}} readonly>
-                <button class="edit-button" onclick="toggleEditMode('description')">Edit</button>
-            </div>
-        </div>
+    <div class="profile-info">
+        <label for="name">Name:</label>
+        <input type="text" id="name" value="{{ name }}" readonly>
+        <button class="edit-button" onclick="toggleEditMode('name')">Edit</button>
     </div>
-
+    <div class="profile-info">
+        <label for="age">Age:</label>
+        <input type="text" id="age" value="{{ age }}" readonly>
+        <button class="edit-button" onclick="toggleEditMode('age')">Edit</button>
+    </div>
+    <div class="profile-info">
+        <label for="mail">Email:</label>
+        <input type="text" id="mail" value="{{ mail }}" readonly>
+        <button class="edit-button" onclick="toggleEditMode('email')">Edit</button>
+    </div>
+    <div class="profile-info">
+        <label for="description">Description:</label>
+        <input type="text" id="description" value="{{ description }}" readonly>
+        <button class="edit-button" onclick="toggleEditMode('description')">Edit</button>
+    </div>
+    </div>
+    </div>
     <script>
         function toggleEditMode(fieldId) {
             var field = document.getElementById(fieldId);

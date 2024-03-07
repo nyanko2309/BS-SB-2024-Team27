@@ -5,14 +5,7 @@ from django.shortcuts import render, redirect
 from login.models import User
 from django.core.exceptions import ObjectDoesNotExist # for helper function
 
-
-def login(request):
-    currentid=0
-    user = User.objects.get(id=2)  # Fetch the user with id 2
-    HTML = render_to_string('Login.html', )  # Render the template
-    return HttpResponse(HTML)
-
-
+cuser_id=2
 
 def getIdByUserCredentials(mail, password) -> int | str:
     """returns id of a user after receiving mail and password, returns string of 'user doesn't exist' or 'mail or password are incorrect' otherwise"""
@@ -36,23 +29,35 @@ def getIdByUserCredentials(mail, password) -> int | str:
         except ObjectDoesNotExist:
             return "user does not exist"
 
+#==============================================================
+def login(request):
+
+    HTML = render_to_string('Login.html', )  # Render the template
+   # user_id=getIdByUserCredentials(mail, password)
+    return HttpResponse(HTML)
 
 
+
+
+
+
+from django.shortcuts import render, redirect
 
 def profile(request):
-    user = User.objects.get(id=2)  # Fetch the user with id 2
+    # Fetch the user with the specified cuser_id
+    user =User.objects.first()
 
     if request.method == 'POST':
         # Extract updated values from the form submission
         name = request.POST.get('name')
         age = request.POST.get('age')
-        email = request.POST.get('email')
+        mail = request.POST.get('mail')
         description = request.POST.get('description')
 
         # Update the user object with the new values
         user.name = name
         user.age = age
-        user.email = email
+        user.mail = mail
         user.description = description
 
         # Save the user object to persist the changes in the database
@@ -60,7 +65,6 @@ def profile(request):
 
         # Redirect to the profile page
         return redirect('profile')
-
     # Prepare the initial context for the template
     context = {"mail": user.mail, "name": user.name, "age": user.age, "description": user.description}
 
