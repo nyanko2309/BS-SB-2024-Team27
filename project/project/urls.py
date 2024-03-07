@@ -17,13 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from .views import login, profile
 from django.urls import path
-from login.views import register
+from login.views import register, registration_success
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("login/", login, name="login"),
     path("profile/", profile, name="profile"),
-    path("register/", register, name="register")
+    path("register/", register, name="register"),
+    path('registration_success/', registration_success, name='registration_success')
 ]
 
 
