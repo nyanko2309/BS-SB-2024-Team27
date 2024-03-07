@@ -28,7 +28,6 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path("login/", login, name="login"),
     path("profile/", profile, name="profile"),
-    path("register/", register, name="register"),
     path('create_post/', create_post, name='create_post'),
     path("register/", register, name="register"),
     path('save_profile_changes/', views.save_profile_changes, name='save_profile_changes'),
