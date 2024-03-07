@@ -16,15 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from .views import login, profile
-from django.urls import path, include  # new
-from django.views.generic import TemplateView
+from django.urls import path
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("login/", lambda request: login(request, "Login.html"), name="login"),
-    path("", lambda request: profile(request, "profilepage.html"), name="profile"),
-
+    path("login/", login, name="login"),
+    path("profile/", profile, name="profile"),
 ]
+
 
 
 
