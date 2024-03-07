@@ -4,7 +4,7 @@ from django.core.exceptions import ObjectDoesNotExist # for helper function
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 
-cuser_id=2
+global global_user_id
 
 def getIdByUserCredentials(mail, password) -> int | str:
     """returns id of a user after receiving mail and password, returns string of 'user doesn't exist' or 'mail or password are incorrect' otherwise"""
@@ -71,3 +71,22 @@ def save_profile_changes(request):
     else:
         # If the request method is not POST, return an error response
         return JsonResponse({'error': 'Method not allowed'}, status=405)
+
+def login_button(request):
+    if request.method == 'POST':
+        mail = request.POST.get('mail')
+        password = request.POST.get('password')
+        user_id = getIdByUserCredentials(mail, password)
+        global_user_id = user_id
+        print("EDMUND MCMILLEN")
+        if isinstance(user_id, int):
+            print("YOU LITTLE FUCKER")
+            # Successful login, redirect to homepage or any desired page
+            return render(request, 'homepage.html')
+        else:
+            # Handle unsuccessful login (e.g., display an error message)
+            print("YOU MADE A PIECE OF SHIT")
+            return render(request, 'login.html', {'error_message': 'Invalid credentials'})
+
+    # If the request method is not POST, render the login form
+    return render(request, 'login.html')
