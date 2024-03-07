@@ -18,12 +18,6 @@
       margin-top: 30px;
       font-weight: bold;
     }
-    .logo {
-      display: block;
-      margin: 30px auto;
-      max-width: 300px;
-      height: auto;
-    }
     .form-container {
       max-width: 600px;
       margin: 0 auto;
@@ -66,15 +60,24 @@
     input[type="submit"]:hover {
       background-color: #4169E1;
     }
+    /* Success message style */
+    .success-message {
+      display: none; /* Initially hidden */
+      background-color: #dff0d8;
+      color: #3c763d;
+      padding: 10px;
+      border-radius: 5px;
+      margin-bottom: 15px;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
 
-  <img src="LOGO.png" alt="לוגו של האתר" class="logo">
   <h1>יצירת מודעה</h1>
 
   <div class="form-container">
-    <form action="#" method="post">
+    <form id="myForm" action="#" method="post">
       <div class="form-group">
         <label for="location">מיקום:</label>
         <input type="text" id="location" name="location" required>
@@ -119,7 +122,28 @@
         <input type="submit" value="פרסם מודעה">
       </div>
     </form>
-  </div>
 
+    <!-- Success message -->
+    <div class="success-message" id="postCreatedSuccess" style="color: green;">
+        מודעה נוצרה בהצלחה!
+    </div>
+
+    <script>
+      // Get the form element
+      var form = document.getElementById("myForm");
+      // Get the success message element
+      var successMessage = document.getElementById("postCreatedSuccess");
+
+      // Add event listener to the form submission
+      form.addEventListener("submit", function(event) {
+          // Prevent the default form submission
+          event.preventDefault();
+          // Show the success message
+          successMessage.style.display = "block";
+      });
+
+    </script>
+
+  </div>
 </body>
 </html>
