@@ -12,9 +12,6 @@ def login(request):
     return HttpResponse(HTML)
 
 
-from django.shortcuts import render, redirect
-from .models import User
-
 
 def profile(request):
     user = User.objects.get(id=2)  # Fetch the user with id 2
