@@ -1,9 +1,5 @@
 from django.db import models
-
 # Create your models here.
-
-
-from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 
 
@@ -13,9 +9,9 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 #every change run python manage.py makemigrations
 #pythone manage.py migratem
 class User(models.Model):
-        name=models.TextField()
-        mail = models.EmailField()#change to email field
-        password = models.CharField(max_length=255)
+        name:models.TextField()
+        email = models.EmailField(unique=True)
+        password = models.CharField(max_length=100)
         # pic = models.ImageField(upload_to='profile_pics/')
         age = models.IntegerField()
         description = models.TextField()
