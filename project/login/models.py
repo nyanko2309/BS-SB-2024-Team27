@@ -15,3 +15,4 @@ class User(models.Model):
    description = models.TextField()
    favorites = models.JSONField(default=list)
    my_posts = models.ManyToManyField(Post, related_name='authored_by', symmetrical=False)
+
