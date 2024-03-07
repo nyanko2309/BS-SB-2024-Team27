@@ -3,6 +3,7 @@ from login.models import User
 from django.core.exceptions import ObjectDoesNotExist # for helper function
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, login
 
 global global_user_id
 
@@ -76,17 +77,15 @@ def login_button(request):
     if request.method == 'POST':
         mail = request.POST.get('mail')
         password = request.POST.get('password')
-        user_id = getIdByUserCredentials(mail, password)
-        global_user_id = user_id
-        print("EDMUND MCMILLEN")
-        if isinstance(user_id, int):
-            print("YOU LITTLE FUCKER")
-            # Successful login, redirect to homepage or any desired page
-            return render(request, 'homepage.html')
+        user = authenticate(request, mail=mail, password=password)
+        print(user)
+        if user is not None:
+            login(request, user)
+            # Redirect to the user's profile page upon successful login
+            return redirect('profilepage', user_id=user.id)
         else:
-            # Handle unsuccessful login (e.g., display an error message)
-            print("YOU MADE A PIECE OF SHIT")
-            return render(request, 'login.html', {'error_message': 'Invalid credentials'})
-
-    # If the request method is not POST, render the login form
+            # Authentication failed, handle it accordingly
+            # For example, you can display an error message
+            print("Authentication failed.")
+    # If the request method is not POST or authentication failed, render the login page again
     return render(request, 'login.html')

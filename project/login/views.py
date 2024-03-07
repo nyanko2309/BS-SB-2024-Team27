@@ -1,5 +1,5 @@
-from .models import User
 
+from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 from .forms import RegistrationForm
 
@@ -16,9 +16,6 @@ def register(request):
             print("user attachment successful")
             if user:
                 # User was created successfully
-                # Access the user details
-                username = user.mail
-                password = user.password
                 # You can access other attributes of the user as well
                 return redirect('registration_success')
         else:
