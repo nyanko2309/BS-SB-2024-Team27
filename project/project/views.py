@@ -4,7 +4,7 @@ from django.core.exceptions import ObjectDoesNotExist # for helper function
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 
-cuser_id=2
+user_id=2
 
 def getIdByUserCredentials(mail, password) -> int | str:
     """returns id of a user after receiving mail and password, returns string of 'user doesn't exist' or 'mail or password are incorrect' otherwise"""
