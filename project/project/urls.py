@@ -20,11 +20,12 @@ from posts.views import create_post
 
 from . import views
 from .views import login, profile
-from django.urls import path
+from django.urls import path,include
 from login.views import register
 
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
     path("login/", login, name="login"),
     path("profile/", profile, name="profile"),
     path("register/", register, name="register"),
