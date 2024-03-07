@@ -21,7 +21,7 @@ from posts.views import create_post
 from . import views
 from .views import login, profile
 from django.urls import path,include
-from login.views import register
+from login.views import register, registration_success
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -33,7 +33,7 @@ urlpatterns = [
     path("register/", register, name="register"),
     path('save_profile_changes/', views.save_profile_changes, name='save_profile_changes'),
     path('login_button/', views.login_button, name='login_button'),
-
+    path('registration_success/', registration_success, name='registration_success'),
 ]
 
 
