@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.template.loader import get_template, render_to_string
 from django.shortcuts import render, redirect
 from login.models import User
+from django.core.exceptions import ObjectDoesNotExist # for helper function
 
 
 def login(request):
@@ -10,6 +11,30 @@ def login(request):
     user = User.objects.get(id=2)  # Fetch the user with id 2
     HTML = render_to_string('Login.html', )  # Render the template
     return HttpResponse(HTML)
+
+
+
+def getIdByUserCredentials(mail, password) -> int | str:
+    """returns id of a user after receiving mail and password, returns string of 'user doesn't exist' or 'mail or password are incorrect' otherwise"""
+    userid = 2
+
+    try:
+        user = User.objects.get(id=userid)
+    except ObjectDoesNotExist:
+        return "user does not exist"
+
+    while True:
+        if mail == user.mail and password == user.password:
+            return userid
+        elif mail != user.mail or password != user.password:
+            return "mail or password are incorrect"
+
+        userid += 1
+
+        try:
+            user = User.objects.get(id=userid)
+        except ObjectDoesNotExist:
+            return "user does not exist"
 
 
 
