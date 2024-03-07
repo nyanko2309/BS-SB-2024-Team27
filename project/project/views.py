@@ -44,7 +44,7 @@ def homepage(request):
     return render(request, 'project/homepage.html')
 
 def login(request):
-    return render(request, 'project/Login.html')
+    return render(request, 'Login.html')
 # views.py
 
 # views.py
