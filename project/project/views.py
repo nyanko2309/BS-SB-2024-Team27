@@ -1,15 +1,15 @@
 from django.core.checks import templates
 from django.http import HttpResponse
 from django.template.loader import get_template, render_to_string
-from login.models import User
 from django.shortcuts import render, redirect
-
+from login.models import User
 from django.core.exceptions import ObjectDoesNotExist # for helper function
+
 
 def login(request):
     currentid=0
     user = User.objects.get(id=2)  # Fetch the user with id 2
-    HTML = render_to_string('Login.html')  # Render the template
+    HTML = render_to_string('Login.html', )  # Render the template
     return HttpResponse(HTML)
 
 
@@ -35,8 +35,6 @@ def getIdByUserCredentials(mail, password) -> int | str:
             user = User.objects.get(id=userid)
         except ObjectDoesNotExist:
             return "user does not exist"
-
-
 
 
 
@@ -73,13 +71,6 @@ def profile(request):
 def homepage(request):
     return render(request, 'project/homepage.html')
 
-def login_button(request):
-    print("hello")
-    if request.method == 'POST':  #
-        mail = request.POST.get('mail')
-        password = request.POST.get('password')
-        if type(getIdByUserCredentials(mail,password)) is int:
-            return render(request, 'profilepage.html')
 
 # views.py
 
