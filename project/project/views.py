@@ -71,3 +71,21 @@ def save_profile_changes(request):
     else:
         # If the request method is not POST, return an error response
         return JsonResponse({'error': 'Method not allowed'}, status=405)
+
+def login_button(request):
+    if request.method == 'POST':
+        mail = request.POST.get('mail')
+        password = request.POST.get('password')
+        user_id = getIdByUserCredentials(mail, password)
+        print("EDMUND MCMILLEN")
+        if isinstance(user_id, int):
+            print("YOU LITTLE FUCKER")
+            # Successful login, redirect to homepage or any desired page
+            return render(request, 'homepage.html')
+        else:
+            # Handle unsuccessful login (e.g., display an error message)
+            print("YOU MADE A PIECE OF SHIT")
+            return render(request, 'login.html', {'error_message': 'Invalid credentials'})
+
+    # If the request method is not POST, render the login form
+    return render(request, 'login.html')
