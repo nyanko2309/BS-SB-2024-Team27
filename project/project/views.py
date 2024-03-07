@@ -6,8 +6,7 @@ from login.models import User
 
 
 def login(request):
-    currentid=0
-    user = User.objects.get(id=2)  # Fetch the user with id 2
+
     HTML = render_to_string('Login.html', )  # Render the template
     return HttpResponse(HTML)
 
