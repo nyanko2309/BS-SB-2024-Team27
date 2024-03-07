@@ -54,8 +54,8 @@
 </head>
 <body>
 
-    <form action="homepage.html">
-        <h2>Login</h2>
+    <form method="post" action="{% url 'login_button' %}">
+        <h2>Login Form</h2>
         <label for="mail">Mail:</label>
         <input type="text" id="mail" name="mail" required>
 
@@ -63,7 +63,6 @@
         <input type="password" id="password" name="password" required>
 
         <button type="submit">Login</button>
-        <label>Don't have an account? <a href="register.html">Register</a></label>
     </form>
 </body>
 </html>
