@@ -1,8 +1,8 @@
 from django.core.checks import templates
 from django.http import HttpResponse
-from django.shortcuts import render
-from login.models import User
 from django.template.loader import get_template, render_to_string
+from django.shortcuts import render, redirect
+from login.models import User
 
 
 def login(request):
@@ -10,6 +10,7 @@ def login(request):
     user = User.objects.get(id=2)  # Fetch the user with id 2
     HTML = render_to_string('Login.html', )  # Render the template
     return HttpResponse(HTML)
+
 
 
 
