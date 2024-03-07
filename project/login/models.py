@@ -12,5 +12,5 @@ class User(models.Model):
         # pic = models.ImageField(upload_to='profile_pics/')
         age = models.IntegerField(null=True, blank=True)
         description = models.TextField()
-        favorites = models.ManyToManyField('self', related_name='favorited_by', symmetrical=False)
-        my_posts = models.ManyToManyField('self', related_name='authored_by', symmetrical=False)
+        favorites = models.JSONField(default=list)
+        my_posts =models.JSONField(default=list)

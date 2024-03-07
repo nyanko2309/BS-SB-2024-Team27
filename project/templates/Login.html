@@ -54,7 +54,10 @@
 </head>
 <body>
 
+
+
     <form method="post" action="{% url 'login_button' %}">
+         {% csrf_token %}
         <h2>Login Form</h2>
         <label for="mail">Mail:</label>
         <input type="text" id="mail" name="mail" required>
