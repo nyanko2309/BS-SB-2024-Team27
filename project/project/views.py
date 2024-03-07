@@ -1,5 +1,6 @@
 
 from login.models import User
+from posts.models import Post
 from django.core.exceptions import ObjectDoesNotExist # for helper function
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
@@ -40,8 +41,19 @@ def profile(request):
     # Render the profile page template with the context
     return render(request, 'profilepage.html', context=context)
 
+    # Retrieve all posts from the database
+
 def homepage(request):
-    return render(request, 'project/homepage.html')
+  ##posts = Post.objects.all()
+
+#### Pass the posts to the template context
+#  context = {
+#    'posts': posts
+#  }
+
+ # Render the homepage template with the posts
+  return render(request, 'project/homepage.html', )
+
 
 def login(request):
     return render(request, 'Login.html')
