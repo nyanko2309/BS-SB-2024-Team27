@@ -6,11 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="17b05228-a801-4f64-a2c6-a7e172e53ba5" name="Changes" comment="test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/project/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/project/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/project/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/project/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/project/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/Login.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/Login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/register.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,9 +37,15 @@
   }
 }</component>
   <component name="GithubPullRequestsUISettings">
+    <option name="recentNewPullRequestHead">
+      <RepoCoordinatesHolder>
+        <option name="owner" value="nyanko2309" />
+        <option name="repository" value="BS-SB-2024-Team27" />
+      </RepoCoordinatesHolder>
+    </option>
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
-        <option name="accountId" value="4232f988-7720-46c6-9d05-327207f2ed30" />
+        <option name="accountId" value="f6ac3456-86c0-4bce-a893-0df248719996" />
         <option name="url" value="https://github.com/nyanko2309/BS-SB-2024-Team27.git" />
       </UrlAndAccount>
     </option>
@@ -208,7 +211,15 @@
       <option name="project" value="LOCAL" />
       <updated>1709881602407</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="test">
+      <option name="closed" value="true" />
+      <created>1709882725656</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1709882725656</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
