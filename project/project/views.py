@@ -18,7 +18,6 @@ def getIdByUserCredentials(mail_u, password_u) -> int | str:
 
 def profile(request):
     global_user_id = request.session.get('global_user_id')
-    print("!!!!!!!!!!!!!!!!!!!-",global_user_id)
     if global_user_id:
         user = User.objects.get(id=global_user_id)
         context = {'user': user}
