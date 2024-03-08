@@ -94,7 +94,7 @@ def submit(request):
             user.mail = form.cleaned_data['mail']  # Correct the field name to 'mail'
             user.save()
             print("User registered successfully!")  # Add a print statement for confirmation
-            return render(request, 'Login.html')
+            return redirect('login')
         else:
             print("Form is not valid!")  # Add a print statement for debugging form validation
     else:
