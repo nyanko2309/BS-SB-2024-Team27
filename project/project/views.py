@@ -102,7 +102,7 @@ def submit(request):
     return render(request, 'register.html', {'form': form})
 
 def register(request):
-    return render(request, 'register.html', {'form': form})
+    return render(request, 'register.html')
 
 
 
