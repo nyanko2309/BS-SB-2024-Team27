@@ -60,6 +60,8 @@ def save_profile_changes(request):
         return JsonResponse({'error': 'User not logged in'}, status=401)
 
 
+from django.contrib import messages
+
 def login_button(request):
     if request.method == 'POST':
         mail = request.POST.get('mail')
@@ -70,9 +72,12 @@ def login_button(request):
             request.session['global_user_id'] = user_id
             return redirect('homepage')
         else:
-            return render(request, 'login.html', {'error_message': 'Invalid credentials'})
+            # Add an error message
+            messages.error(request, 'Invalid credentials. Please try again.')
+            return render(request, 'login.html')  # Render the login form with the error message
     else:
         return render(request, 'login.html')
+
 
 
 def submit(request):
@@ -81,7 +86,10 @@ def submit(request):
         if form.is_valid():
             user = form.save(commit=False)
             user.mail = form.cleaned_data['mail']
+            if User.objects.filter(mail=user.mail).exists():  # Check if email already exists
+                messages.error(request, 'Email already exists. Please choose a different email.')
             user.save()
+            messages.success(request, 'Registration successful! You can now login.')
             return redirect('login')
         else:
             print("Form is not valid!")
@@ -104,3 +112,5 @@ def helppage(request):
 
 def TOS(request):
     return render(request, 'TOS.html')
+def create_post(request):
+     return render(request, 'create_post.html')

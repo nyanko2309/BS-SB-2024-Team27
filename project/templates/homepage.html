@@ -104,19 +104,9 @@
 </head>
 <body>
 <!-- Start of navigation bar -->
-<div class="section-regular neutral-100">
-<div class="w-layout-blockcontainer w-container">
-<div class="navbar-buttons">
-  <!-- Navigation links -->
-  <a href="{% url 'homepage' %}"  aria-current="page" class="nav-link w-nav-link w--current">Home</a>
-  <a href="{% url 'profile' %}"  class="nav-link w-nav-link">Profile</a>
-  <a href="{% url 'myposts' %}"  class="nav-link w-nav-link">My Posts</a>
-  <a href="{% url 'helppage' %}"  class="nav-link w-nav-link">Help</a>
-  <a href="{% url 'TOS' %}" class="nav-link w-nav-link">terms</a>
-  <a href="{% url 'login' %}" class="nav-link w-nav-link">logout</a>
-</div>
+{% extends 'toolbar.html' %}
 <!-- End of navigation bar -->
-
+{% block content %}
 <!-- Start of search form -->
 <form action="/search" class="search-2 w-form" style="position: relative; margin-top: 30px;margin-bottom: 30px;">
   <label for="search">Search</label>
@@ -158,10 +148,12 @@
           <div class="post-image"></div>
           <div class="post-content">
             <!-- Post information -->
-            <div class="post-info">Name: "meow mewo-"{{post.name}}</div>
-            <div class="post-info">Title: {{ post.title }}</div>
+            <div class="post-info">Description: {{post.description}}</div>
             <div class="post-info">Location: {{ post.location }}</div>
-            <div class="post-info">Salary: {{ post.salary }}</div>
+            <div class="post-info">work hours: {{post.work_hours}}</div>
+            <div class = "post-info">Physical lvl: {{post.phys_lvl}}</div>
+            <div class="post-info">kind of job: {{post.kind_of_job}}</div>
+            <div class="post-info">category: {{post.category}}</div>
              <!-- Favorites button -->
             <div class="favorites-button">☆</div>
           </div>
@@ -206,3 +198,4 @@
 
 </body>
 </html>
+{% endblock %}
