@@ -54,7 +54,10 @@
 </head>
 <body>
 
-    <form action="homepage.html">
+
+
+    <form method="post" action="{% url 'login_button' %}">
+         {% csrf_token %}
         <h2>Login Form</h2>
         <label for="mail">Mail:</label>
         <input type="text" id="mail" name="mail" required>
@@ -64,5 +67,10 @@
 
         <button type="submit">Login</button>
     </form>
+
+    <a href="{% url 'register' %}" style="text-decoration: none;">
+        <button>Register</button>
+    </a>
+
 </body>
 </html>

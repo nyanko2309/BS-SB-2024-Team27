@@ -67,9 +67,9 @@
     <button class="save-button" onclick="removeImage()">Remove Image</button>
 
    <form id="profile-form" method="post" action="{% url 'save_profile_changes' %}">
+
     {% csrf_token %}
 
-        {% csrf_token %}
         <div class="profile-info">
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" value="{{ name }}" readonly onclick="enableEdit(this)">
