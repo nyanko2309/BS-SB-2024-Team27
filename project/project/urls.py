@@ -34,6 +34,9 @@ urlpatterns = [
     path('homepage/', views.homepage, name='homepage'),
     path('submit/', views.submit, name="submit"),
     path('register/', views.register, name="register"),
+    path('myposts/', views.myposts, name="myposts"),
+    path('helppage/', views.helppage, name="helppage"),
+    path('TOS/', views.TOS, name="TOS"),
 ]
 
 
