@@ -104,19 +104,9 @@
 </head>
 <body>
 <!-- Start of navigation bar -->
-<div class="section-regular neutral-100">
-<div class="w-layout-blockcontainer w-container">
-<div class="navbar-buttons">
-  <!-- Navigation links -->
-  <a href="{% url 'homepage' %}"  aria-current="page" class="nav-link w-nav-link w--current">Home</a>
-  <a href="{% url 'profile' %}"  class="nav-link w-nav-link">Profile</a>
-  <a href="{% url 'myposts' %}"  class="nav-link w-nav-link">My Posts</a>
-  <a href="{% url 'helppage' %}"  class="nav-link w-nav-link">Help</a>
-  <a href="{% url 'TOS' %}" class="nav-link w-nav-link">terms</a>
-  <a href="{% url 'login' %}" class="nav-link w-nav-link">logout</a>
-</div>
+{% extends 'toolbar.html' %}
 <!-- End of navigation bar -->
-
+{% block content %}
 <!-- Start of search form -->
 <form action="/search" class="search-2 w-form" style="position: relative; margin-top: 30px;margin-bottom: 30px;">
   <label for="search">Search</label>
@@ -208,3 +198,4 @@
 
 </body>
 </html>
+{% endblock %}

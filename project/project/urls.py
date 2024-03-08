@@ -37,6 +37,8 @@ urlpatterns = [
     path('myposts/', views.myposts, name="myposts"),
     path('helppage/', views.helppage, name="helppage"),
     path('TOS/', views.TOS, name="TOS"),
+    path('create_post/', views.create_post, name="create_post"),
+
 ]
 
 
