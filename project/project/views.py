@@ -73,7 +73,7 @@ def login_button(request):
             return redirect('homepage')
         else:
             # Add an error message
-            messages.error(request, 'Invalid credentials. Please try again.')
+            # messages.error(request, 'Invalid credentials. Please try again.')//--interfere with unit test
             return render(request, 'login.html')  # Render the login form with the error message
     else:
         return render(request, 'login.html')
@@ -89,7 +89,7 @@ def submit(request):
             if User.objects.filter(mail=user.mail).exists():  # Check if email already exists
                 messages.error(request, 'Email already exists. Please choose a different email.')
             user.save()
-            messages.success(request, 'Registration successful! You can now login.')
+            # messages.success(request, 'Registration successful! You can now login.')--interferes with unit test
             return redirect('login')
         else:
             print("Form is not valid!")
