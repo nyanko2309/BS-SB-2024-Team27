@@ -32,8 +32,8 @@ urlpatterns = [
     path('save_profile_changes/', views.save_profile_changes, name='save_profile_changes'),
     path('login_button/', views.login_button, name='login_button'),
     path('homepage/', views.homepage, name='homepage'),
-    path('register/', views.register, name="register"),
-    path('registration_success/', views.registration_success, name="registration_success"),
+    path('submit/', views.submit, name="submit"),
+    path('register', views.register, name="register"),
 ]
 
 

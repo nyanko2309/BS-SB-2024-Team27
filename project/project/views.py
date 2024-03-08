@@ -4,7 +4,8 @@ from django.core.exceptions import ObjectDoesNotExist  # for helper function
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from login.forms import RegistrationForm
-
+from django.shortcuts import render, redirect
+from login.forms import RegistrationForm
 global global_user_id  # Global variable declaration should be avoided make it global maybe
 
 def getIdByUserCredentials(mail_u, password_u) -> int | str:
@@ -85,10 +86,7 @@ def login_button(request):
     return render(request, 'login.html')
 
 
-from django.shortcuts import render, redirect
-from login.forms import RegistrationForm
-
-def register(request):
+def submit(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
@@ -96,17 +94,15 @@ def register(request):
             user.mail = form.cleaned_data['mail']  # Correct the field name to 'mail'
             user.save()
             print("User registered successfully!")  # Add a print statement for confirmation
-            return redirect('registration_success')
+            return render(request, 'Login.html')
         else:
             print("Form is not valid!")  # Add a print statement for debugging form validation
     else:
         form = RegistrationForm()
     return render(request, 'register.html', {'form': form})
 
+def register(request):
+    return render(request, 'register.html', {'form': form})
 
-def registration_success(request):
-    return render(request, 'registration_success.html')
 
 
-def registration_success(request):
-    return render(request, 'regpass.html')
