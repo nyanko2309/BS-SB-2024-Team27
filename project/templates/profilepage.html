@@ -59,6 +59,8 @@
 </head>
 <body>
 
+{% extends 'toolbar.html' %}
+{% block content %}
 <div class="container">
     <div class="profile-image">
         <img id="profile-pic" src="placeholder.jpg" alt="Profile Picture">
@@ -72,19 +74,19 @@
 
         <div class="profile-info">
             <label for="name">Name:</label>
-            <input type="text" id="name" name="name" value="{{ name }}" readonly onclick="enableEdit(this)">
+            <input type="text" id="name" name="name" value="{{ user.name }}" readonly onclick="enableEdit(this)">
         </div>
         <div class="profile-info">
             <label for="age">Age:</label>
-            <input type="text" id="age" name="age" value="{{ age }}" readonly onclick="enableEdit(this)">
+            <input type="text" id="age" name="age" value="{{ user.age }}" readonly onclick="enableEdit(this)">
         </div>
         <div class="profile-info">
             <label for="mail">Email:</label>
-            <input type="text" id="mail" name="mail" value="{{ mail }}" readonly onclick="enableEdit(this)">
+            <input type="text" id="mail" name="mail" value="{{ user.mail }}" readonly onclick="enableEdit(this)">
         </div>
         <div class="profile-info">
             <label for="description">Description:</label>
-            <input type="text" id="description" name="description" value="{{ description }}" readonly onclick="enableEdit(this)">
+            <input type="text" id="description" name="description" value="{{ user.description }}" readonly onclick="enableEdit(this)">
         </div>
     </form>
 
@@ -130,3 +132,4 @@
 </script>
 </body>
 </html>
+{% endblock %}
