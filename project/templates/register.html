@@ -1,0 +1,146 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+<!--    <title>עמוד הרשמה</title>-->
+<!--    <style>-->
+<!--        body {-->
+<!--            font-family: Arial, sans-serif;-->
+<!--            margin: 0;-->
+<!--            padding: 0;-->
+<!--            background-color: #f0f0f0;-->
+<!--            display: flex;-->
+<!--            justify-content: center;-->
+<!--            align-items: center;-->
+<!--            height: 100vh;-->
+<!--        }-->
+<!--        form {-->
+<!--            background-color: #fff;-->
+<!--            padding: 20px;-->
+<!--            border-radius: 8px;-->
+<!--            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);-->
+<!--            max-width: 400px;-->
+<!--            width: 100%;-->
+<!--        }-->
+<!--        h2 {-->
+<!--            text-align: center;-->
+<!--            margin-bottom: 20px;-->
+<!--        }-->
+<!--        input[type="text"],-->
+<!--        input[type="confirm_password"],-->
+<!--        input[type="password"] {-->
+<!--            width: 100%;-->
+<!--            padding: 10px;-->
+<!--            margin-bottom: 15px;-->
+<!--            border: 1px solid #ccc;-->
+<!--            border-radius: 4px;-->
+<!--            box-sizing: border-box;-->
+<!--        }-->
+<!--        input[type="submit"] {-->
+<!--            background-color: #4caf50;-->
+<!--            color: white;-->
+<!--            padding: 10px 20px;-->
+<!--            border: none;-->
+<!--            border-radius: 4px;-->
+<!--            cursor: pointer;-->
+<!--            width: 100%;-->
+<!--        }-->
+<!--        input[type="submit"]:hover {-->
+<!--            background-color: #45a049;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--    <form action="{% url 'register' %}" method="POST">-->
+<!--        {% csrf_token %}-->
+<!--        <h2>Registration Form</h2>-->
+<!--        <label for="email">Email:</label>-->
+<!--        <input type="text" id="email" name="mail" placeholder="הכנס כתובת מייל" required> &lt;!&ndash; Update name="email" to name="mail" &ndash;&gt;-->
+<!--        <label for="password">Password:</label>-->
+<!--        <input type="password" id="password" name="password" placeholder="הכנס סיסמא חדשה" required>-->
+<!--        <label for="confirm_password">Confirm Password:</label>-->
+<!--        <input type="password" id="confirm_password" name="confirm_password" placeholder="הכנס סיסמא חדשה שוב" required>-->
+<!--        <input type="submit" value="הרשם">-->
+<!--    </form>-->
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>עמוד הרשמה</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        input[type="email"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+   <form method="POST" action="{% url 'submit' %}">
+        {% csrf_token %}
+        <h2>עמוד הרשמה</h2>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="mail" placeholder="הכנס כתובת מייל" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="הכנס סיסמא חדשה" required>
+
+
+        <button type="submit" class="save-button">register</button>    </form>
+{% if form.errors %}
+<div class="errors">
+    <ul>
+        {% for field, errors in form.errors.items %}
+        {% for error in errors %}
+        <li>{{ error }}</li>
+        {% endfor %}
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+</body>
+</html>
