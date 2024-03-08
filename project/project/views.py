@@ -1,12 +1,9 @@
 from login.models import User
-from posts.models import Post
-from django.core.exceptions import ObjectDoesNotExist  # for helper function
 from django.http import JsonResponse
+from posts.models import Post
 from django.shortcuts import render, redirect
 from login.forms import RegistrationForm
-from django.shortcuts import render, redirect
-from login.forms import RegistrationForm
-global global_user_id  # Global variable declaration should be avoided make it global maybe
+
 
 def getIdByUserCredentials(mail_u, password_u) -> int | str:
     try:
@@ -18,55 +15,51 @@ def getIdByUserCredentials(mail_u, password_u) -> int | str:
         print(f"An error occurred: {e}")
         return "error occurred"
 
-# The profile view function seems correctly indented
-def profile(request):
-    user = User.objects.get(id=global_user_id)
-    context = {'user': user}
-    return render(request, 'profilepage.html', context)
 
-# The homepage view function seems correctly indented
-from django.shortcuts import render
-from posts.models import Post  # Import the Post model
+def profile(request):
+    global_user_id = request.session.get('global_user_id')
+    if global_user_id:
+        user = User.objects.get(id=global_user_id)
+        context = {'user': user}
+        return render(request, 'profilepage.html', context)
+    else:
+        return redirect('login')
 
 
 def homepage(request):
-    # Retrieve all posts from the database
     posts = Post.objects.all()
-
-    # Pass the retrieved posts to the template
     context = {'posts': posts}
-
-    # Render the homepage template with the posts
     return render(request, 'homepage.html', context)
 
-# The login function seems correctly indented
+
 def login(request):
-    return render(request, 'Login.html')
+    return render(request, 'login.html')
 
-# The save_profile_changes function seems correctly indented
+
 def save_profile_changes(request):
-    if request.method == 'POST':
-        # Extract the form data from the POST request
-        name = request.POST.get('name')
-        age = request.POST.get('age')
-        mail = request.POST.get('mail')
-        description = request.POST.get('description')
+    global_user_id = request.session.get('global_user_id')
+    if global_user_id:
+        user_profile = User.objects.get(id=global_user_id)
 
-        # Assuming you have a UserProfile model, update the user's profile with the new values
-        user_profile = User.objects.get(id=global_user_id)  # Assuming user ID is used as profile ID
-        user_profile.name = name
-        user_profile.age = age
-        user_profile.mail = mail
-        user_profile.description = description
-        user_profile.save()
+        if request.method == 'POST':
+            name = request.POST.get('name')
+            age = request.POST.get('age')
+            mail = request.POST.get('mail')
+            description = request.POST.get('description')
 
-        # Optionally, you can return a JSON response to indicate success
-        return JsonResponse({'message': 'Profile changes saved successfully'})
+            user_profile.name = name
+            user_profile.age = age
+            user_profile.mail = mail
+            user_profile.description = description
+            user_profile.save()
+
+            return JsonResponse({'message': 'Profile changes saved successfully'})
+        else:
+            return JsonResponse({'error': 'Method not allowed'}, status=405)
     else:
-        # If the request method is not POST, return an error response
-        return JsonResponse({'error': 'Method not allowed'}, status=405)
+        return JsonResponse({'error': 'User not logged in'}, status=401)
 
-# The login_button function seems correctly indented
+
 def login_button(request):
     if request.method == 'POST':
         mail = request.POST.get('mail')
@@ -74,16 +67,12 @@ def login_button(request):
         user_id = getIdByUserCredentials(mail, password)
 
         if isinstance(user_id, int):
-
-            global_user_id = user_id
-            # Successful login, redirect to homepage or any desired page
-            return render(request, 'homepage.html')
+            request.session['global_user_id'] = user_id
+            return redirect('homepage')
         else:
-            # Handle unsuccessful login (e.g., display an error message)
             return render(request, 'login.html', {'error_message': 'Invalid credentials'})
-
-    # If the request method is not POST, render the login form
-    return render(request, 'login.html')
+    else:
+        return render(request, 'login.html')
 
 
 def submit(request):
@@ -91,18 +80,27 @@ def submit(request):
         form = RegistrationForm(request.POST)
         if form.is_valid():
             user = form.save(commit=False)
-            user.mail = form.cleaned_data['mail']  # Correct the field name to 'mail'
+            user.mail = form.cleaned_data['mail']
             user.save()
-            print("User registered successfully!")  # Add a print statement for confirmation
             return redirect('login')
         else:
-            print("Form is not valid!")  # Add a print statement for debugging form validation
+            print("Form is not valid!")
     else:
         form = RegistrationForm()
     return render(request, 'register.html', {'form': form})
+
 
 def register(request):
     return render(request, 'register.html')
 
 
+def myposts(request):
+    return render(request, 'posts.html')
 
+
+def helppage(request):
+    return render(request, 'helppage.html')
+
+
+def TOS(request):
+    return render(request, 'TOS.html')
