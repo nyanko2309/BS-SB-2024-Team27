@@ -18,12 +18,11 @@ def getIdByUserCredentials(mail_u, password_u) -> int | str:
 
 def profile(request):
     global_user_id = request.session.get('global_user_id')
+    context=None
     if global_user_id:
-        user = User.objects.get(id=global_user_id)
+        user= User.objects.get(id=global_user_id)
         context = {'user': user}
-        return render(request, 'profilepage.html', context)
-    else:
-        return redirect('login')
+    return render(request, 'profilepage.html', context)
 
 
 def homepage(request):
@@ -32,7 +31,7 @@ def homepage(request):
     return render(request, 'homepage.html', context)
 
 
-def login(request):
+def login_page(request):
     return render(request, 'login.html')
 
 
