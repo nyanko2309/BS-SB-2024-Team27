@@ -32,7 +32,7 @@ def homepage(request):
 
 
 def login_page(request):
-    return render(request, 'login.html')
+    return render(request, 'Login.html')
 
 
 def save_profile_changes(request):
