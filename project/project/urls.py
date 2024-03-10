@@ -34,9 +34,11 @@ urlpatterns = [
     path('submit/', views.submit, name="submit"),
     path('register/', views.register, name="register"),
     path('myposts/', views.myposts, name="myposts"),
+    path('favorites/', views.myfavorites, name="favorites"),
     path('helppage/', views.helppage, name="helppage"),
     path('TOS/', views.TOS, name="TOS"),
     path('create_post/', views.create_post, name="create_post"),
+
 
 ]
 
