@@ -16,6 +16,14 @@ def getIdByUserCredentials(mail_u, password_u) -> int | str:
         return "error occurred"
 
 
+def addtoaarr(arr,id):
+    if id not in arr:
+        arr.append(id)
+
+def removefromarr(arr,id):
+    if id in arr:
+        arr.remove(id)
+
 def profile(request):
     global_user_id = request.session.get('global_user_id')
     context=None
