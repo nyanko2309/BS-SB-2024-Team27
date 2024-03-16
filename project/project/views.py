@@ -114,3 +114,17 @@ def TOS(request):
     return render(request, 'TOS.html')
 def create_post(request):
      return render(request, 'create_post.html')
+
+def toggle_favorite(request, post_id):
+    post = Post.objects.get(id=post_id)
+    user = request.user
+    if post in user.favorite_posts.all():
+        user.favorite_posts.remove(post)
+    else:
+        user.favorite_posts.add(post)
+    return redirect('homepage')  # Replace 'homepage' with the name of your homepage URL
+
+def favorite_posts(request):
+    user = request.user
+    favorite_posts = user.favorite_posts.all()
+    return render(request, 'favorites.html', {'favorite_posts': favorite_posts})
