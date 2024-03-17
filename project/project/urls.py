@@ -41,7 +41,3 @@ urlpatterns = [
     path('favorites/', views.favorite_posts, name='favorites'),
 
 ]
-
-
-
-
