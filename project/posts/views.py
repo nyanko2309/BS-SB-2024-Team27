@@ -6,9 +6,10 @@ def create_post(request):
     if request.method == 'POST':
         form = PostForm(request.POST)
         if form.is_valid():
-            form.save()
+            post = form.save()
             # Set a flag to indicate successful post creation
             post_created = True
+            post.save()
             return render(request, 'create_post.html', {'form': form, 'post_created': post_created})
     else:
         form = PostForm()

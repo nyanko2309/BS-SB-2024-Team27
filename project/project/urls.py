@@ -19,14 +19,14 @@ from django.contrib import admin
 from posts.views import create_post
 
 from . import views
-from project.views import login_page, profile
+from project.views import login, profile
 from django.urls import path,include
 
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
-    path("", login_page, name="login_page"),
+    path("", login, name="login_page"),
     path("profile/", profile, name="profile"),
     path('save_profile_changes/', views.save_profile_changes, name='save_profile_changes'),
     path('login_button/', views.login_button, name='login_button'),

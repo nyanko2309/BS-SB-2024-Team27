@@ -10,3 +10,5 @@ class Post(models.Model):
     phys_lvl = models.IntegerField()
     kind_of_job = models.TextField()
     category = models.TextField()
+
+
