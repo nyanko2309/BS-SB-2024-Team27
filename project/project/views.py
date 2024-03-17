@@ -3,6 +3,7 @@ from django.http import JsonResponse
 from posts.models import Post
 from django.shortcuts import render, redirect
 from login.forms import RegistrationForm
+import json
 
 
 def getIdByUserCredentials(mail_u, password_u) -> int | str:
@@ -16,24 +17,38 @@ def getIdByUserCredentials(mail_u, password_u) -> int | str:
         return "error occurred"
 
 
+def addtoaarr(arr,id):
+    if id not in arr:
+        arr.append(id)
+
+def removefromarr(arr,id):
+    if id in arr:
+        arr.remove(id)
+
 def profile(request):
     global_user_id = request.session.get('global_user_id')
+    context=None
     if global_user_id:
-        user = User.objects.get(id=global_user_id)
+        user= User.objects.get(id=global_user_id)
         context = {'user': user}
-        return render(request, 'profilepage.html', context)
-    else:
-        return redirect('login')
+    return render(request, 'profilepage.html', context)
 
 
 def homepage(request):
     posts = Post.objects.all()
-    context = {'posts': posts}
+    global_user_id = request.session.get('global_user_id')
+
+    if global_user_id:
+        user = User.objects.get(id=global_user_id)
+        favorites = user.favorites
+    else:
+        favorites = []  # Initialize favorites as an empty list if user is not logged in
+
+    context = {'posts': posts, 'favorites': favorites}
     return render(request, 'homepage.html', context)
 
-
-def login(request):
-    return render(request, 'login.html')
+def login_page(request):
+    return render(request, 'Login.html')
 
 
 def save_profile_changes(request):
@@ -73,7 +88,7 @@ def login_button(request):
             return redirect('homepage')
         else:
             # Add an error message
-            #messages.error(request, 'Invalid credentials. Please try again.')
+            messages.error(request, 'Invalid credentials. Please try again.')
             return render(request, 'login.html')  # Render the login form with the error message
     else:
         return render(request, 'login.html')
@@ -89,8 +104,8 @@ def submit(request):
             if User.objects.filter(mail=user.mail).exists():  # Check if email already exists
                 messages.error(request, 'Email already exists. Please choose a different email.')
             user.save()
-            #messages.success(request, 'Registration successful! You can now login.')
-            return redirect('login')
+            messages.success(request, 'Registration successful! You can now login.')
+            return redirect('login_page')
         else:
             print("Form is not valid!")
     else:
@@ -103,7 +118,67 @@ def register(request):
 
 
 def myposts(request):
-    return render(request, 'posts.html')
+
+        global_user_id = request.session.get('global_user_id')
+        if global_user_id:
+            user = User.objects.get(id=global_user_id)
+            my_post_ids = user.my_posts  # List of post IDs belonging to the user
+
+            # Filter posts based on user's my_posts list
+            posts = Post.objects.filter(id__in=my_post_ids)
+
+            context = {'posts': posts}
+            return render(request, 'posts.html', context)
+        else:
+            # Handle case where user is not logged in
+            return JsonResponse({'error': 'User not logged in'}, status=401)
+
+
+def myfavorites(request):
+    global_user_id = request.session.get('global_user_id')
+    if global_user_id:
+        user = User.objects.get(id=global_user_id)
+        favorites_ids = user.favorites  # List of post IDs belonging to the user
+
+        # Filter posts based on user's favorites list
+        posts = Post.objects.filter(id__in=favorites_ids)
+
+        # Add a boolean field indicating whether each post is in the user's favorites
+        for post in posts:
+            post.is_favorite = True
+
+        context = {'posts': posts}
+        return render(request, 'homepage.html', context)
+    else:
+        # Handle case where user is not logged in
+        return JsonResponse({'error': 'User not logged in'}, status=401)
+
+def add_to_favorites(request):
+    if request.method == 'POST':
+        global_user_id = request.session.get('global_user_id')
+        if global_user_id:
+            # Retrieve data from the request body
+            data = json.loads(request.body)
+            post_id = data.get('postId')
+
+            # Retrieve the user object
+            user = User.objects.get(id=global_user_id)
+
+            # Add the post to user's favorites
+            if post_id:
+                if post_id not in user.favorites:
+                    addtoaarr(user.favorites, post_id)
+                    user.save()
+                    return JsonResponse({'success': True, 'removeFromFavorites': False})
+                else:
+                    removefromarr(user.favorites, post_id)
+                    user.save()
+                    return JsonResponse({'success': True, 'removeFromFavorites': True})
+            else:
+                return JsonResponse({'error': 'Post ID not provided'}, status=400)
+        else:
+            # Handle case where user is not logged in
+            return JsonResponse({'error': 'User not logged in'}, status=401)
 
 
 def helppage(request):
@@ -114,17 +189,3 @@ def TOS(request):
     return render(request, 'TOS.html')
 def create_post(request):
      return render(request, 'create_post.html')
-
-def toggle_favorite(request, post_id):
-    post = Post.objects.get(id=post_id)
-    user = request.user
-    if post in user.favorite_posts.all():
-        user.favorite_posts.remove(post)
-    else:
-        user.favorite_posts.add(post)
-    return redirect('homepage')  # Replace 'homepage' with the name of your homepage URL
-
-def favorite_posts(request):
-    user = request.user
-    favorite_posts = user.favorite_posts.all()
-    return render(request, 'favorites.html', {'favorite_posts': favorite_posts})
