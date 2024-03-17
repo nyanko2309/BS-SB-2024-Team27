@@ -34,9 +34,10 @@ urlpatterns = [
     path('submit/', views.submit, name="submit"),
     path('register/', views.register, name="register"),
     path('myposts/', views.myposts, name="myposts"),
-    path('favorites/', views.myfavorites, name="favorites"),
+    path('myfavorites/', views.myfavorites, name="myfavorites"),
     path('helppage/', views.helppage, name="helppage"),
     path('TOS/', views.TOS, name="TOS"),
+    path('add_to_favorites/', views.add_to_favorites, name='add_to_favorites'),
     path('create_post/', views.create_post, name="create_post"),
 
 

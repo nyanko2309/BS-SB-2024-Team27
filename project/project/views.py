@@ -3,6 +3,7 @@ from django.http import JsonResponse
 from posts.models import Post
 from django.shortcuts import render, redirect
 from login.forms import RegistrationForm
+import json
 
 
 def getIdByUserCredentials(mail_u, password_u) -> int | str:
@@ -35,9 +36,16 @@ def profile(request):
 
 def homepage(request):
     posts = Post.objects.all()
-    context = {'posts': posts}
-    return render(request, 'homepage.html', context)
+    global_user_id = request.session.get('global_user_id')
 
+    if global_user_id:
+        user = User.objects.get(id=global_user_id)
+        favorites = user.favorites
+    else:
+        favorites = []  # Initialize favorites as an empty list if user is not logged in
+
+    context = {'posts': posts, 'favorites': favorites}
+    return render(request, 'homepage.html', context)
 
 def login_page(request):
     return render(request, 'Login.html')
@@ -132,14 +140,47 @@ def myfavorites(request):
         user = User.objects.get(id=global_user_id)
         favorites_ids = user.favorites  # List of post IDs belonging to the user
 
-        # Filter posts based on user's my_posts list
+        # Filter posts based on user's favorites list
         posts = Post.objects.filter(id__in=favorites_ids)
+
+        # Add a boolean field indicating whether each post is in the user's favorites
+        for post in posts:
+            post.is_favorite = True
 
         context = {'posts': posts}
         return render(request, 'homepage.html', context)
     else:
         # Handle case where user is not logged in
         return JsonResponse({'error': 'User not logged in'}, status=401)
+
+def add_to_favorites(request):
+    if request.method == 'POST':
+        global_user_id = request.session.get('global_user_id')
+        if global_user_id:
+            # Retrieve data from the request body
+            data = json.loads(request.body)
+            post_id = data.get('postId')
+
+            # Retrieve the user object
+            user = User.objects.get(id=global_user_id)
+
+            # Add the post to user's favorites
+            if post_id:
+                if post_id not in user.favorites:
+                    addtoaarr(user.favorites, post_id)
+                    user.save()
+                    return JsonResponse({'success': True, 'removeFromFavorites': False})
+                else:
+                    removefromarr(user.favorites, post_id)
+                    user.save()
+                    return JsonResponse({'success': True, 'removeFromFavorites': True})
+            else:
+                return JsonResponse({'error': 'Post ID not provided'}, status=400)
+        else:
+            # Handle case where user is not logged in
+            return JsonResponse({'error': 'User not logged in'}, status=401)
+
+
 def helppage(request):
     return render(request, 'helppage.html')
 

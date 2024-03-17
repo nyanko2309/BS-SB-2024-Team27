@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17b05228-a801-4f64-a2c6-a7e172e53ba5" name="Changes" comment="">
+    <list default="true" id="17b05228-a801-4f64-a2c6-a7e172e53ba5" name="Changes" comment="arrs for fav and my posts">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/project/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/project/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/project/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/project/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/project/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/templates/homepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/homepage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/templates/toolbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/toolbar.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -283,7 +286,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710085891690</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="test">
+      <option name="closed" value="true" />
+      <created>1710620079581</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1710620079581</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
