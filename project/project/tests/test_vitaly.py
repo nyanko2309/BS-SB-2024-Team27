@@ -21,3 +21,6 @@ class TestSite(TestCase):
         request = self.factory.post(reverse('submit'), data)
         response = submit(request)
         self.assertEqual(response.status_code, 302)
+
+
+
