@@ -18,11 +18,12 @@ def getIdByUserCredentials(mail_u, password_u) -> int | str:
 
 def profile(request):
     global_user_id = request.session.get('global_user_id')
-    context=None
     if global_user_id:
-        user= User.objects.get(id=global_user_id)
+        user = User.objects.get(id=global_user_id)
         context = {'user': user}
-    return render(request, 'profilepage.html', context)
+        return render(request, 'profilepage.html', context)
+    else:
+        return redirect('login')
 
 
 def homepage(request):
@@ -31,7 +32,7 @@ def homepage(request):
     return render(request, 'homepage.html', context)
 
 
-def login_page(request):
+def login(request):
     return render(request, 'login.html')
 
 
@@ -72,7 +73,7 @@ def login_button(request):
             return redirect('homepage')
         else:
             # Add an error message
-            # messages.error(request, 'Invalid credentials. Please try again.')//--interfere with unit test
+            #messages.error(request, 'Invalid credentials. Please try again.')
             return render(request, 'login.html')  # Render the login form with the error message
     else:
         return render(request, 'login.html')
@@ -88,7 +89,7 @@ def submit(request):
             if User.objects.filter(mail=user.mail).exists():  # Check if email already exists
                 messages.error(request, 'Email already exists. Please choose a different email.')
             user.save()
-            # messages.success(request, 'Registration successful! You can now login.')--interferes with unit test
+            #messages.success(request, 'Registration successful! You can now login.')
             return redirect('login')
         else:
             print("Form is not valid!")
