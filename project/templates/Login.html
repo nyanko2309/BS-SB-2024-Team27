@@ -21,9 +21,6 @@
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
 
         label {
@@ -48,7 +45,6 @@
             border-radius: 4px;
             cursor: pointer;
             font-size: 16px;
-            margin-top: 10px;
         }
 
         button:hover {
@@ -58,25 +54,15 @@
 </head>
 <body>
 
-    <form method="post" action="{% url 'login_button' %}">
-        {% csrf_token %}
+    <form action="homepage.html">
         <h2>Login Form</h2>
-        {% if messages %}
-            {% for message in messages %}
-                <p style="color: red;">{{ message }}</p>
-            {% endfor %}
-        {% endif %}
-        <label for="mail">Mail:</label>
-        <input type="text" id="mail" name="mail" required>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
 
         <label for="password">Password:</label>
         <input type="password" id="password" name="password" required>
 
         <button type="submit">Login</button>
-        <a href="{% url 'register' %}" style="text-decoration: none;">
-            <button type="button">Register</button>
-        </a>
     </form>
-
 </body>
 </html>

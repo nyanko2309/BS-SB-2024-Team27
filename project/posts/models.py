@@ -1,6 +1,7 @@
 from django.db import models
-from django.contrib.auth.models import User
 
+
+# Create your views here.
 class Post(models.Model):
     description = models.TextField()
     location = models.TextField()
@@ -9,4 +10,3 @@ class Post(models.Model):
     phys_lvl = models.IntegerField()
     kind_of_job = models.TextField()
     category = models.TextField()
-    favorites = models.ManyToManyField(User, related_name='favorite_posts')

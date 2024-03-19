@@ -1,110 +1,74 @@
 <!DOCTYPE html>
-<html lang="he">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>עזרה</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-        .container {
-            width: 80%;
-            margin: 20px auto;
-            text-align: center;
-        }
-        p {
-            font-size: 18px;
-            line-height: 1.6;
-            margin-bottom: 10px; /* Added margin for separation */
-        }
-        .qa-section {
-            margin-top: 20px;
-            text-align: center;
-        }
-        .question-header {
-            font-weight: bold;
-            color: blue;
-            margin-top: 20px;
-            cursor: pointer; /* Change cursor to pointer for better indication */
-        }
-        .question-header::after {
-            content: "לחצו כאן לצפייה בתשובות לשאלות נפוצות"; /* Display a plus sign */
-            margin-left: 5px; /* Add some space between the sign and the text */
-            text-align: right;
-        }
-        .question-header.open::after {
-            content: "לחצו כאן לסגירה"; /* Change the plus sign to a minus sign when open */
-            text-align: right;
-        }
-        .question {
-            display: none; /* Initially hide all answers */
-            margin-bottom: 20px; /* Added margin to separate answers */
-            color: #333; /* Question text color */
-            text-align: right;
-        }
-        .answer {
-            margin-top: 10px; /* Add margin above the answer */
-            text-align: right;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Large Text Window</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .container {
+        width: 80%;
+    }
+    textarea {
+        width: 100%;
+        height: 200px;
+        resize: none;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+    }
+    textarea::placeholder {
+        text-align: right; /* Align placeholder text to the right */
+    }
+    button {
+        display: block;
+        margin-top: 10px;
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+    }
+    button:hover {
+        background-color: #0056b3;
+    }
+</style>
 </head>
 <body>
 
-<!-- Include toolbar -->
-{% include 'toolbar.html' %}
-
-<div class="container">
-    <p>אנא שלחו מייל ל־ <br>
-    </p>1TJobsCrew@gmail.com
-    <p>לפי הפורמט הבא:<br>
-    <strong>שימוש במייל שאיתו נרשמתם לאתר שלנו</strong><br>
-    <strong>ציון הבעיה באופן ברור ומעמיק</strong><br>
-    <strong>שמירה על שפה נאותה</strong></p>
-
-     <div class="thank-you">
-        <p>תודה רבה על השיתוף</p>
-    </div>
-    <!-- Q&A Section -->
-    <div class="qa-section">
-        <div class="question-header" onclick="toggleQA(this)">
-            <span class="question-header-text"></span>
-            <span class="toggle-icon">&#9660;</span>
-        </div>
-        <div class="question">
-            <p>?שאלה: האם מותר לי לדרוש תעודת זהות כמעסיק מעובד או להיפך </p>
-            <p class="answer">.תשובה: כמובן , אנו ממליצים בנוסף לתעד את כל התהליך החל מיצירת הקשר ועד לסיום העבודה אם ניתן </p>
-        </div>
-        <div class="question">
-            <p>? שאלה: איך יוצרים מודעה</p>
-            <p class="answer">.תשובה: לוחצים על "הפוסטים שלי" ולאחר מכן לוחצים על כפתור ה"+" הירוק בצידו הימני-תחתון של המסך ועוקבים אחר השלבים ליצירת מודעה </p>
-        </div>
-        <!-- Add more questions and answers as needed -->
-    </div>
-
-
-
+<!-- toolbar.html -->
+<div class="navbar-buttons">
+  <!-- Navigation links -->
+  <a href="/" aria-current="page" class="nav-link w-nav-link w--current">Home</a>
+  <a href="/about" class="nav-link w-nav-link">Profile</a>
+  <a href="/browse" class="nav-link w-nav-link">My Posts</a>
+  <a href="/blog" class="nav-link w-nav-link">Help</a>
+  <!-- Homepage button -->
+  <a href="homepage.html" class="nav-link w-nav-link">Homepage</a>
 </div>
 
+
+    <div class="container">
+        <textarea id="textArea" placeholder="...הכנס כאן את שאלתך ולאחר מכן לחץ שלח"></textarea>
+        <h2></h2>
+        <button id="sendButton">שלח</button>
+    </div>
+
 <script>
-    function toggleQA(header) {
-        // Toggle the open class on the header
-        header.classList.toggle("open");
-
-        // Get all questions
-        var questions = document.querySelectorAll(".question");
-
-        // Toggle the display style of all questions
-        questions.forEach(function(question) {
-            if (header.classList.contains("open")) {
-                question.style.display = "block";
-            } else {
-                question.style.display = "none";
-            }
-        });
-    }
+    document.getElementById("sendButton").addEventListener("click", function() {
+        var text = document.getElementById("textArea").value;
+        // Here you can handle what to do with the text, like sending it to a server or processing it in some way
+        console.log("Text to be sent: " + text);
+    });
 </script>
 
 </body>

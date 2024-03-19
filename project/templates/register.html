@@ -27,7 +27,7 @@
             text-align: center;
             margin-bottom: 20px;
         }
-        input[type="email"],
+        input[type="text"],
         input[type="password"] {
             width: 100%;
             padding: 10px;
@@ -48,47 +48,18 @@
         input[type="submit"]:hover {
             background-color: #45a049;
         }
-        .success {
-            color: green; /* Set the color for success messages */
-        }
-        .errors {
-            color: red;
-            margin-top: 10px;
-        }
-        .banned-email {
-            color: red;
-            font-size: 12px;
-            text-align: center;
-            margin-top: 10px;
-        }
     </style>
 </head>
 <body>
-
-<form method="POST" action="{% url 'submit' %}">
-    {% csrf_token %}
-    <h2>עמוד הרשמה</h2>
-
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="mail" placeholder="הכנס כתובת מייל" required>
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" placeholder="הכנס סיסמא חדשה" required>
-
-    <button type="submit" class="save-button">register</button>
-
-    {% if banned_email %}
-<div class="banned-email">אימייל זה חסום</div> <!-- Moved the message here -->
-{% endif %}
-
-{% if messages %}
-<div class="errors">
-    <ul>
-        {% for message in messages %}
-            <li class="{% if message.tags == 'success' %}success{% else %}errors{% endif %}">{{ message }}</li>
-        {% endfor %}
-    </ul>
-</div>
-{% endif %}
-
+    <form action="#" method="POST">
+        <h2>Registration Form</h2>
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email" placeholder="הכנס כתובת מייל" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" placeholder="הכנס סיסמא חדשה" required>
+        <label for="confirm_password">Confirm Password:</label>
+        <input type="password" id="confirm_password" name="confirm_password" placeholder="הכנס סיסמא חדשה שוב" required>
+        <input type="submit" value="הרשם">
+    </form>
 </body>
 </html>
