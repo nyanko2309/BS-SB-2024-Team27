@@ -40,9 +40,11 @@ def homepage(request):
 
     if global_user_id:
         user = User.objects.get(id=global_user_id)
-        favorites = user.favorites
+        favorites = [int(fav) for fav in user.favorites]
+        print("Favorites:", favorites)  # Print the favorites list
     else:
         favorites = []  # Initialize favorites as an empty list if user is not logged in
+        favorites_str = ""  # Initialize favorites_str as an empty string
 
     context = {'posts': posts, 'favorites': favorites}
     return render(request, 'homepage.html', context)
@@ -138,7 +140,7 @@ def myfavorites(request):
     global_user_id = request.session.get('global_user_id')
     if global_user_id:
         user = User.objects.get(id=global_user_id)
-        favorites_ids = user.favorites  # List of post IDs belonging to the user
+        favorites_ids = [int(fav) for fav in user.favorites]  # List of post IDs belonging to the user
 
         # Filter posts based on user's favorites list
         posts = Post.objects.filter(id__in=favorites_ids)
@@ -147,7 +149,7 @@ def myfavorites(request):
         for post in posts:
             post.is_favorite = True
 
-        context = {'posts': posts}
+        context = {'posts': posts,'favorites': favorites_ids}
         return render(request, 'homepage.html', context)
     else:
         # Handle case where user is not logged in
@@ -169,11 +171,11 @@ def add_to_favorites(request):
                 if post_id not in user.favorites:
                     addtoaarr(user.favorites, post_id)
                     user.save()
-                    return JsonResponse({'success': True, 'removeFromFavorites': False})
+                    return JsonResponse({'success': True, 'favorites': user.favorites})
                 else:
                     removefromarr(user.favorites, post_id)
                     user.save()
-                    return JsonResponse({'success': True, 'removeFromFavorites': True})
+                    return JsonResponse({'success': True, 'favorites': user.favorites})
             else:
                 return JsonResponse({'error': 'Post ID not provided'}, status=400)
         else:
