@@ -17,6 +17,27 @@
   .favorites-button.active {
     color: red;
   }
+
+  /* Adjustments for the total number of posts line */
+  .total-posts {
+    font-size: 14px; /* Adjust font size */
+    padding: 5px; /* Adjust padding */
+    margin-bottom: 10px; /* Add some bottom margin */
+  }
+
+  /* Adjustments for the search and filter lines */
+  .search-filter {
+    margin-bottom: 10px; /* Add some bottom margin */
+    display: flex; /* Make search and filter lines appear in a row */
+    align-items: center; /* Center items vertically */
+  }
+  .search-input,
+  .filter-select,
+  .search-button {
+    padding: 5px; /* Adjust padding */
+    font-size: 14px; /* Adjust font size */
+    margin-right: 10px; /* Add some margin between elements */
+  }
 </style>
 </head>
 <body>
@@ -25,10 +46,31 @@
 {% block content %}
 <!-- Start of content block -->
 <div class="content">
+    <!-- Show total number of posts -->
+    <div class="total-posts">מספר מודעות קיימות: {{ posts|length }}</div>
+
+    <!-- Start of search and filter lines -->
+    <div class="search-filter">
+        <!-- Search line -->
+        <input type="text" class="search-input" placeholder="חיפוש...">
+        <!-- Search button -->
+        <button class="search-button">חפש</button>
+        <!-- Filter line -->
+        <select class="filter-select">
+            <option value="">סנן לפי...</option>
+            <option value="location">מיקום</option>
+            <option value="work_hours">שעות עבודה</option>
+            <option value="phys_lvl">רמת פיזיות</option>
+            <option value="kind_of_job">סוג משרה</option>
+            <option value="category">קטגוריה</option>
+        </select>
+    </div>
+    <!-- End of search and filter lines -->
+
     <!-- Start of posts container -->
     <div class="posts">
         {% for post in posts %}
-        <div class="post">
+        <div class="post" data-description="{{ post.description }}" data-location="{{ post.location }}" data-work-hours="{{ post.work_hours }}" data-phys-lvl="{{ post.phys_lvl }}" data-kind-of-job="{{ post.kind_of_job }}" data-category="{{ post.category }}">
             <div class="post-image"></div>
             <div class="post-content">
                 <!-- Post information -->
@@ -46,13 +88,13 @@
     </div>
     <!-- End of posts container -->
 </div>
-<<!-- End of content block -->
+<!-- End of content block -->
 
-<!-- JavaScript to handle favorites button -->
-<!-- JavaScript to handle favorites button -->
+<!-- JavaScript to handle favorites button and search -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const favoritesButtons = document.querySelectorAll('.favorites-button');
+        const searchButton = document.querySelector('.search-button');
 
         favoritesButtons.forEach(function(button) {
             button.addEventListener('click', function() {
@@ -86,6 +128,27 @@
             });
         });
 
+        // Add event listener to search button
+        searchButton.addEventListener('click', function() {
+            const searchInput = document.querySelector('.search-input').value.toLowerCase();
+            const posts = document.querySelectorAll('.post');
+
+            posts.forEach(function(post) {
+                const description = post.dataset.description.toLowerCase();
+                const location = post.dataset.location.toLowerCase();
+                const workHours = post.dataset.workHours.toLowerCase();
+                const physLvl = post.dataset.physLvl.toLowerCase();
+                const kindOfJob = post.dataset.kindOfJob.toLowerCase();
+                const category = post.dataset.category.toLowerCase();
+
+                if (description.includes(searchInput) || location.includes(searchInput) || workHours.includes(searchInput) || physLvl.includes(searchInput) || kindOfJob.includes(searchInput) || category.includes(searchInput)) {
+                    post.style.display = 'block';
+                } else {
+                    post.style.display = 'none';
+                }
+            });
+        });
+
         // Function to get CSRF token
         function getCookie(name) {
             const value = `; ${document.cookie}`;
@@ -94,8 +157,6 @@
         }
     });
 </script>
-
-
 
 </body>
 </html>
