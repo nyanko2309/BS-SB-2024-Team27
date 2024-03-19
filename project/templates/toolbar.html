@@ -98,7 +98,9 @@ body {
 .favorites-button.active {
     color: red;
 }
-
+.navbar-buttons a.logout-link {
+    background-color: red;
+}
     </style>
 </head>
 <body>
@@ -113,7 +115,8 @@ body {
             <a href="{% url 'myfavorites' %}" class="nav-link w-nav-link button">המועדפים שלי</a>
             <a href="{% url 'helppage' %}" class="nav-link w-nav-link button">עזרה</a>
             <a href="{% url 'TOS' %}" class="nav-link w-nav-link button">תנאי השימוש</a>
-            <a href="{% url 'login_page' %}" class="nav-link w-nav-link button">התנתקות</a>
+            <a href="{% url 'login_page' %}" class="nav-link w-nav-link button logout-link">התנתקות</a>
+
         </div>
         <!-- End of navigation bar -->
     </div>
