@@ -4,10 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17b05228-a801-4f64-a2c6-a7e172e53ba5" name="Changes" comment="הוספת שורת חיפוש וסינון ומספר מודעות קיימות בדף הבית">
+    <list default="true" id="17b05228-a801-4f64-a2c6-a7e172e53ba5" name="Changes" comment="הוספת שאלות ותשובות נפוצות">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/helppage.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/helppage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/homepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/homepage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/project/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/templates/Login.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/Login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/templates/TOS.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/TOS.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/templates/profilepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/profilepage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/templates/regpass.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/regpass.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/templates/toolbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/toolbar.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -371,7 +376,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710852039662</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="הוספת שאלות ותשובות נפוצות">
+      <option name="closed" value="true" />
+      <created>1710854969870</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1710854969870</updated>
+    </task>
+    <option name="localTasksCounter" value="37" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -397,6 +410,7 @@
     <MESSAGE value="הוספת כפתור מחיקת משתמש שעובד" />
     <MESSAGE value="הוספת חסימת מייל" />
     <MESSAGE value="הוספת שורת חיפוש וסינון ומספר מודעות קיימות בדף הבית" />
-    <option name="LAST_COMMIT_MESSAGE" value="הוספת שורת חיפוש וסינון ומספר מודעות קיימות בדף הבית" />
+    <MESSAGE value="הוספת שאלות ותשובות נפוצות" />
+    <option name="LAST_COMMIT_MESSAGE" value="הוספת שאלות ותשובות נפוצות" />
   </component>
 </project>
