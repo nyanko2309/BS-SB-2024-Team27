@@ -48,6 +48,9 @@
         input[type="submit"]:hover {
             background-color: #45a049;
         }
+        .success {
+            color: green; /* Set the color for success messages */
+        }
         .errors {
             color: red;
             margin-top: 10px;
@@ -67,26 +70,15 @@
 
         <button type="submit" class="save-button">register</button>
     </form>
-{% if messages %}
-<div class="success">
-    <ul>
-        {% for message in messages %}
-        <li>{{ message }}</li>
-        {% endfor %}
-    </ul>
-</div>
-{% endif %}
 
-{% if form.errors %}
-<div class="errors">
-    <ul>
-        {% for field, errors in form.errors.items %}
-        {% for error in errors %}
-        <li>{{ error }}</li>
-        {% endfor %}
-        {% endfor %}
-    </ul>
-</div>
+{% if messages %}
+    <div class="messages">
+        <ul>
+            {% for message in messages %}
+                <li class="{% if message.tags == 'success' %}success{% else %}errors{% endif %}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    </div>
 {% endif %}
 
 </body>

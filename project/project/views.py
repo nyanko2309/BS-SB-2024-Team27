@@ -191,3 +191,23 @@ def TOS(request):
     return render(request, 'TOS.html')
 def create_post(request):
      return render(request, 'create_post.html')
+
+
+from django.contrib.auth import logout
+from django.shortcuts import redirect
+
+def delete_account(request):
+    if request.method == 'POST':
+        global_user_id = request.session.get('global_user_id')
+        if global_user_id:
+            # Retrieve the user object
+            user = User.objects.get(id=global_user_id)
+
+            # Delete the user and logout
+            user.delete()
+            logout(request)
+            return redirect('login_page')
+        else:
+            return JsonResponse({'error': 'User not logged in'}, status=401)
+    else:
+        return JsonResponse({'error': 'Method not allowed'}, status=405)

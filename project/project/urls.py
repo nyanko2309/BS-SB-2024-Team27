@@ -39,7 +39,7 @@ urlpatterns = [
     path('TOS/', views.TOS, name="TOS"),
     path('add_to_favorites/', views.add_to_favorites, name='add_to_favorites'),
     path('create_post/', views.create_post, name="create_post"),
-
+    path('delete_account/', views.delete_account, name='delete_account')
 
 ]
 

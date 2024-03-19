@@ -42,6 +42,15 @@
             color: #fff;
             border-radius: 5px;
             cursor: pointer;
+            margin-bottom: 10px; /* Add margin below the Save button */
+        }
+        .delete-button {
+            padding: 10px 20px;
+            border: none;
+            background-color: #FF0000; /* Red background color */
+            color: #fff; /* White font color */
+            border-radius: 5px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -74,6 +83,10 @@
     </form>
 
     <button class="save-button" onclick="saveChanges()">Save</button>
+    <form id="deleteForm" action="{% url 'delete_account' %}" method="post">
+    {% csrf_token %}
+    <button type="submit" class="delete-button">מחיקת משתמש</button>
+</form>
 </div>
 
 <script>
@@ -97,6 +110,19 @@
         };
         xhr.send(formData);
     }
+    document.getElementById("deleteForm").addEventListener("submit", function(event) {
+        // Prevent the default form submission
+        event.preventDefault();
+
+        // Show confirmation dialog
+        if (confirm("Are you sure you want to delete your account?")) {
+            // If user confirms, proceed with form submission
+            this.submit();
+        } else {
+            // If user cancels, do nothing
+            return false;
+        }
+    });
 </script>
 </body>
 </html>
