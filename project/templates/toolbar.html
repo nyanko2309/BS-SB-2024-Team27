@@ -2,107 +2,126 @@
 <html lang="en">
 <head>
     <meta charset="utf-8"/>
-    <title>!TJOBS 14:46</title>
+    <title>1Tjobs</title>
     <style>
         /* Common styles */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            background-color: #f4f4f4;
-        }
-        .section-regular {
-            /* Add your section-regular styles here */
-        }
-        .w-layout-blockcontainer {
-            /* Add your w-layout-blockcontainer styles here */
-        }
-        .navbar-buttons {
-            display: flex;
-            /* Your existing toolbar styles */
-            border: 1px solid black;
-            border-radius: 5px;
-            margin-top: 20px;
-            margin-bottom: 20px;
-            padding: 10px;
-        }
-        .navbar-buttons a {
-            text-decoration: none;
-            padding: 10px;
-            margin-right: 10px;
-        }
-        .dropdown-container {
-            position: relative;
-            display: inline-block;
-            margin-left: 20px;
-        }
-        .dropdown-menu {
-            /* Add your dropdown menu styles here */
-        }
-        .dropdown-item {
-            /* Add your dropdown item styles here */
-        }
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f4f4f4;
+}
 
-        /* Styles specific to the homepage */
-        .posts-container {
-            max-height: 400px;
-            overflow-y: auto;
-        }
-        .posts {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-        .post {
-            width: calc(33.33% - 20px);
-            border: 1px solid black;
-            padding: 10px;
-            box-sizing: border-box;
-            position: relative;
-        }
-        .post-image {
-            width: 100px;
-            height: 100px;
-            background-color: #ccc;
-            margin-bottom: 10px;
-        }
-        .post-content {
-            font-size: 14px;
-        }
-        .favorites-button {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            cursor: pointer;
-        }
-        .favorites-button.active {
-            color: red;
-        }
+.section-regular {
+    /* Add your section-regular styles here */
+}
+
+.w-layout-blockcontainer {
+    /* Add your w-layout-blockcontainer styles here */
+}
+
+.navbar-buttons {
+    display: flex;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.navbar-buttons a {
+    text-decoration: none;
+    padding: 10px 15px;
+    margin-right: 10px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.dropdown-container {
+    position: relative;
+    display: inline-block;
+    margin-left: 20px;
+}
+
+.dropdown-menu {
+    /* Add your dropdown menu styles here */
+}
+
+.dropdown-item {
+    /* Add your dropdown item styles here */
+}
+
+/* Styles specific to the homepage */
+.posts-container {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.posts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.post {
+    width: calc(33.33% - 20px);
+    border: 1px solid black;
+    padding: 10px;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.post-image {
+    width: 100px;
+    height: 100px;
+    background-color: #ccc;
+    margin-bottom: 10px;
+}
+
+.post-content {
+    font-size: 14px;
+}
+
+.favorites-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.favorites-button.active {
+    color: red;
+}
+.navbar-buttons a.logout-link {
+    background-color: red;
+}
     </style>
 </head>
 <body>
     <!-- Start of navigation bar -->
     <div class="section-regular neutral-100">
-        <div class="w-layout-blockcontainer w-container">
-            <div class="navbar-buttons">
-                <!-- Navigation links -->
-                <a href="{% url 'homepage' %}" aria-current="page" class="nav-link w-nav-link w--current">Home</a>
-                <a href="{% url 'profile' %}" class="nav-link w-nav-link">Profile</a>
-                <a href="{% url 'myposts' %}" class="nav-link w-nav-link">My Posts</a>
-                <a href="{% url 'myfavorites' %}" class="nav-link w-nav-link">favorites</a>
-                <a href="{% url 'helppage' %}" class="nav-link w-nav-link">Help</a>
-                <a href="{% url 'TOS' %}" class="nav-link w-nav-link">Terms</a>
-                <a href="{% url 'login_page' %}" class="nav-link w-nav-link">Logout</a>
-
-            </div>
-            <!-- End of navigation bar -->
-
-            <!-- Start of search form -->
-
+    <div class="w-layout-blockcontainer w-container">
+        <div class="navbar-buttons">
+            <!-- Navigation links styled as buttons -->
+            <a href="{% url 'homepage' %}" aria-current="page" class="nav-link w-nav-link w--current button">מסך הבית</a>
+            <a href="{% url 'profile' %}" class="nav-link w-nav-link button">הפרופיל שלי</a>
+            <a href="{% url 'myposts' %}" class="nav-link w-nav-link button">הפוסטים שלי</a>
+            <a href="{% url 'myfavorites' %}" class="nav-link w-nav-link button">המועדפים שלי</a>
+            <a href="{% url 'helppage' %}" class="nav-link w-nav-link button">עזרה</a>
+            <a href="{% url 'TOS' %}" class="nav-link w-nav-link button">תנאי השימוש</a>
+            <a href="{% url 'login_page' %}" class="nav-link w-nav-link button logout-link">התנתקות</a>
 
         </div>
+        <!-- End of navigation bar -->
     </div>
+</div>
+
     <!-- End of navigation bar -->
 
     <!-- Include a block for the main content -->
