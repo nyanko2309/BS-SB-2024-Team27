@@ -89,18 +89,6 @@
     font-size: 14px;
   }
 
-  /* Additional CSS styles for favorites button */
-  .favorites-button {
-    position: absolute; /* Position the button */
-    top: 10px; /* Adjust top position */
-    right: 10px; /* Adjust right position */
-    cursor: pointer; /* Change cursor to pointer on hover */
-  }
-
-  .favorites-button.active {
-    color: red; /* Set the color to black when button is active (pressed) */
-  }
-
   /* Additional CSS styles for plus button */
   .create-post-button {
     position: fixed; /* Position the button */
@@ -132,27 +120,46 @@
   <!-- User input area can go here -->
 </div>
 
- <!-- Start of posts container -->
-    <div class="posts-container">
-      <div class="posts">
-        {% for post in posts %}
-        <div class="post">
-          <div class="post-image"></div>
-          <div class="post-content">
-            <!-- Post information -->
-            <div class="post-info">Description: {{post.description}}</div>
-            <div class="post-info">Location: {{ post.location }}</div>
-            <div class="post-info">work hours: {{post.work_hours}}</div>
-            <div class = "post-info">Physical lvl: {{post.phys_lvl}}</div>
-            <div class="post-info">kind of job: {{post.kind_of_job}}</div>
-            <div class="post-info">category: {{post.category}}</div>
-             <!-- Favorites button -->
-            <div class="favorites-button">☆</div>
-          </div>
-        </div>
-        {% endfor %}
+<!-- Start of posts container -->
+<div class="posts-container">
+  <div class="posts">
+    <!-- Add more posts -->
+    <div class="post">
+      <div class="post-image"></div>
+      <div class="post-content">
+        <!-- Post information -->
+        <div class="post-info">Name: John Doe</div>
+        <div class="post-info">Title: Frontend Developer</div>
+        <div class="post-info">Location: San Francisco</div>
+        <div class="post-info">Salary: $100k - $120k</div>
       </div>
     </div>
+
+    <div class="post">
+      <div class="post-image"></div>
+      <div class="post-content">
+        <!-- Post information -->
+        <div class="post-info">Name: John Doe</div>
+        <div class="post-info">Title: Frontend Developer</div>
+        <div class="post-info">Location: San Francisco</div>
+        <div class="post-info">Salary: $100k - $120k</div>
+      </div>
+    </div>
+
+    <div class="post">
+      <div class="post-image"></div>
+      <div class="post-content">
+        <!-- Post information -->
+        <div class="post-info">Name: John Doe</div>
+        <div class="post-info">Title: Frontend Developer</div>
+        <div class="post-info">Location: San Francisco</div>
+        <div class="post-info">Salary: $100k - $120k</div>
+      </div>
+    </div>
+
+    <!-- Repeat the above post structure to add more posts -->
+  </div>
+</div>
 <!-- End of posts container -->
 
 <!-- Plus button for creating new posts -->
@@ -169,18 +176,6 @@
       dropdownMenu.parentElement.classList.toggle('active');
     });
   });
-
-  document.addEventListener('DOMContentLoaded', function()
-  {
-  const favoritesButtons = document.querySelectorAll('.favorites-button');
-
-  favoritesButtons.forEach(function(button) {
-    button.addEventListener('click', function() {
-      // Toggle the 'active' class on the clicked favorites button
-      this.classList.toggle('active');
-    });
-  });
-});
 </script>
 
 </body>
