@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="he">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,61 +9,42 @@
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
     }
     .container {
         width: 80%;
+        margin: 20px auto;
+        text-align: center;
     }
-    textarea {
-        width: 100%;
-        height: 200px;
-        resize: none;
-        padding: 10px;
-        font-size: 16px;
-        border: 1px solid #ccc;
+    p {
+        font-size: 18px;
+        line-height: 1.6;
+        margin-bottom: 10px; /* Added margin for separation */
     }
-    textarea::placeholder {
-        text-align: right; /* Align placeholder text to the right */
-    }
-    button {
-        display: block;
-        margin-top: 10px;
-        padding: 10px 20px;
-        font-size: 16px;
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        cursor: pointer;
-    }
-    button:hover {
-        background-color: #0056b3;
+    .thank-you {
+        margin-top: 50px;
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center; /* Center align the thank you message */
     }
 </style>
 </head>
 <body>
 
-<!-- Start of navigation bar -->
-{% extends 'toolbar.html' %}
-<!-- End of navigation bar -->
-{% block content %}
+<!-- Include toolbar -->
+{% include 'toolbar.html' %}
 
-    <div class="container">
-        <textarea id="textArea" placeholder="...הכנס כאן את שאלתך ולאחר מכן לחץ שלח"></textarea>
-        <h2></h2>
-        <button id="sendButton">שלח</button>
-    </div>
+<div class="container">
+    <p>אנא שלחו מייל ל־ <br>
+    </p><a href="mailto:1TJobsCrew@gmail.com">1TJobsCrew@gmail.com</a>
+    <p>לפי הפורמט הבא:<br>
+    <strong>שימוש במייל שאיתו נרשמתם לאתר שלנו</strong><br>
+    <strong>ציון הבעיה באופן ברור ומעמיק</strong><br>
+    <strong>שמירה על שפה נאותה</strong></p>
+</div>
 
-<script>
-    document.getElementById("sendButton").addEventListener("click", function() {
-        var text = document.getElementById("textArea").value;
-        // Here you can handle what to do with the text, like sending it to a server or processing it in some way
-        console.log("Text to be sent: " + text);
-    });
-</script>
+<div class="thank-you">
+    תודה רבה על השיתוף!
+</div>
 
 </body>
 </html>
-{% endblock %}
