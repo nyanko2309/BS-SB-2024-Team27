@@ -55,30 +55,39 @@
             color: red;
             margin-top: 10px;
         }
+        .banned-email {
+            color: red;
+            font-size: 12px;
+            text-align: center;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
 
-   <form method="POST" action="{% url 'submit' %}">
-        {% csrf_token %}
-        <h2>עמוד הרשמה</h2>
+<form method="POST" action="{% url 'submit' %}">
+    {% csrf_token %}
+    <h2>עמוד הרשמה</h2>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="mail" placeholder="הכנס כתובת מייל" required>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" placeholder="הכנס סיסמא חדשה" required>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="mail" placeholder="הכנס כתובת מייל" required>
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" placeholder="הכנס סיסמא חדשה" required>
 
-        <button type="submit" class="save-button">register</button>
-    </form>
+    <button type="submit" class="save-button">register</button>
+
+    {% if banned_email %}
+<div class="banned-email">אימייל זה חסום</div> <!-- Moved the message here -->
+{% endif %}
 
 {% if messages %}
-    <div class="messages">
-        <ul>
-            {% for message in messages %}
-                <li class="{% if message.tags == 'success' %}success{% else %}errors{% endif %}">{{ message }}</li>
-            {% endfor %}
-        </ul>
-    </div>
+<div class="errors">
+    <ul>
+        {% for message in messages %}
+            <li class="{% if message.tags == 'success' %}success{% else %}errors{% endif %}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+</div>
 {% endif %}
 
 </body>

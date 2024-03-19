@@ -101,18 +101,23 @@ def submit(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
-            user = form.save(commit=False)
-            user.mail = form.cleaned_data['mail']
-            if User.objects.filter(mail=user.mail).exists():  # Check if email already exists
-                messages.error(request, 'Email already exists. Please choose a different email.')
-            user.save()
-            messages.success(request, 'Registration successful! You can now login.')
-            return redirect('login_page')
+            email = form.cleaned_data['mail']
+            # Check if the email is not allowed
+            if is_not_allowed_email(email):
+                messages.error(request, 'אימייל זה חסום')
+            else:
+                user = form.save(commit=False)
+                user.mail = email
+                user.save()
+                messages.success(request, 'ההרשמה בוצעה בהצלחה')
+                return redirect('login_page')
         else:
             print("Form is not valid!")
     else:
         form = RegistrationForm()
     return render(request, 'register.html', {'form': form})
+
+
 
 
 def register(request):
@@ -211,3 +216,14 @@ def delete_account(request):
             return JsonResponse({'error': 'User not logged in'}, status=401)
     else:
         return JsonResponse({'error': 'Method not allowed'}, status=405)
+
+def is_not_allowed_email(email):
+    # Define a list of not allowed email addresses
+    not_allowed_emails = ['bademail@example.com', '3124@e444.com', 'undesirable@example.com']  # Add your not allowed email addresses here
+
+    # Check if the email is in the not allowed list
+    if email in not_allowed_emails:
+        return True
+    else:
+        return False
+
