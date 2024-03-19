@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Favorite Posts</title>
+</head>
+<body>
+    <h1>Favorite Posts</h1>
+    <ul>
+        {% for post in favorite_posts %}
+            <li>{{ post.description }}</li>
+            <!-- Display other post details as needed -->
+        {% endfor %}
+    </ul>
+</body>
+</html>
