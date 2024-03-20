@@ -7,22 +7,6 @@
     <list default="true" id="17b05228-a801-4f64-a2c6-a7e172e53ba5" name="Changes" comment=".">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/project/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/posts/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/posts/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/posts/migrations/0003_post_user.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/posts/migrations/0003_post_user.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/posts/migrations/0010_remove_post_favorites_remove_post_id_post_post_id.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/posts/migrations/0010_remove_post_favorites_remove_post_id_post_post_id.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/posts/migrations/0011_remove_post_post_id_post_favorites_post_id.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/posts/migrations/0012_post_user.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/posts/migrations/0013_remove_post_user.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/posts/migrations/0014_post_user.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/posts/migrations/0015_alter_post_user.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/posts/migrations/0016_alter_post_user.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/posts/migrations/0017_remove_post_user.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/posts/migrations/0018_post_user.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/posts/migrations/0019_remove_post_user.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/posts/migrations/0020_remove_post_id_post_post_id.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/posts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/posts/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/posts/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/posts/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/helppage.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/helppage.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -476,7 +460,23 @@
       <option name="project" value="LOCAL" />
       <updated>1710953170142</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary=".">
+      <option name="closed" value="true" />
+      <created>1710955361365</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1710955361365</updated>
+    </task>
+    <task id="LOCAL-00047" summary=".">
+      <option name="closed" value="true" />
+      <created>1710955368103</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1710955368103</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
