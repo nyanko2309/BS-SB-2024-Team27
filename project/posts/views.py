@@ -6,10 +6,13 @@ def create_post(request):
     if request.method == 'POST':
         form = PostForm(request.POST)
         if form.is_valid():
-            form.save()
-            # Set a flag to indicate successful post creation
-            post_created = True
-            return render(request, 'create_post.html', {'form': form, 'post_created': post_created})
+            # Create a new Post object but do not save it yet
+            new_post = form.save(commit=False)
+            # Assign the current user as the creator of the post
+            new_post.creator = request.user
+            # Save the post with the creator assigned
+            new_post.save()
+            return redirect('success_url')  # Redirect to a success URL
     else:
         form = PostForm()
 

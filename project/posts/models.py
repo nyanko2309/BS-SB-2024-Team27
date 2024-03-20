@@ -9,4 +9,5 @@ class Post(models.Model):
     phys_lvl = models.IntegerField()
     kind_of_job = models.TextField()
     category = models.TextField()
-    favorites = models.ManyToManyField(User, related_name='favorite_posts')
+    #favorites = models.ManyToManyField(User, related_name='favorite_posts')
+    creator = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
