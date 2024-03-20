@@ -6,14 +6,11 @@ def create_post(request):
     if request.method == 'POST':
         form = PostForm(request.POST)
         if form.is_valid():
-            post = form.save(commit=False)  # Save the form data without committing to the database yet
+            post = form.save()  # reference the form save as post
             # Set a flag to indicate successful post creation
             post_created = True
-            post.save()  # Commit the post to the database
-            print("Post saved successfully:", post)  # Debugging statement
+            post.save()  # saves the post into the database
             return render(request, 'create_post.html', {'form': form, 'post_created': post_created})
-        else:
-            print("Form errors:", form.errors)  # Debugging statement for form errors
     else:
         form = PostForm()
 

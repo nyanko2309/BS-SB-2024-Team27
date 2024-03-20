@@ -315,7 +315,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710680247493</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="arrs for fav and my posts">
+      <option name="closed" value="true" />
+      <created>1710682122305</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1710682122305</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
