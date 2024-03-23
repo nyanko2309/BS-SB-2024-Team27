@@ -4,9 +4,14 @@ from posts.models import Post
 from django.shortcuts import render, redirect
 from login.forms import RegistrationForm
 import json
+from django.contrib import messages
+from django.contrib.auth import logout
+from django.shortcuts import redirect
+from posts.forms import PostForm
 
-
+""" gets id from user after login """
 def getIdByUserCredentials(mail_u, password_u) -> int | str:
+
     try:
         user = User.objects.get(mail=mail_u, password=password_u)
         return user.id
@@ -16,15 +21,18 @@ def getIdByUserCredentials(mail_u, password_u) -> int | str:
         print(f"An error occurred: {e}")
         return "error occurred"
 
-
+"""adds id to arr"""
 def addtoaarr(arr,id):
+
     if id not in arr:
         arr.append(id)
 
+"""removes id from arr"""
 def removefromarr(arr,id):
     if id in arr:
         arr.remove(id)
 
+""" goes to profile,then showing id from db that has user.id """
 def profile(request):
     global_user_id = request.session.get('global_user_id')
     context=None
@@ -33,7 +41,7 @@ def profile(request):
         context = {'user': user}
     return render(request, 'profilepage.html', context)
 
-
+"""sends favorites and posts arrs to html homepgae.starts homepage """
 def homepage(request):
     posts = Post.objects.all()
     global_user_id = request.session.get('global_user_id')
@@ -41,18 +49,17 @@ def homepage(request):
     if global_user_id:
         user = User.objects.get(id=global_user_id)
         favorites = [int(fav) for fav in user.favorites]
-        print("Favorites:", favorites)  # Print the favorites list
     else:
         favorites = []  # Initialize favorites as an empty list if user is not logged in
-        favorites_str = ""  # Initialize favorites_str as an empty string
 
     context = {'posts': posts, 'favorites': favorites}
     return render(request, 'homepage.html', context)
 
+"""login page"""
 def login_page(request):
     return render(request, 'Login.html')
 
-
+"""gets stuff from html page,puts it into db"""
 def save_profile_changes(request):
     global_user_id = request.session.get('global_user_id')
     if global_user_id:
@@ -77,8 +84,7 @@ def save_profile_changes(request):
         return JsonResponse({'error': 'User not logged in'}, status=401)
 
 
-from django.contrib import messages
-
+"""checks if things got from html are in db"""
 def login_button(request):
     if request.method == 'POST':
         mail = request.POST.get('mail')
@@ -92,11 +98,9 @@ def login_button(request):
             # Add an error message
             messages.error(request, 'Invalid credentials. Please try again.')
             return render(request, 'login.html')  # Render the login form with the error message
-    else:
-        return render(request, 'login.html')
 
 
-
+"""if input valid,regiser the user and go to login"""
 def submit(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
@@ -119,11 +123,12 @@ def submit(request):
 
 
 
-
+"""onclick register button"""
 def register(request):
     return render(request, 'register.html')
 
-
+"""to do fix!!!!!!!!!"""
+"""goesto myposts html,"""
 def myposts(request):
 
         global_user_id = request.session.get('global_user_id')
@@ -140,7 +145,7 @@ def myposts(request):
             # Handle case where user is not logged in
             return JsonResponse({'error': 'User not logged in'}, status=401)
 
-
+"""sends 2 arrs,favorites and posts with id of favorites"""
 def myfavorites(request):
     global_user_id = request.session.get('global_user_id')
     if global_user_id:
@@ -160,6 +165,7 @@ def myfavorites(request):
         # Handle case where user is not logged in
         return JsonResponse({'error': 'User not logged in'}, status=401)
 
+"""adds an id to a favorites arr onclick star button """
 def add_to_favorites(request):
     if request.method == 'POST':
         global_user_id = request.session.get('global_user_id')
@@ -198,8 +204,6 @@ def create_post(request):
      return render(request, 'create_post.html')
 
 
-from django.contrib.auth import logout
-from django.shortcuts import redirect
 
 def delete_account(request):
     if request.method == 'POST':
@@ -227,3 +231,27 @@ def is_not_allowed_email(email):
     else:
         return False
 
+from django.contrib import messages
+
+def create_post_button(request):
+    global_user_id = request.session.get('global_user_id')
+    user = User.objects.get(id=global_user_id)
+
+    if request.method == 'POST':
+        form = PostForm(request.POST)
+        if form.is_valid():
+            saved_post = form.save()
+            # Get the ID of the saved post
+            saved_post_id = saved_post.id
+            addtoaarr(user.my_posts, saved_post_id)
+            user.save()
+            return redirect('myposts')
+        else:
+            # Form is not valid, display errors
+            messages.error(request, 'Form is not valid. Please correct the errors.')
+            # You can also log the form errors for debugging purposes
+            print(form.errors)
+    else:
+        form = PostForm()
+
+    return render(request, 'create_post.html', {'form': form})

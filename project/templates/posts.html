@@ -124,42 +124,28 @@
 <div class="posts-container">
   <div class="posts">
     <!-- Add more posts -->
-    <div class="post">
-      <div class="post-image"></div>
-      <div class="post-content">
-        <!-- Post information -->
-        <div class="post-info">Name: John Doe</div>
-        <div class="post-info">Title: Frontend Developer</div>
-        <div class="post-info">Location: San Francisco</div>
-        <div class="post-info">Salary: $100k - $120k</div>
-      </div>
-    </div>
 
-    <div class="post">
-      <div class="post-image"></div>
-      <div class="post-content">
-        <!-- Post information -->
-        <div class="post-info">Name: John Doe</div>
-        <div class="post-info">Title: Frontend Developer</div>
-        <div class="post-info">Location: San Francisco</div>
-        <div class="post-info">Salary: $100k - $120k</div>
-      </div>
-    </div>
-
-    <div class="post">
-      <div class="post-image"></div>
-      <div class="post-content">
-        <!-- Post information -->
-        <div class="post-info">Name: John Doe</div>
-        <div class="post-info">Title: Frontend Developer</div>
-        <div class="post-info">Location: San Francisco</div>
-        <div class="post-info">Salary: $100k - $120k</div>
-      </div>
-    </div>
 
     <!-- Repeat the above post structure to add more posts -->
   </div>
-</div>
+   {% for post in posts %}
+        <div class="post" data-description="{{ post.description }}" data-location="{{ post.location }}" data-work-hours="{{ post.work_hours }}" data-phys-lvl="{{ post.phys_lvl }}" data-kind-of-job="{{ post.kind_of_job }}" data-category="{{ post.category }}">
+            <div class="post-image"></div>
+            <div class="post-content">
+                <!-- Post information -->
+                <div class="post-info">Description: {{ post.description }}</div>
+                <div class="post-info">Location: {{ post.location }}</div>
+                <div class="post-info">Work hours: {{ post.work_hours }}</div>
+                <div class="post-info">Physical lvl: {{ post.phys_lvl }}</div>
+                <div class="post-info">Kind of job: {{ post.kind_of_job }}</div>
+                <div class="post-info">Category: {{ post.category }}</div>
+                <!-- Favorites button -->
+                <div class="favorites-button {% if post.id|add:0 in favorites %}active {% endif %}" data-post-id="{{ post.id }}">☆</div>
+            </div>
+        </div>
+  {% endfor %}
+
+  </div>
 <!-- End of posts container -->
 
 <!-- Plus button for creating new posts -->

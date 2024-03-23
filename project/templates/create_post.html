@@ -78,12 +78,12 @@
     </style>
 </head>
 <body>
-    {% extends 'toolbar.html' %}
-    {% block content %}
     <h1>יצירת מודעה</h1>
 
     <div class="form-container">
-        <form id="myForm" action="#" method="post">
+        <form id="myForm" method="POST" action="{% url 'create_post_button' %}">
+            {% csrf_token %}
+
             <div class="form-group">
                 <label for="location">מיקום:</label>
                 <input type="text" id="location" name="location" required>
@@ -124,18 +124,13 @@
                 <label for="description">תיאור המשרה:</label>
                 <textarea id="description" name="description" rows="4" required></textarea>
             </div>
-            <div class="form-group">
-                <input type="submit" value="פרסם מודעה">
-            </div>
+
+            <button type="submit" class="save-button">פרסם</button>
         </form>
 
-        <!-- Success message -->
-        <div class="success-message" id="postCreatedSuccess" style="color: green;">
-            מודעה נוצרה בהצלחה!
-        </div>
 
         <script>
-            // Get the form element
+            //* Get the form element
             var form = document.getElementById("myForm");
             // Get the success message element
             var successMessage = document.getElementById("postCreatedSuccess");
@@ -146,11 +141,10 @@
                 event.preventDefault();
                 // Show the success message
                 successMessage.style.display = "block";
-            });
-
+                // Log a message to the console
+                console.log("Button pressed: פרסם מודעה");
+            });*/
         </script>
-
     </div>
 </body>
 </html>
-{% endblock %}
