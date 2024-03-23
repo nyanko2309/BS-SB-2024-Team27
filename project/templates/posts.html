@@ -111,9 +111,41 @@
 </style>
 </head>
 <body>
-{% extends 'toolbar.html' %}
+<!-- Start of navigation bar -->
+<div class="section-regular neutral-100">
+<div class="w-layout-blockcontainer w-container">
+<div class="navbar-buttons">
+  <!-- Navigation links -->
+  <a href="/" aria-current="page" class="nav-link w-nav-link w--current">Home</a>
+  <a href="/about" class="nav-link w-nav-link">Profile</a>
+  <a href="/browse" class="nav-link w-nav-link">My Posts</a>
+  <a href="/blog" class="nav-link w-nav-link">Help</a>
 
-{% block content %}
+
+</div>
+<!-- End of navigation bar -->
+
+<!-- Start of search form -->
+<form action="/search" class="search-2 w-form" style="position: relative; margin-top: 30px;margin-bottom: 30px;">
+  <label for="search">Search</label>
+  <input class="w-input" maxlength="256" name="query" placeholder="Search…" type="search" id="search" required=""/>
+  <input type="submit" class="w-button" value="Search"/>
+  <!-- Start of dropdown menu container -->
+  <div class="dropdown-container">
+    <!-- Button to open dropdown menu -->
+    <button class="dropdown-button">Menu</button>
+    <!-- Dropdown menu -->
+    <div class="dropdown-menu">
+      <!-- Dropdown items -->
+      <a href="#" class="dropdown-item">Option 1</a>
+      <a href="#" class="dropdown-item">Option 2</a>
+      <a href="#" class="dropdown-item">Option 3</a>
+    </div>
+  </div>
+  <!-- End of dropdown menu container -->
+</form>
+<!-- End of search form -->
+</div>
 </div>
 
 <div class="user-input-area">
@@ -149,7 +181,7 @@
 <!-- End of posts container -->
 
 <!-- Plus button for creating new posts -->
-<a href="{% url 'create_post' %}" class="create-post-button">+</a>
+<a href="create_post.html" class="create-post-button">+</a>
 
 <!-- JavaScript to handle dropdown menu -->
 <script>
@@ -166,4 +198,3 @@
 
 </body>
 </html>
-{% endblock %}
