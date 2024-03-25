@@ -4,10 +4,10 @@ from posts.models import Post
 from django.shortcuts import render, redirect
 from login.forms import RegistrationForm
 import json
-from django.contrib import messages
 from django.contrib.auth import logout
 from django.shortcuts import redirect
 from posts.forms import PostForm
+from django.contrib import messages
 
 """ gets id from user after login """
 def getIdByUserCredentials(mail_u, password_u) -> int | str:
@@ -201,7 +201,7 @@ def helppage(request):
 def TOS(request):
     return render(request, 'TOS.html')
 def create_post(request):
-     return render(request, 'create_post.html')
+    return render(request, 'create_post.html')
 
 
 
@@ -231,7 +231,6 @@ def is_not_allowed_email(email):
     else:
         return False
 
-from django.contrib import messages
 
 def create_post_button(request):
     global_user_id = request.session.get('global_user_id')
@@ -240,18 +239,38 @@ def create_post_button(request):
     if request.method == 'POST':
         form = PostForm(request.POST)
         if form.is_valid():
-            saved_post = form.save()
-            # Get the ID of the saved post
-            saved_post_id = saved_post.id
-            addtoaarr(user.my_posts, saved_post_id)
-            user.save()
-            return redirect('myposts')
+            if len(user.my_posts) <= 3:
+                saved_post = form.save()
+                saved_post_id = saved_post.id
+                addtoaarr(user.my_posts, saved_post_id)
+                user.save()
+                return redirect('myposts')
+            else:
+                # Display error message
+                messages.error(request, 'Too many posts from one user.')
+                return redirect('create_post')
         else:
-            # Form is not valid, display errors
+            # Display form errors
             messages.error(request, 'Form is not valid. Please correct the errors.')
-            # You can also log the form errors for debugging purposes
             print(form.errors)
     else:
         form = PostForm()
 
     return render(request, 'create_post.html', {'form': form})
+
+def remove_post(request, post_id):
+
+    global_user_id = request.session.get('global_user_id')
+    if global_user_id:
+        user = User.objects.get(id=global_user_id)
+        if post_id in user.my_posts:
+            post=Post.objects.get(id=post_id)
+            removefromarr(user.my_posts,post_id)
+            user.save()
+            post.delete()
+            messages.success(request, 'Post removed successfully!')
+        else:
+            messages.error(request, 'Post not found in user\'s posts!')
+    else:
+        messages.error(request, 'User not logged in!')
+    return redirect('myposts')
