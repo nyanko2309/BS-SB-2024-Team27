@@ -56,14 +56,8 @@
   }
 
   /* Posts container */
-  .posts {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-
   /* Individual post */
-  .post {
+.post {
     background-color: #fff;
     border: 1px solid #ddd;
     border-radius: 10px;
@@ -71,22 +65,45 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease-in-out;
     width: calc(50% - 20px);
-  }
-  .post:hover {
+    position: relative;
+}
+
+.post:hover {
     transform: translateY(-5px);
-  }
-  .post-image {
-    width: 100%;
-    height: 200px;
-    background-color: #f0f0f0;
-    border-bottom: 1px solid #ddd;
-  }
-  .post-content {
+}
+
+.post-content {
     padding: 20px;
-  }
-  .post-info {
+    max-height: 230px; /* Limit the height */
+    overflow: hidden;
+    width: 100%; /* Add this line to occupy full width */
+}
+
+
+.post-info {
     margin-bottom: 10px;
-  }
+}
+
+.description-short {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.favorites-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    color: #888;
+}
+
+.favorites-button.active {
+    color: red;
+}
+
+
   .favorites-button {
     position: absolute;
     top: 10px;
@@ -103,7 +120,7 @@
 <link href="data: image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADIyMmQyMjKwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADg4OAkzMzOeMzMzewAAAAAAAAAAAAAAADIyMoQzMzPMNDQ0PzIyMvIAAAAAAAAAAAAAAAAAAAAAAAAAADU1NRMzMzP5Nzc3FzQ0NE4zMzP+AAAAAAAAAAAyMjLsAAAAAAAAAAA0NDQ/MjIy8gAAAAAAAAAAAAAAAAAAAAAyMjLOVVVVAzIyMvsyMjKNMzMzmjExMR8AAAAAMzMz+TAwMCoAAAAAAAAAADQ0ND8yMjLyAAAAAAAAAAAxMTEaMzMz/wAAAAAyMjLiMjIyXzMzM60zMzMUAAAAAAAAAAAyMjL8NDQ0IgAAAAAAAAAANDQ0PzIyMvIxMTEaMzMz/wAAAAAAAAAAMjIyLTIyMowyMjLxAAAAAAAAAAAAAAAAAAAAADMzM/4xMTEaAAAAAAAAAAAxMTFXMzMz/wAAAAAAAAAAMjIyZTIyMuIyMjI9AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMzMz/zMzMxQvLy8bMzMz/gAAAAAAAAAAMjIyZjIyMuIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAzMzP/MzMz/gAAAAAAAAAAMjIyZjIyMuEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALy8vIDIyMmYzMzPuMzMz/wAAAAAAAAAAMjIyZTMzM+4zMzPQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMzMz/TIyMlEAAAAAAAAAAAAAAAAAAAAAMjIyZTMzM/8AAAAAMjIyfTMzM9AAAAAAAAAAAAAAAAAAAAAAMjIypjQ0ND8AAAAAMjIyvjIyMkIAAAAAMDAwRDIyMuIyMjJMMjIy7AAAAAAzMzN7MzMz/zMzM/8AAAAAAAAAADMzM/8AAAAAMzMz/jMzMx4yMjK7Ly8vIAAAAAAyMjLIAAAAADIyMkwyMjLsAAAAAAAAAAAxMTFhMjIyhAAAAAAzMzP/MzMz/jIyMhkAAAAAMzMzXjMzM5UAAAAAMjIyywAAAAAAAAAAMzMz/wAAAAAAAAAAAAAAADMzM/8AAAAAMjIysDIyMhkAAAAAMzMzUDMzM+kAAAAAMjIyoTMzM0AAAAAAAAAAADIyMpczMzPwMzMzBQAAAAAzMzNVMzMzlQAAAAAAAAAAMzMzUDMzM+oAAAAAMjIyhzIyMuMAAAAAAAAAAAAAAAAAAAAAMzMzCjIyMvUzMzOzMzMz/wAAAAAAAAAAAAAAADIyMpIzMzP/MjIy+zIyMmUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMTExPgAAAAEAAAAA7/cAAJftAAC70QAAvdUAAN65AADvdwAA9u8AAPnfAADznwAAv28AAG6zAABW3QAAOt0AAHXOAADp8QAAx/8AAA==" rel="icon" type="image/x-icon">
 
 <body>
-{% extends 'toolbar.html' %}
+{% include 'toolbar.html' %}
 <!-- End of navigation bar -->
 {% block content %}
 <!-- Start of content block -->
@@ -125,6 +142,7 @@
             <option value="phys_lvl">רמת פיזיות</option>
             <option value="kind_of_job">סוג משרה</option>
             <option value="category">קטגוריה</option>
+            <option value="phone">פלאפון</option>
         </select>
     </div>
     <!-- End of search and filter lines -->
@@ -133,17 +151,18 @@
     <div class="posts">
         {% for post in posts %}
         <div class="post" data-description="{{ post.description }}" data-location="{{ post.location }}" data-work-hours="{{ post.work_hours }}" data-phys-lvl="{{ post.phys_lvl }}" data-kind-of-job="{{ post.kind_of_job }}" data-category="{{ post.category }}">
-            <div class="post-image"></div>
             <div class="post-content">
                 <!-- Post information -->
-                <div class="post-info">Description: {{ post.description }}</div>
+                <div class="post-info">Description: <span class="description-short">{{ post.description }}</span></div>
                 <div class="post-info">Location: {{ post.location }}</div>
                 <div class="post-info">Work hours: {{ post.work_hours }}</div>
                 <div class="post-info">Physical lvl: {{ post.phys_lavl }}</div>
                 <div class="post-info">Kind of job: {{ post.kind_of_job }}</div>
                 <div class="post-info">Category: {{ post.category }}</div>
+                <div class="post-info">Phone: {{ post.phone }}</div>
                 <!-- Favorites button -->
                 <div class="favorites-button {% if post.id|add:0 in favorites %}active {% endif %}" data-post-id="{{ post.id }}">☆</div>
+
             </div>
         </div>
         {% endfor %}
@@ -157,6 +176,7 @@
     document.addEventListener('DOMContentLoaded', function() {
         const favoritesButtons = document.querySelectorAll('.favorites-button');
         const searchButton = document.querySelector('.search-button');
+        const showFullDescriptionButtons = document.querySelectorAll('.show-full-description');
 
         favoritesButtons.forEach(function(button) {
             button.addEventListener('click', function() {
@@ -202,14 +222,17 @@
                 const physLvl = post.dataset.physLvl.toLowerCase();
                 const kindOfJob = post.dataset.kindOfJob.toLowerCase();
                 const category = post.dataset.category.toLowerCase();
+                const phone = post.dataset.phone.toLowerCase();
 
-                if (description.includes(searchInput) || location.includes(searchInput) || workHours.includes(searchInput) || physLvl.includes(searchInput) || kindOfJob.includes(searchInput) || category.includes(searchInput)) {
+                if (description.includes(searchInput) || location.includes(searchInput) || workHours.includes(searchInput) || physLvl.includes(searchInput) || kindOfJob.includes(searchInput) || category.includes(searchInput) || phone.includes(searchInput)) {
                     post.style.display = 'block';
                 } else {
                     post.style.display = 'none';
                 }
             });
         });
+
+
 
         // Function to get CSRF token
         function getCookie(name) {
