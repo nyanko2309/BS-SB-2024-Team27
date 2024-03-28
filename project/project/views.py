@@ -10,8 +10,9 @@ from posts.forms import PostForm
 from django.contrib import messages
 
 """ gets id from user after login """
-def getIdByUserCredentials(mail_u, password_u) -> int | str:
 
+
+def getIdByUserCredentials(mail_u, password_u) -> int | str:
     try:
         user = User.objects.get(mail=mail_u, password=password_u)
         return user.id
@@ -21,27 +22,38 @@ def getIdByUserCredentials(mail_u, password_u) -> int | str:
         print(f"An error occurred: {e}")
         return "error occurred"
 
-"""adds id to arr"""
-def addtoaarr(arr,id):
 
+"""adds id to arr"""
+
+
+def addtoaarr(arr, id):
     if id not in arr:
         arr.append(id)
 
+
 """removes id from arr"""
-def removefromarr(arr,id):
+
+
+def removefromarr(arr, id):
     if id in arr:
         arr.remove(id)
 
+
 """ goes to profile,then showing id from db that has user.id """
+
+
 def profile(request):
     global_user_id = request.session.get('global_user_id')
-    context=None
+    context = None
     if global_user_id:
-        user= User.objects.get(id=global_user_id)
+        user = User.objects.get(id=global_user_id)
         context = {'user': user}
     return render(request, 'profilepage.html', context)
 
+
 """sends favorites and posts arrs to html homepgae.starts homepage """
+
+
 def homepage(request):
     posts = Post.objects.all()
     global_user_id = request.session.get('global_user_id')
@@ -55,11 +67,17 @@ def homepage(request):
     context = {'posts': posts, 'favorites': favorites}
     return render(request, 'homepage.html', context)
 
+
 """login page"""
+
+
 def login_page(request):
     return render(request, 'Login.html')
 
+
 """gets stuff from html page,puts it into db"""
+
+
 def save_profile_changes(request):
     global_user_id = request.session.get('global_user_id')
     if global_user_id:
@@ -85,11 +103,14 @@ def save_profile_changes(request):
 
 
 """checks if things got from html are in db"""
+
+
 def login_button(request):
     if request.method == 'POST':
         mail = request.POST.get('mail')
         password = request.POST.get('password')
         user_id = getIdByUserCredentials(mail, password)
+
         if isinstance(user_id, int):
             request.session['global_user_id'] = user_id
             return redirect('homepage')
@@ -100,6 +121,8 @@ def login_button(request):
 
 
 """if input valid,regiser the user and go to login"""
+
+
 def submit(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
@@ -121,33 +144,36 @@ def submit(request):
     return render(request, 'register.html', {'form': form})
 
 
-
 """onclick register button"""
+
+
 def register(request):
     return render(request, 'register.html')
 
+
 """to do fix!!!!!!!!!"""
 """goesto myposts html,"""
+
+
 def myposts(request):
+    global_user_id = request.session.get('global_user_id')
+    if global_user_id:
+        user = User.objects.get(id=global_user_id)
+        my_post_ids = user.my_posts  # List of post IDs belonging to the user
 
-        global_user_id = request.session.get('global_user_id')
-        print("GUID: ", global_user_id)
-        if global_user_id:
-            print("yes")
-            user = User.objects.get(id=global_user_id)
-            print('got the user')
-            my_post_ids = user.my_posts  # List of post IDs belonging to the user
+        # Filter posts based on user's my_posts list
+        posts = Post.objects.filter(id__in=my_post_ids)
 
-            # Filter posts based on user's my_posts list
-            posts = Post.objects.filter(id__in=my_post_ids)
+        context = {'posts': posts}
+        return render(request, 'posts.html', context)
+    else:
+        # Handle case where user is not logged in
+        return JsonResponse({'error': 'User not logged in'}, status=401)
 
-            context = {'posts': posts}
-            return render(request, 'posts.html', context)
-        else:
-            # Handle case where user is not logged in
-            return JsonResponse({'error': 'User not logged in'}, status=401)
 
 """sends 2 arrs,favorites and posts with id of favorites"""
+
+
 def myfavorites(request):
     global_user_id = request.session.get('global_user_id')
     if global_user_id:
@@ -161,13 +187,16 @@ def myfavorites(request):
         for post in posts:
             post.is_favorite = True
 
-        context = {'posts': posts,'favorites': favorites_ids}
+        context = {'posts': posts, 'favorites': favorites_ids}
         return render(request, 'homepage.html', context)
     else:
         # Handle case where user is not logged in
         return JsonResponse({'error': 'User not logged in'}, status=401)
 
+
 """adds an id to a favorites arr onclick star button """
+
+
 def add_to_favorites(request):
     if request.method == 'POST':
         global_user_id = request.session.get('global_user_id')
@@ -202,9 +231,10 @@ def helppage(request):
 
 def TOS(request):
     return render(request, 'TOS.html')
+
+
 def create_post(request):
     return render(request, 'create_post.html')
-
 
 
 def delete_account(request):
@@ -223,9 +253,11 @@ def delete_account(request):
     else:
         return JsonResponse({'error': 'Method not allowed'}, status=405)
 
+
 def is_not_allowed_email(email):
     # Define a list of not allowed email addresses
-    not_allowed_emails = ['bademail@example.com', '3124@e444.com', 'undesirable@example.com']  # Add your not allowed email addresses here
+    not_allowed_emails = ['bademail@example.com', '3124@e444.com',
+                          'undesirable@example.com']  # Add your not allowed email addresses here
 
     # Check if the email is in the not allowed list
     if email in not_allowed_emails:
@@ -233,21 +265,43 @@ def is_not_allowed_email(email):
     else:
         return False
 
+def edit_post(request, post_id):
+    context = {
+        'post_id': post_id,
+    }
+    return render(request, 'create_post.html', context)
+
+
 
 def create_post_button(request):
     global_user_id = request.session.get('global_user_id')
     user = User.objects.get(id=global_user_id)
-
     if request.method == 'POST':
         form = PostForm(request.POST)
+        post_id = request.POST.get('post_id', None)
         if form.is_valid():
-            if len(user.my_posts) <= 3:
+
+            if post_id.isdigit():  # Check if post_id can be converted to an integer
+                print("=================", post_id)
+                p = Post.objects.get(id=int(post_id))
+                p.location = form.cleaned_data.get('location',None)
+                p.work_hours = form.cleaned_data.get('working_hours',None)
+                p.payment = form.cleaned_data.get('salary',None)
+                p.phys_lvl = form.cleaned_data.get('physicality',None)
+                p.kind_of_job = form.cleaned_data.get('job_type',None)
+                p.job_category = form.cleaned_data.get('job_category',None)
+                p.description = form.cleaned_data.get('description',None)
+                p.phone = form.cleaned_data.get('phone',None)
+                p.save()
+                return redirect('myposts')
+            else:
+             if len(user.my_posts) <= 10:
                 saved_post = form.save()
                 saved_post_id = saved_post.id
                 addtoaarr(user.my_posts, saved_post_id)
                 user.save()
                 return redirect('myposts')
-            else:
+             else:
                 # Display error message
                 messages.error(request, 'Too many posts from one user.')
                 return redirect('create_post')
@@ -258,16 +312,16 @@ def create_post_button(request):
     else:
         form = PostForm()
 
-    return render(request, 'create_post.html', {'form': form})
+    return render(request, 'posts.html', {'form': form})
+
 
 def remove_post(request, post_id):
-
     global_user_id = request.session.get('global_user_id')
     if global_user_id:
         user = User.objects.get(id=global_user_id)
         if post_id in user.my_posts:
-            post=Post.objects.get(id=post_id)
-            removefromarr(user.my_posts,post_id)
+            post = Post.objects.get(id=post_id)
+            removefromarr(user.my_posts, post_id)
             user.save()
             post.delete()
             messages.success(request, 'Post removed successfully!')
@@ -278,5 +332,20 @@ def remove_post(request, post_id):
     return redirect('myposts')
 
 
-def rating(request):
-    return render(request, 'rating.html')
+def rate_site(request):
+    if request.method == 'POST' and request.is_ajax():
+        user = request.user
+        rating_value = int(request.POST.get('rating', 0))
+        if 0 <= rating_value <= 5 and user.is_authenticated:
+            user.site_rating = rating_value
+            user.save()
+            return JsonResponse({'success': True})
+    return JsonResponse({'success': False})
+
+def get_average_rating(request):
+    all_ratings = User.objects.exclude(site_rating=0).values_list('site_rating', flat=True)
+    if all_ratings:
+        average_rating = sum(all_ratings) / len(all_ratings)
+    else:
+        average_rating = 0
+    return JsonResponse({'average_rating': average_rating})

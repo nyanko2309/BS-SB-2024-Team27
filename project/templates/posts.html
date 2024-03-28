@@ -28,15 +28,13 @@
   }
 
   .post {
+    position: relative;
     width: calc(33.33% - 20px);
     border: 1px solid #ddd;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    position: relative;
   }
-
-
 
   .post-content {
     padding: 20px;
@@ -61,6 +59,23 @@
     width: 20px;
     height: 20px;
     font-size: 12px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .edit-button {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background-color: #428bca;
+    color: #11111;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 15px;
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -101,7 +116,8 @@
           <div class="post-image"></div>
           <div class="post-content">
               <!-- Post information -->
-              <div class="post-info">Description: {{ post.description }}</div>
+              <div class="post-info">Description:
+{{ post.description }}</div>
               <div class="post-info">Location: {{ post.location }}</div>
               <div class="post-info">Work hours: {{ post.work_hours }}</div>
               <div class="post-info">Physical lvl: {{ post.phys_lvl }}</div>
@@ -110,6 +126,8 @@
               <div class="post-info">Phone: {{ post.phone }}</div>
               <!-- Remove button -->
               <button class="remove-button" onclick="removePost(event)" data-post-id="{{ post.id }}">X</button>
+              <!-- Edit button -->
+              <button class="edit-button" onclick="editPost(event)" data-post-id="{{ post.id }}">Edit</button>
           </div>
       </div>
     {% endfor %}
@@ -120,40 +138,60 @@
 <!-- Plus button for creating new posts -->
 <a href="{% url 'create_post' %}" class="create-post-button">+</a>
 
-<!-- JavaScript to handle remove button -->
+<!-- JavaScript to handle remove and edit buttons -->
 <script>
   function removePost(event) {
-    // Get the parent post element
-    const post = event.target.closest('.post');
-
     // Get the post ID from the data attribute
     const postId = event.target.dataset.postId;
-
-    // Check if the post ID is valid
     if (postId) {
-      // Perform an AJAX request to remove the post
-      fetch(`/remove_post/${postId}/`, {
-        method: 'POST',
-        headers: {
-          'X-CSRFToken': '{{ csrf_token }}', // Add CSRF token
-        },
-      })
-      .then(response => {
-        if (response.ok) {
-          // If removal is successful, remove the post element from the DOM
-          post.remove();
-          // Optionally, display a success message
-          console.log('Post removed successfully!');
-        } else {
-          // If removal is not successful, display an error message
-          console.error('Failed to remove post:', response.statusText);
+        // Confirm with the user before proceeding with the removal
+        const confirmation = confirm("Are you sure you want to remove this post?");
+        if (confirmation) {
+            // Send a POST request to the remove_post endpoint with the post ID
+            fetch(`/remove_post/${postId}/`, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}',  // Include CSRF token
+                    'Content-Type': 'application/json'  // Specify JSON content type
+                },
+                body: JSON.stringify({})  // Empty body since it's a POST request
+            })
+            .then(response => {
+                // Check if the request was successful
+                if (response.ok) {
+                    // Remove the post element from the DOM
+                    const postElement = event.target.closest('.post');
+                    if (postElement) {
+                        postElement.remove();
+                    } else {
+                        console.error('Post element not found.');
+                    }
+                    // Display success message or handle as needed
+                    alert('Post removed successfully!');
+                } else {
+                    // Handle errors or display a message
+                    console.error('Error removing post:', response.statusText);
+                    alert('An error occurred while removing the post.');
+                }
+            })
+            .catch(error => {
+                // Handle network errors
+                console.error('Network error:', error);
+                alert('A network error occurred while removing the post.');
+            });
         }
-      })
-      .catch(error => {
-        console.error('Error removing post:', error);
-      });
     } else {
-      console.error('Post ID not found.');
+        console.error('Post ID not found.');
+    }
+}
+
+  function editPost(event) {
+    const postId = event.target.dataset.postId;
+    if (postId) {
+        // Redirect to the edit_post URL with the post ID as parameter
+        window.location.href = `/edit_post/${postId}/`;
+    } else {
+        console.error('Post ID not found.');
     }
   }
 </script>
