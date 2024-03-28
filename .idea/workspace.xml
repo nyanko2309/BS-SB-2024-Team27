@@ -6,13 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="17b05228-a801-4f64-a2c6-a7e172e53ba5" name="Changes" comment=".">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/project/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/login/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/login/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/Login.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/Login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/templates/TOS.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/TOS.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/homepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/homepage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/posts.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/posts.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/profilepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/profilepage.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -445,7 +439,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711383068533</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary=".">
+      <option name="closed" value="true" />
+      <created>1711550397356</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1711550397356</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

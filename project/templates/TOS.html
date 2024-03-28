@@ -40,6 +40,20 @@
         padding-right: 20px;
         line-height: 1.6;
     }
+    .star-buttons {
+        margin-top: 20px;
+        display: flex; /* Ensure buttons are displayed in a row */
+        justify-content: center; /* Center-align buttons horizontally */
+    }
+    .star-button {
+        background-color: transparent; /* Set button background color to transparent */
+        color: black; /* Set button text color */
+        border: 2px solid black; /* Add border to create rectangle shape */
+        font-size: 24px;
+        cursor: pointer;
+        margin: 0 5px; /* Add margin between buttons for spacing */
+        padding: 10px 15px; /* Adjust padding for better appearance */
+    }
 </style>
 </head>
 <body>
@@ -55,7 +69,25 @@
         <li>לא לרמות</li>
         <li>עד 8 מודעות פתוחות</li>
     </ul>
+
+    <h2>Please rank the site</h2> <!-- Added title -->
+
+    <!-- Rectangular Border Buttons -->
+    <div class="star-buttons">
+        <button class="star-button" onclick="submitRating(1)">1</button>
+        <button class="star-button" onclick="submitRating(2)">2</button>
+        <button class="star-button" onclick="submitRating(3)">3</button>
+        <button class="star-button" onclick="submitRating(4)">4</button>
+        <button class="star-button" onclick="submitRating(5)">5</button>
+    </div>
 </div>
+
+<script>
+    function submitRating(rating) {
+        // Redirect to the view URL with the rating parameter
+        window.location.href = `{% url 'your_view_url' %}?temp=${rating}`;
+    }
+</script>
 
 </body>
 </html>
