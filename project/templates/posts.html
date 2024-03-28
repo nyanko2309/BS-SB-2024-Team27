@@ -20,44 +20,6 @@
     margin-right: 10px;
   }
 
-  /* Additional CSS styles for dropdown menu */
-  .dropdown-container {
-    position: relative; /* Set position relative to allow absolute positioning of dropdown */
-    display: inline-block; /* Ensure inline block display for proper alignment */
-    margin-left: 20px; /* Adjust margin as needed */
-  }
-
-  .dropdown-menu {
-    display: none; /* Hide dropdown menu by default */
-    position: absolute; /* Position the dropdown menu */
-    top: 100%; /* Position the menu below the dropdown container */
-    left: 0; /* Align the menu with the left edge of the container */
-    background-color: #fff; /* Set background color */
-    border: 1px solid #ccc; /* Add border */
-    border-radius: 5px; /* Add border radius */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add box shadow */
-    padding: 10px; /* Add padding */
-    z-index: 1; /* Ensure the menu appears above other elements */
-  }
-
-  .dropdown-container.active .dropdown-menu {
-    display: block; /* Show dropdown menu when parent container has 'active' class */
-  }
-
-  .dropdown-item {
-    display: block; /* Display dropdown items as block elements */
-    padding: 8px 12px; /* Add padding */
-    color: #333; /* Set text color */
-    text-decoration: none; /* Remove underline */
-    transition: background-color 0.3s; /* Add transition for hover effect */
-  }
-
-  .dropdown-item:hover {
-    background-color: #f0f0f0; /* Change background color on hover */
-  }
-
-  /* Your existing CSS styles */
-
   /* Additional CSS styles for posts container */
   .posts-container {
     max-height: 400px; /* Set maximum height for posts container */
@@ -108,56 +70,49 @@
     z-index: 999; /* Ensure the button appears above other elements */
   }
 
+  /* Additional CSS styles for remove button */
+  .remove-button {
+    position: absolute; /* Position the button relative to its parent post */
+    top: 5px; /* Adjust top position */
+    right: 5px; /* Adjust right position */
+    background-color: red; /* Button background color */
+    color: #fff; /* Button text color */
+    border: none; /* Remove button border */
+    border-radius: 50%; /* Make button round */
+    width: 20px; /* Set button width */
+    height: 20px; /* Set button height */
+    font-size: 12px; /* Set button font size */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    display: flex; /* Make the button a flex container */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+  }
+
 </style>
 </head>
 <body>
 {% extends 'toolbar.html' %}
-
+<!-- End of navigation bar -->
 {% block content %}
-</div>
-
-<div class="user-input-area">
-  <!-- User input area can go here -->
-</div>
-
 <!-- Start of posts container -->
 <div class="posts-container">
   <div class="posts">
-    <!-- Add more posts -->
-    <div class="post">
-      <div class="post-image"></div>
-      <div class="post-content">
-        <!-- Post information -->
-        <div class="post-info">Name: John Doe</div>
-        <div class="post-info">Title: Frontend Developer</div>
-        <div class="post-info">Location: San Francisco</div>
-        <div class="post-info">Salary: $100k - $120k</div>
+    {% for post in posts %}
+      <div class="post" data-description="{{ post.description }}" data-location="{{ post.location }}" data-work-hours="{{ post.work_hours }}" data-phys-lvl="{{ post.phys_lvl }}" data-kind-of-job="{{ post.kind_of_job }}" data-category="{{ post.category }}">
+          <div class="post-image"></div>
+          <div class="post-content">
+              <!-- Post information -->
+              <div class="post-info">Description: {{ post.description }}</div>
+              <div class="post-info">Location: {{ post.location }}</div>
+              <div class="post-info">Work hours: {{ post.work_hours }}</div>
+              <div class="post-info">Physical lvl: {{ post.phys_lvl }}</div>
+              <div class="post-info">Kind of job: {{ post.kind_of_job }}</div>
+              <div class="post-info">Category: {{ post.category }}</div>
+              <!-- Remove button -->
+              <button class="remove-button" onclick="removePost(event)" data-post-id="{{ post.id }}" href="{% url 'remove_post' post.id %}">X</button>
+          </div>
       </div>
-    </div>
-
-    <div class="post">
-      <div class="post-image"></div>
-      <div class="post-content">
-        <!-- Post information -->
-        <div class="post-info">Name: John Doe</div>
-        <div class="post-info">Title: Frontend Developer</div>
-        <div class="post-info">Location: San Francisco</div>
-        <div class="post-info">Salary: $100k - $120k</div>
-      </div>
-    </div>
-
-    <div class="post">
-      <div class="post-image"></div>
-      <div class="post-content">
-        <!-- Post information -->
-        <div class="post-info">Name: John Doe</div>
-        <div class="post-info">Title: Frontend Developer</div>
-        <div class="post-info">Location: San Francisco</div>
-        <div class="post-info">Salary: $100k - $120k</div>
-      </div>
-    </div>
-
-    <!-- Repeat the above post structure to add more posts -->
+    {% endfor %}
   </div>
 </div>
 <!-- End of posts container -->
@@ -165,17 +120,42 @@
 <!-- Plus button for creating new posts -->
 <a href="{% url 'create_post' %}" class="create-post-button">+</a>
 
-<!-- JavaScript to handle dropdown menu -->
+<!-- JavaScript to handle remove button -->
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const dropdownButton = document.querySelector('.dropdown-button');
-    const dropdownMenu = document.querySelector('.dropdown-menu');
+  function removePost(event) {
+    // Get the parent post element
+    const post = event.target.closest('.post');
 
-    dropdownButton.addEventListener('click', function() {
-      // Toggle 'active' class on dropdown container to show/hide dropdown menu
-      dropdownMenu.parentElement.classList.toggle('active');
-    });
-  });
+    // Get the post ID from the data attribute
+    const postId = event.target.dataset.postId;
+
+    // Check if the post ID is valid
+    if (postId) {
+      // Perform an AJAX request to remove the post
+      fetch(`/remove_post/${postId}/`, {
+        method: 'POST',
+        headers: {
+          'X-CSRFToken': '{{ csrf_token }}', // Add CSRF token
+        },
+      })
+      .then(response => {
+        if (response.ok) {
+          // If removal is successful, remove the post element from the DOM
+          post.remove();
+          // Optionally, display a success message
+          console.log('Post removed successfully!');
+        } else {
+          // If removal is not successful, display an error message
+          console.error('Failed to remove post:', response.statusText);
+        }
+      })
+      .catch(error => {
+        console.error('Error removing post:', error);
+      });
+    } else {
+      console.error('Post ID not found.');
+    }
+  }
 </script>
 
 </body>

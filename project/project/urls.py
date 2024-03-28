@@ -1,7 +1,6 @@
 
 from django.contrib import admin
 
-from posts.views import create_post
 
 from . import views
 from project.views import login_page, profile
@@ -24,8 +23,9 @@ urlpatterns = [
     path('TOS/', views.TOS, name="TOS"),
     path('add_to_favorites/', views.add_to_favorites, name='add_to_favorites'),
     path('create_post/', views.create_post, name="create_post"),
-    path('delete_account/', views.delete_account, name='delete_account')
-
+    path('create_post_button/', views.create_post_button, name="create_post_button"),
+    path('delete_account/', views.delete_account, name='delete_account'),
+    path('remove_post/<int:post_id>/', views.remove_post, name='remove_post'),
 ]
 
 
