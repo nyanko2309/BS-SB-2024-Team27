@@ -4,22 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17b05228-a801-4f64-a2c6-a7e172e53ba5" name="Changes" comment="test">
-      <change afterPath="$PROJECT_DIR$/project/templates/rating.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/project/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/posts/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/posts/forms.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/posts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/posts/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/project/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/project/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/project/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/project/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/TOS.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/TOS.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/create_post.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/create_post.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/homepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/homepage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/posts.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/posts.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/profilepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/profilepage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/toolbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/toolbar.html" afterDir="false" />
-    </list>
+    <list default="true" id="17b05228-a801-4f64-a2c6-a7e172e53ba5" name="Changes" comment="test" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -472,7 +457,23 @@
       <option name="project" value="LOCAL" />
       <updated>1711620926756</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="test">
+      <option name="closed" value="true" />
+      <created>1711626649116</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1711626649116</updated>
+    </task>
+    <task id="LOCAL-00047" summary="test">
+      <option name="closed" value="true" />
+      <created>1711626676260</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1711626676260</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
