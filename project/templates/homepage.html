@@ -6,51 +6,104 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 
 <style>
-  /* Your existing CSS styles */
+  /* Global styles */
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
+  }
 
-  /* Additional CSS styles for favorites button */
+  /* Content container */
+  .content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Total number of posts */
+  .total-posts {
+    font-size: 18px;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+  }
+
+  /* Search and filter */
+  .search-filter {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .search-input {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  .filter-select, .search-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin-left: 10px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  /* Posts container */
+  .posts {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  /* Individual post */
+  .post {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    width: calc(50% - 20px);
+  }
+  .post:hover {
+    transform: translateY(-5px);
+  }
+  .post-image {
+    width: 100%;
+    height: 200px;
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #ddd;
+  }
+  .post-content {
+    padding: 20px;
+  }
+  .post-info {
+    margin-bottom: 10px;
+  }
   .favorites-button {
     position: absolute;
     top: 10px;
     right: 10px;
     cursor: pointer;
+    font-size: 24px;
+    color: #888;
   }
-
   .favorites-button.active {
     color: red;
   }
-
-  /* Adjustments for the total number of posts line */
-  .total-posts {
-    font-size: 14px; /* Adjust font size */
-    padding: 5px; /* Adjust padding */
-    margin-bottom: 10px; /* Add some bottom margin */
-  }
-
-  /* Adjustments for the search and filter lines */
-  .search-filter {
-    margin-bottom: 10px; /* Add some bottom margin */
-    display: flex; /* Make search and filter lines appear in a row */
-    align-items: center; /* Center items vertically */
-  }
-  .search-input,
-  .filter-select,
-  .search-button {
-    padding: 5px; /* Adjust padding */
-    font-size: 14px; /* Adjust font size */
-    margin-right: 10px; /* Add some margin between elements */
-  }
-    button {
-            background-color: #4caf50;
-            color: #fff;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-        }
 </style>
 </head>
+    <link href="data: image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADIyMmQyMjKwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADg4OAkzMzOeMzMzewAAAAAAAAAAAAAAADIyMoQzMzPMNDQ0PzIyMvIAAAAAAAAAAAAAAAAAAAAAAAAAADU1NRMzMzP5Nzc3FzQ0NE4zMzP+AAAAAAAAAAAyMjLsAAAAAAAAAAA0NDQ/MjIy8gAAAAAAAAAAAAAAAAAAAAAyMjLOVVVVAzIyMvsyMjKNMzMzmjExMR8AAAAAMzMz+TAwMCoAAAAAAAAAADQ0ND8yMjLyAAAAAAAAAAAxMTEaMzMz/wAAAAAyMjLiMjIyXzMzM60zMzMUAAAAAAAAAAAyMjL8NDQ0IgAAAAAAAAAANDQ0PzIyMvIxMTEaMzMz/wAAAAAAAAAAMjIyLTIyMowyMjLxAAAAAAAAAAAAAAAAAAAAADMzM/4xMTEaAAAAAAAAAAAxMTFXMzMz/wAAAAAAAAAAMjIyZTIyMuIyMjI9AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMzMz/zMzMxQvLy8bMzMz/gAAAAAAAAAAMjIyZjIyMuIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAzMzP/MzMz/gAAAAAAAAAAMjIyZjIyMuEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALy8vIDIyMmYzMzPuMzMz/wAAAAAAAAAAMjIyZTMzM+4zMzPQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMzMz/TIyMlEAAAAAAAAAAAAAAAAAAAAAMjIyZTMzM/8AAAAAMjIyfTMzM9AAAAAAAAAAAAAAAAAAAAAAMjIypjQ0ND8AAAAAMjIyvjIyMkIAAAAAMDAwRDIyMuIyMjJMMjIy7AAAAAAzMzN7MzMz/zMzM/8AAAAAAAAAADMzM/8AAAAAMzMz/jMzMx4yMjK7Ly8vIAAAAAAyMjLIAAAAADIyMkwyMjLsAAAAAAAAAAAxMTFhMjIyhAAAAAAzMzP/MzMz/jIyMhkAAAAAMzMzXjMzM5UAAAAAMjIyywAAAAAAAAAAMzMz/wAAAAAAAAAAAAAAADMzM/8AAAAAMjIysDIyMhkAAAAAMzMzUDMzM+kAAAAAMjIyoTMzM0AAAAAAAAAAADIyMpczMzPwMzMzBQAAAAAzMzNVMzMzlQAAAAAAAAAAMzMzUDMzM+oAAAAAMjIyhzIyMuMAAAAAAAAAAAAAAAAAAAAAMzMzCjIyMvUzMzOzMzMz/wAAAAAAAAAAAAAAADIyMpIzMzP/MjIy+zIyMmUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMTExPgAAAAEAAAAA7/cAAJftAAC70QAAvdUAAN65AADvdwAA9u8AAPnfAADznwAAv28AAG6zAABW3QAAOt0AAHXOAADp8QAAx/8AAA==" rel="icon" type="image/x-icon">
+
 <body>
 {% extends 'toolbar.html' %}
 <!-- End of navigation bar -->
@@ -74,7 +127,9 @@
             <option value="phys_lvl">רמת פיזיות</option>
             <option value="kind_of_job">סוג משרה</option>
             <option value="category">קטגוריה</option>
+            <option value="phone">פלאפון</option>
         </select>
+
     </div>
     <!-- End of search and filter lines -->
 
@@ -91,6 +146,7 @@
                 <div class="post-info">Physical lvl: {{ post.phys_lvl }}</div>
                 <div class="post-info">Kind of job: {{ post.kind_of_job }}</div>
                 <div class="post-info">Category: {{ post.category }}</div>
+                <div class="post-info">Phone: {{ post.phone }}</div>
                 <!-- Favorites button -->
                 <div class="favorites-button {% if post.id|add:0 in favorites %}active {% endif %}" data-post-id="{{ post.id }}">☆</div>
             </div>

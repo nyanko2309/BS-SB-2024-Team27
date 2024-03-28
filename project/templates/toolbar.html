@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="utf-8"/>
     <title>1Tjobs</title>
     <style>
@@ -77,13 +78,6 @@ body {
     position: relative;
 }
 
-.post-image {
-    width: 100px;
-    height: 100px;
-    background-color: #ccc;
-    margin-bottom: 10px;
-}
-
 .post-content {
     font-size: 14px;
 }
@@ -115,6 +109,7 @@ body {
             <a href="{% url 'myfavorites' %}" class="nav-link w-nav-link button">המועדפים שלי</a>
             <a href="{% url 'helppage' %}" class="nav-link w-nav-link button">עזרה</a>
             <a href="{% url 'TOS' %}" class="nav-link w-nav-link button">תנאי השימוש</a>
+            <a href="{% url 'rating' %}" class="nav-link w-nav-link button">דירוג האתר</a>
             <a href="{% url 'login_page' %}" class="nav-link w-nav-link button logout-link">התנתקות</a>
 
         </div>

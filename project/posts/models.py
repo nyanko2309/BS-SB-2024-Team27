@@ -1,13 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class Post(models.Model):
-    description = models.TextField()
-    location = models.TextField()
-    payment = models.TextField()
-    work_hours = models.TextField()
-    phys_lvl = models.IntegerField()
-    kind_of_job = models.TextField()
-    category = models.TextField()
-    #favorites = models.ManyToManyField(User, related_name='favorite_posts')
-    creator = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
+    location = models.TextField(null=True, blank=True)
+    payment = models.TextField(null=True, blank=True)
+    work_hours = models.TextField(null=True, blank=True)
+    phys_lvl = models.IntegerField(null=True, blank=True)
+    kind_of_job = models.TextField(null=True, blank=True)
+    category = models.TextField(null=True, blank=True)
+    phone = models.TextField(null=True, blank=True)
+

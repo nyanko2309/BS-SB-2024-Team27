@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rate the Site</title>
+    <!-- Include jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Styles for star icons -->
+    <style>
+        .star {
+            cursor: pointer;
+            font-size: 30px;
+        }
+        .selected {
+            color: gold;
+        }
+    </style>
+</head>
+    <link href="data: image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADIyMmQyMjKwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADg4OAkzMzOeMzMzewAAAAAAAAAAAAAAADIyMoQzMzPMNDQ0PzIyMvIAAAAAAAAAAAAAAAAAAAAAAAAAADU1NRMzMzP5Nzc3FzQ0NE4zMzP+AAAAAAAAAAAyMjLsAAAAAAAAAAA0NDQ/MjIy8gAAAAAAAAAAAAAAAAAAAAAyMjLOVVVVAzIyMvsyMjKNMzMzmjExMR8AAAAAMzMz+TAwMCoAAAAAAAAAADQ0ND8yMjLyAAAAAAAAAAAxMTEaMzMz/wAAAAAyMjLiMjIyXzMzM60zMzMUAAAAAAAAAAAyMjL8NDQ0IgAAAAAAAAAANDQ0PzIyMvIxMTEaMzMz/wAAAAAAAAAAMjIyLTIyMowyMjLxAAAAAAAAAAAAAAAAAAAAADMzM/4xMTEaAAAAAAAAAAAxMTFXMzMz/wAAAAAAAAAAMjIyZTIyMuIyMjI9AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMzMz/zMzMxQvLy8bMzMz/gAAAAAAAAAAMjIyZjIyMuIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAzMzP/MzMz/gAAAAAAAAAAMjIyZjIyMuEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALy8vIDIyMmYzMzPuMzMz/wAAAAAAAAAAMjIyZTMzM+4zMzPQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMzMz/TIyMlEAAAAAAAAAAAAAAAAAAAAAMjIyZTMzM/8AAAAAMjIyfTMzM9AAAAAAAAAAAAAAAAAAAAAAMjIypjQ0ND8AAAAAMjIyvjIyMkIAAAAAMDAwRDIyMuIyMjJMMjIy7AAAAAAzMzN7MzMz/zMzM/8AAAAAAAAAADMzM/8AAAAAMzMz/jMzMx4yMjK7Ly8vIAAAAAAyMjLIAAAAADIyMkwyMjLsAAAAAAAAAAAxMTFhMjIyhAAAAAAzMzP/MzMz/jIyMhkAAAAAMzMzXjMzM5UAAAAAMjIyywAAAAAAAAAAMzMz/wAAAAAAAAAAAAAAADMzM/8AAAAAMjIysDIyMhkAAAAAMzMzUDMzM+kAAAAAMjIyoTMzM0AAAAAAAAAAADIyMpczMzPwMzMzBQAAAAAzMzNVMzMzlQAAAAAAAAAAMzMzUDMzM+oAAAAAMjIyhzIyMuMAAAAAAAAAAAAAAAAAAAAAMzMzCjIyMvUzMzOzMzMz/wAAAAAAAAAAAAAAADIyMpIzMzP/MjIy+zIyMmUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMTExPgAAAAEAAAAA7/cAAJftAAC70QAAvdUAAN65AADvdwAA9u8AAPnfAADznwAAv28AAG6zAABW3QAAOt0AAHXOAADp8QAAx/8AAA==" rel="icon" type="image/x-icon">
+
+<body>
+{% extends 'toolbar.html' %}
+<!-- End of navigation bar -->
+{% block content %}
+<div id="ratingContainer">
+    <h1>Rate the Site</h1>
+    <div>
+        <p>Your Rating:</p>
+        <span class="star" data-value="1">&#9733;</span>
+        <span class="star" data-value="2">&#9733;</span>
+        <span class="star" data-value="3">&#9733;</span>
+        <span class="star" data-value="4">&#9733;</span>
+        <span class="star" data-value="5">&#9733;</span>
+    </div>
+    <button id="submitRating">Submit Rating</button>
+    <p id="averageRating">Average Rating: {{ average_rating }} ({{ rating_count }} ratings)</p>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('.star').click(function() {
+            // Remove selected class from all stars
+            $('.star').removeClass('selected');
+            // Add selected class to clicked star and previous stars
+            $(this).addClass('selected').prevAll('.star').addClass('selected');
+        });
+
+        $('#submitRating').click(function() {
+            // Get the CSRF token
+            var csrftoken = $('[name=csrfmiddlewaretoken]').val();
+            // Get the number of selected stars
+            var rating = $('.star.selected').length;
+            // Perform AJAX request to submit rating
+            $.ajax({
+                type: 'POST',
+                url: '/rating/',
+                data: {'rating': rating, 'csrfmiddlewaretoken': csrftoken},
+                dataType: 'json',
+                success: function(response) {
+                    if (response.success) {
+                        // Rating submitted successfully message
+                        $('#ratingMessage').text('Rating submitted successfully!').show().delay(3000).fadeOut();
+                        // Update average rating displayed on the page
+                        $('#averageRating').text('Average Rating: ' + response.average_rating + ' (' + response.rating_count + ' ratings)');
+                    } else {
+                        // Failed to submit rating message
+                        $('#ratingMessage').text('Failed to submit rating: ' + response.error).show().delay(3000).fadeOut();
+                    }
+                },
+                error: function(xhr, status, error) {
+                    // Error message
+                    $('#ratingMessage').text('Error: ' + error).show().delay(3000).fadeOut();
+                }
+            });
+        });
+    });
+</script>
+
+
+</body>
+</html>
+{% endblock %}
