@@ -10,6 +10,7 @@ from project.views import removefromarr
 from project.views import register
 from project.views import is_not_allowed_email
 from project.views import delete_account
+from project.views import get_average_rating
 from django.contrib.auth import authenticate
 import json
 from posts.models import Post
@@ -17,6 +18,7 @@ from django.http import HttpRequest
 from login.forms import RegistrationForm
 from django.contrib.auth.models import User
 from unittest.mock import patch, MagicMock
+from django.http import JsonResponse
 
 
 class TestSite(TestCase):
@@ -107,10 +109,27 @@ class TestSite(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'create_post.html')
 
-    def test_rating_view(self):
-        response = self.client.get(reverse('rating'))
-        self.assertEqual(response.status_code, 200)
-        self.assertTemplateUsed(response, 'rating.html')
+    @patch('project.views.User.objects.exclude')
+    def test_get_average_rating(self, mock_exclude):
+        # Mock the values_list method to return sample ratings
+        mock_exclude.return_value.values_list.return_value = [3, 4, 5]
+
+        # Create a mock GET request
+        request = self.factory.get('/get_average_rating')
+
+        # Call the view function
+        response = get_average_rating(request)
+
+        # Check if the response is a JSON response
+        self.assertIsInstance(response, JsonResponse)
+
+        # Parse the content of the response as JSON
+        content = response.content.decode('utf-8')
+        data = json.loads(content)
+
+        # Check if the JSON response contains the correct average rating
+        expected_average_rating = (3 + 4 + 5) / 3
+        self.assertEqual(data['average_rating'], expected_average_rating)
 
     def test_email_not_allowed(self):
         # Test when the email is in the not allowed list
@@ -133,3 +152,6 @@ class TestSite(TestCase):
         self.assertEqual(response.status_code, 401)
         content = json.loads(response.content)
         self.assertEqual(content, {'error': 'User not logged in'})
+
+
+
