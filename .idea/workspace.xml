@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17b05228-a801-4f64-a2c6-a7e172e53ba5" name="Changes" comment="arrs for fav and my posts" />
+    <list default="true" id="17b05228-a801-4f64-a2c6-a7e172e53ba5" name="Changes" comment="arrs for fav and my posts">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/project/db.sqlite3" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -41,8 +44,8 @@
     </option>
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
-        <option name="accountId" value="f6ac3456-86c0-4bce-a893-0df248719996" />
-        <option name="url" value="https://github.com/nyanko2309/BS-SB-2024-Team27.git" />
+        <option name="accountId" value="871abaff-c807-41b2-b163-4a048e97aaf6" />
+        <option name="url" value="https://github.com/nyanko2309/BS-SB-2024-Team27" />
       </UrlAndAccount>
     </option>
   </component>
@@ -327,7 +330,23 @@
       <option name="project" value="LOCAL" />
       <updated>1710961362491</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="arrs for fav and my posts">
+      <option name="closed" value="true" />
+      <created>1711032145479</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1711032145479</updated>
+    </task>
+    <task id="LOCAL-00032" summary="arrs for fav and my posts">
+      <option name="closed" value="true" />
+      <created>1711032364128</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1711032364128</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
