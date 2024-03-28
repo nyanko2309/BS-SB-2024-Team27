@@ -26,7 +26,7 @@ urlpatterns = [
     path('create_post_button/', views.create_post_button, name="create_post_button"),
     path('delete_account/', views.delete_account, name='delete_account'),
     path('remove_post/<int:post_id>/', views.remove_post, name='remove_post'),
-    path('rating/', views.rating, name='rating'),
+    path('rate/', views.rate_site, name='rating'),
 ]
 
 

@@ -123,6 +123,7 @@
             <option value="phys_lvl">רמת פיזיות</option>
             <option value="kind_of_job">סוג משרה</option>
             <option value="category">קטגוריה</option>
+            <option value="phone">פלאפון</option>
         </select>
     </div>
     <!-- End of search and filter lines -->
@@ -137,9 +138,10 @@
                 <div class="post-info">Description: {{ post.description }}</div>
                 <div class="post-info">Location: {{ post.location }}</div>
                 <div class="post-info">Work hours: {{ post.work_hours }}</div>
-                <div class="post-info">Physical lvl: {{ post.phys_lavl }}</div>
+                <div class="post-info">Physical lvl: {{ post.phys_lvl }}</div>
                 <div class="post-info">Kind of job: {{ post.kind_of_job }}</div>
                 <div class="post-info">Category: {{ post.category }}</div>
+                <div class="post-info">Phone: {{ post.phone }}</div>
                 <!-- Favorites button -->
                 <div class="favorites-button {% if post.id|add:0 in favorites %}active {% endif %}" data-post-id="{{ post.id }}">☆</div>
             </div>
