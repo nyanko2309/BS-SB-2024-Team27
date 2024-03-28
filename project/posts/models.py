@@ -11,3 +11,4 @@ class Post(models.Model):
     kind_of_job = models.TextField(null=True, blank=True)
     category = models.TextField(null=True, blank=True)
     phone = models.TextField(null=True, blank=True)
+
