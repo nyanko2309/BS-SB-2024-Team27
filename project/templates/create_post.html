@@ -112,6 +112,9 @@
         <form id="myForm" method="POST" action="{% url 'create_post_button' %}">
             {% csrf_token %}
 
+
+            <input type="hidden" id="post-id" name="post_id" value="{{post_id}}">
+
             <div class="form-group">
                 <label for="location">מיקום:</label>
                 <input type="text" id="location" name="location">
@@ -192,6 +195,7 @@
                     }
                 });
             });
+
         </script>
     </div>
 </body>

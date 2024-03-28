@@ -8,7 +8,6 @@ from django.contrib.auth import logout
 from django.shortcuts import redirect
 from posts.forms import PostForm
 from django.contrib import messages
-from django.http import JsonResponse
 
 """ gets id from user after login """
 
@@ -266,25 +265,46 @@ def is_not_allowed_email(email):
     else:
         return False
 
+def edit_post(request, post_id):
+    context = {
+        'post_id': post_id,
+    }
+    return render(request, 'create_post.html', context)
 
-from django.contrib import messages
+
 
 def create_post_button(request):
     global_user_id = request.session.get('global_user_id')
     user = User.objects.get(id=global_user_id)
-
     if request.method == 'POST':
         form = PostForm(request.POST)
+        post_id = request.POST.get('post_id', None)
         if form.is_valid():
-            if len(user.my_posts) <= 3:
+
+            if post_id.isdigit():  # Check if post_id can be converted to an integer
+                print("=================", post_id)
+                p = Post.objects.get(id=int(post_id))
+                p.location = form.cleaned_data.get('location',None)
+                p.work_hours = form.cleaned_data.get('working_hours',None)
+                p.payment = form.cleaned_data.get('salary',None)
+                p.phys_lvl = form.cleaned_data.get('physicality',None)
+                p.kind_of_job = form.cleaned_data.get('job_type',None)
+                p.job_category = form.cleaned_data.get('job_category',None)
+                p.description = form.cleaned_data.get('description',None)
+                p.phone = form.cleaned_data.get('phone',None)
+                p.save()
+                return redirect('myposts')
+            else:
+             if len(user.my_posts) <= 10:
                 saved_post = form.save()
                 saved_post_id = saved_post.id
                 addtoaarr(user.my_posts, saved_post_id)
                 user.save()
                 return redirect('myposts')
-            else:
+             else:
                 # Display error message
                 messages.error(request, 'Too many posts from one user.')
+                return redirect('create_post')
         else:
             # Display form errors
             messages.error(request, 'Form is not valid. Please correct the errors.')
@@ -292,8 +312,7 @@ def create_post_button(request):
     else:
         form = PostForm()
 
-    return render(request, 'create_post.html', {'form': form, 'errors': messages.get_messages(request)})
-
+    return render(request, 'posts.html', {'form': form})
 
 
 def remove_post(request, post_id):
@@ -313,46 +332,20 @@ def remove_post(request, post_id):
     return redirect('myposts')
 
 
-
-
 def rate_site(request):
-    if request.method == 'POST':
+    if request.method == 'POST' and request.is_ajax():
+        user = request.user
         rating_value = int(request.POST.get('rating', 0))
-
-        if 0 <= rating_value <= 5:
-            # Get the current user
-            user = request.user
-
-            # Update the rating for the current user
+        if 0 <= rating_value <= 5 and user.is_authenticated:
             user.site_rating = rating_value
             user.save()
+            return JsonResponse({'success': True})
+    return JsonResponse({'success': False})
 
-            # Calculate average rating
-            all_ratings = [u.site_rating for u in User.objects.exclude(site_rating=0)]
-            if all_ratings:
-                average_rating = sum(all_ratings) / len(all_ratings)
-                rating_count = len(all_ratings)
-            else:
-                average_rating = 0
-                rating_count = 0
-
-            # Return success response with updated rating information
-            return JsonResponse({'success': True, 'average_rating': average_rating, 'rating_count': rating_count})
-
-        else:
-            # Return JSON response with error message
-            return JsonResponse({'success': False, 'error': 'Invalid rating value'})
-
+def get_average_rating(request):
+    all_ratings = User.objects.exclude(site_rating=0).values_list('site_rating', flat=True)
+    if all_ratings:
+        average_rating = sum(all_ratings) / len(all_ratings)
     else:
-        # Handle GET request for rendering the rating page
-        initial_rating = request.user.site_rating if request.user.is_authenticated else None
-        all_ratings = [u.site_rating for u in User.objects.exclude(site_rating=0)]
-        if all_ratings:
-            average_rating = sum(all_ratings) / len(all_ratings)
-            rating_count = len(all_ratings)
-        else:
-            average_rating = 0
-            rating_count = 0
-
-        context = {'initial_rating': initial_rating, 'average_rating': average_rating, 'rating_count': rating_count}
-        return render(request, 'rating.html', context)
+        average_rating = 0
+    return JsonResponse({'average_rating': average_rating})
