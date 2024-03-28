@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17b05228-a801-4f64-a2c6-a7e172e53ba5" name="Changes" comment="." />
+    <list default="true" id="17b05228-a801-4f64-a2c6-a7e172e53ba5" name="Changes" comment="test">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/project/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/templates/homepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/homepage.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,8 +17,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -45,8 +49,8 @@
     </option>
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
-        <option name="accountId" value="f6ac3456-86c0-4bce-a893-0df248719996" />
-        <option name="url" value="https://github.com/nyanko2309/BS-SB-2024-Team27" />
+        <option name="accountId" value="49794281-9f39-4b48-9985-50e547c3083b" />
+        <option name="url" value="https://github.com/nyanko2309/BS-SB-2024-Team27.git" />
       </UrlAndAccount>
     </option>
   </component>
@@ -70,16 +74,21 @@
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;yana&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;favorits__alon&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/97254/PycharmProjects/project&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\iluvb\PycharmProjects\BS-SB-2024-Team27\project\icon" />
+    </key>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-50da183f06c8-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.13135.95" />
+        <option value="bundled-python-sdk-d68999036c7f-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.14475.56" />
       </set>
     </attachedChunks>
   </component>
@@ -436,23 +445,47 @@
       <option name="project" value="LOCAL" />
       <updated>1711383068533</updated>
     </task>
-    <task id="LOCAL-00044" summary=".">
+    <task id="LOCAL-00044" summary="test">
       <option name="closed" value="true" />
-      <created>1711550397356</created>
+      <created>1711619830503</created>
       <option name="number" value="00044" />
       <option name="presentableId" value="LOCAL-00044" />
       <option name="project" value="LOCAL" />
-      <updated>1711550397356</updated>
+      <updated>1711619830503</updated>
     </task>
-    <task id="LOCAL-00045" summary=".">
+    <task id="LOCAL-00045" summary="test">
       <option name="closed" value="true" />
-      <created>1711631569484</created>
+      <created>1711620926756</created>
       <option name="number" value="00045" />
       <option name="presentableId" value="LOCAL-00045" />
       <option name="project" value="LOCAL" />
-      <updated>1711631569484</updated>
+      <updated>1711620926756</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="test">
+      <option name="closed" value="true" />
+      <created>1711626649116</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1711626649116</updated>
+    </task>
+    <task id="LOCAL-00047" summary="test">
+      <option name="closed" value="true" />
+      <created>1711626676260</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1711626676260</updated>
+    </task>
+    <task id="LOCAL-00048" summary="test">
+      <option name="closed" value="true" />
+      <created>1711633205529</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1711633205529</updated>
+    </task>
+    <option name="localTasksCounter" value="49" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -469,7 +502,6 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="helper function returns a userId by credentials" />
     <MESSAGE value="Login" />
-    <MESSAGE value="test" />
     <MESSAGE value="homepage" />
     <MESSAGE value="favorites" />
     <MESSAGE value="תיקון לעמוד LOGIN" />
@@ -482,6 +514,7 @@
     <MESSAGE value="תיקוני FRONT" />
     <MESSAGE value="עוד שיפורים לפרונט" />
     <MESSAGE value="." />
-    <option name="LAST_COMMIT_MESSAGE" value="." />
+    <MESSAGE value="test" />
+    <option name="LAST_COMMIT_MESSAGE" value="test" />
   </component>
 </project>
