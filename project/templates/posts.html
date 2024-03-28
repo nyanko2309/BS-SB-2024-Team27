@@ -2,213 +2,162 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<title>!TJOBS 14:46</title>
+<title>1Tjobs</title>
 <style>
-
-  /* Your existing CSS styles */
-
-  /* Additional CSS styles for black rectangles around buttons */
-  .navbar-buttons {
-    display: flex;
-    border: 1px solid black; /* Add black border around buttons */
-    border-radius: 5px; /* Add border radius to buttons */
+  /* Global styles */
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
   }
 
-  .navbar-buttons a {
-    text-decoration: none;
-    padding: 10px;
-    margin-right: 10px;
-  }
-
-  /* Additional CSS styles for dropdown menu */
-  .dropdown-container {
-    position: relative; /* Set position relative to allow absolute positioning of dropdown */
-    display: inline-block; /* Ensure inline block display for proper alignment */
-    margin-left: 20px; /* Adjust margin as needed */
-  }
-
-  .dropdown-menu {
-    display: none; /* Hide dropdown menu by default */
-    position: absolute; /* Position the dropdown menu */
-    top: 100%; /* Position the menu below the dropdown container */
-    left: 0; /* Align the menu with the left edge of the container */
-    background-color: #fff; /* Set background color */
-    border: 1px solid #ccc; /* Add border */
-    border-radius: 5px; /* Add border radius */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add box shadow */
-    padding: 10px; /* Add padding */
-    z-index: 1; /* Ensure the menu appears above other elements */
-  }
-
-  .dropdown-container.active .dropdown-menu {
-    display: block; /* Show dropdown menu when parent container has 'active' class */
-  }
-
-  .dropdown-item {
-    display: block; /* Display dropdown items as block elements */
-    padding: 8px 12px; /* Add padding */
-    color: #333; /* Set text color */
-    text-decoration: none; /* Remove underline */
-    transition: background-color 0.3s; /* Add transition for hover effect */
-  }
-
-  .dropdown-item:hover {
-    background-color: #f0f0f0; /* Change background color on hover */
-  }
-
-  /* Your existing CSS styles */
-
-  /* Additional CSS styles for posts container */
   .posts-container {
-    max-height: 400px; /* Set maximum height for posts container */
-    overflow-y: auto; /* Add vertical scrollbar when content exceeds container height */
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
 
   .posts {
     display: flex;
-    flex-wrap: wrap; /* Allow posts to wrap to the next row */
-    gap: 20px; /* Add space between posts */
+    flex-wrap: wrap;
+    gap: 20px;
   }
 
   .post {
-    width: calc(33.33% - 20px); /* Set width for each post (3 posts in a row) */
-    border: 1px solid black;
-    padding: 10px;
-    box-sizing: border-box; /* Include padding and border in the total width */
-    position: relative; /* Ensure position relative for absolute positioning */
+    width: calc(33.33% - 20px);
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
   }
 
-  .post-image {
-    width: 100px;
-    height: 100px;
-    background-color: #ccc; /* Placeholder background color */
-    margin-bottom: 10px;
-  }
+
 
   .post-content {
+    padding: 20px;
     font-size: 14px;
   }
 
-  /* Additional CSS styles for plus button */
-  .create-post-button {
-    position: fixed; /* Position the button */
-    bottom: 20px; /* Adjust bottom position */
-    right: 20px; /* Adjust right position */
-    background-color: #4caf50; /* Button background color */
-    color: #fff; /* Button text color */
-    border: none; /* Remove button border */
-    border-radius: 50%; /* Make button round */
-    width: 50px; /* Set button width */
-    height: 50px; /* Set button height */
-    font-size: 24px; /* Set button font size */
-    cursor: pointer; /* Change cursor to pointer on hover */
-    display: flex; /* Make the button a flex container */
-    justify-content: center; /* Center content horizontally */
-    align-items: center; /* Center content vertically */
-    z-index: 999; /* Ensure the button appears above other elements */
+  .post-info {
+    margin-bottom: 10px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 
+  .remove-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: red;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Plus button styles */
+  .create-post-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
 </style>
 </head>
+<link href="data: image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADIyMmQyMjKwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADg4OAkzMzOeMzMzewAAAAAAAAAAAAAAADIyMoQzMzPMNDQ0PzIyMvIAAAAAAAAAAAAAAAAAAAAAAAAAADU1NRMzMzP5Nzc3FzQ0NE4zMzP+AAAAAAAAAAAyMjLsAAAAAAAAAAA0NDQ/MjIy8gAAAAAAAAAAAAAAAAAAAAAyMjLOVVVVAzIyMvsyMjKNMzMzmjExMR8AAAAAMzMz+TAwMCoAAAAAAAAAADQ0ND8yMjLyAAAAAAAAAAAxMTEaMzMz/wAAAAAyMjLiMjIyXzMzM60zMzMUAAAAAAAAAAAyMjL8NDQ0IgAAAAAAAAAANDQ0PzIyMvIxMTEaMzMz/wAAAAAAAAAAMjIyLTIyMowyMjLxAAAAAAAAAAAAAAAAAAAAADMzM/4xMTEaAAAAAAAAAAAxMTFXMzMz/wAAAAAAAAAAMjIyZTIyMuIyMjI9AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMzMz/zMzMxQvLy8bMzMz/gAAAAAAAAAAMjIyZjIyMuIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAzMzP/MzMz/gAAAAAAAAAAMjIyZjIyMuEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALy8vIDIyMmYzMzPuMzMz/wAAAAAAAAAAMjIyZTMzM+4zMzPQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMzMz/TIyMlEAAAAAAAAAAAAAAAAAAAAAMjIyZTMzM/8AAAAAMjIyfTMzM9AAAAAAAAAAAAAAAAAAAAAAMjIypjQ0ND8AAAAAMjIyvjIyMkIAAAAAMDAwRDIyMuIyMjJMMjIy7AAAAAAzMzN7MzMz/zMzM/8AAAAAAAAAADMzM/8AAAAAMzMz/jMzMx4yMjK7Ly8vIAAAAAAyMjLIAAAAADIyMkwyMjLsAAAAAAAAAAAxMTFhMjIyhAAAAAAzMzP/MzMz/jIyMhkAAAAAMzMzXjMzM5UAAAAAMjIyywAAAAAAAAAAMzMz/wAAAAAAAAAAAAAAADMzM/8AAAAAMjIysDIyMhkAAAAAMzMzUDMzM+kAAAAAMjIyoTMzM0AAAAAAAAAAADIyMpczMzPwMzMzBQAAAAAzMzNVMzMzlQAAAAAAAAAAMzMzUDMzM+oAAAAAMjIyhzIyMuMAAAAAAAAAAAAAAAAAAAAAMzMzCjIyMvUzMzOzMzMz/wAAAAAAAAAAAAAAADIyMpIzMzP/MjIy+zIyMmUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMTExPgAAAAEAAAAA7/cAAJftAAC70QAAvdUAAN65AADvdwAA9u8AAPnfAADznwAAv28AAG6zAABW3QAAOt0AAHXOAADp8QAAx/8AAA==" rel="icon" type="image/x-icon">
+
 <body>
-<!-- Start of navigation bar -->
-<div class="section-regular neutral-100">
-<div class="w-layout-blockcontainer w-container">
-<div class="navbar-buttons">
-  <!-- Navigation links -->
-  <a href="/" aria-current="page" class="nav-link w-nav-link w--current">Home</a>
-  <a href="/about" class="nav-link w-nav-link">Profile</a>
-  <a href="/browse" class="nav-link w-nav-link">My Posts</a>
-  <a href="/blog" class="nav-link w-nav-link">Help</a>
-
-
-</div>
+{% extends 'toolbar.html' %}
 <!-- End of navigation bar -->
-
-<!-- Start of search form -->
-<form action="/search" class="search-2 w-form" style="position: relative; margin-top: 30px;margin-bottom: 30px;">
-  <label for="search">Search</label>
-  <input class="w-input" maxlength="256" name="query" placeholder="Search…" type="search" id="search" required=""/>
-  <input type="submit" class="w-button" value="Search"/>
-  <!-- Start of dropdown menu container -->
-  <div class="dropdown-container">
-    <!-- Button to open dropdown menu -->
-    <button class="dropdown-button">Menu</button>
-    <!-- Dropdown menu -->
-    <div class="dropdown-menu">
-      <!-- Dropdown items -->
-      <a href="#" class="dropdown-item">Option 1</a>
-      <a href="#" class="dropdown-item">Option 2</a>
-      <a href="#" class="dropdown-item">Option 3</a>
-    </div>
-  </div>
-  <!-- End of dropdown menu container -->
-</form>
-<!-- End of search form -->
-</div>
-</div>
-
-<div class="user-input-area">
-  <!-- User input area can go here -->
-</div>
-
+{% block content %}
 <!-- Start of posts container -->
 <div class="posts-container">
   <div class="posts">
-    <!-- Add more posts -->
-    <div class="post">
-      <div class="post-image"></div>
-      <div class="post-content">
-        <!-- Post information -->
-        <div class="post-info">Name: John Doe</div>
-        <div class="post-info">Title: Frontend Developer</div>
-        <div class="post-info">Location: San Francisco</div>
-        <div class="post-info">Salary: $100k - $120k</div>
+    {% for post in posts %}
+      <div class="post" data-description="{{ post.description }}" data-location="{{ post.location }}" data-work-hours="{{ post.work_hours }}" data-phys-lvl="{{ post.phys_lvl }}" data-kind-of-job="{{ post.kind_of_job }}" data-category="{{ post.category }}" data-phone="{{ post.phone }}">
+          <div class="post-image"></div>
+          <div class="post-content">
+              <!-- Post information -->
+              <div class="post-info">Description: {{ post.description }}</div>
+              <div class="post-info">Location: {{ post.location }}</div>
+              <div class="post-info">Work hours: {{ post.work_hours }}</div>
+              <div class="post-info">Physical lvl: {{ post.phys_lvl }}</div>
+              <div class="post-info">Kind of job: {{ post.kind_of_job }}</div>
+              <div class="post-info">Category: {{ post.category }}</div>
+              <div class="post-info">Phone: {{ post.phone }}</div>
+              <!-- Remove button -->
+              <button class="remove-button" onclick="removePost(event)" data-post-id="{{ post.id }}">X</button>
+          </div>
       </div>
-    </div>
-
-    <div class="post">
-      <div class="post-image"></div>
-      <div class="post-content">
-        <!-- Post information -->
-        <div class="post-info">Name: John Doe</div>
-        <div class="post-info">Title: Frontend Developer</div>
-        <div class="post-info">Location: San Francisco</div>
-        <div class="post-info">Salary: $100k - $120k</div>
-      </div>
-    </div>
-
-    <div class="post">
-      <div class="post-image"></div>
-      <div class="post-content">
-        <!-- Post information -->
-        <div class="post-info">Name: John Doe</div>
-        <div class="post-info">Title: Frontend Developer</div>
-        <div class="post-info">Location: San Francisco</div>
-        <div class="post-info">Salary: $100k - $120k</div>
-      </div>
-    </div>
-
-    <!-- Repeat the above post structure to add more posts -->
+    {% endfor %}
   </div>
 </div>
 <!-- End of posts container -->
 
 <!-- Plus button for creating new posts -->
-<a href="create_post.html" class="create-post-button">+</a>
+<a href="{% url 'create_post' %}" class="create-post-button">+</a>
 
-<!-- JavaScript to handle dropdown menu -->
+<!-- JavaScript to handle remove button -->
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const dropdownButton = document.querySelector('.dropdown-button');
-    const dropdownMenu = document.querySelector('.dropdown-menu');
+  function removePost(event) {
+    // Get the parent post element
+    const post = event.target.closest('.post');
 
-    dropdownButton.addEventListener('click', function() {
-      // Toggle 'active' class on dropdown container to show/hide dropdown menu
-      dropdownMenu.parentElement.classList.toggle('active');
-    });
-  });
+    // Get the post ID from the data attribute
+    const postId = event.target.dataset.postId;
+
+    // Check if the post ID is valid
+    if (postId) {
+      // Perform an AJAX request to remove the post
+      fetch(`/remove_post/${postId}/`, {
+        method: 'POST',
+        headers: {
+          'X-CSRFToken': '{{ csrf_token }}', // Add CSRF token
+        },
+      })
+      .then(response => {
+        if (response.ok) {
+          // If removal is successful, remove the post element from the DOM
+          post.remove();
+          // Optionally, display a success message
+          console.log('Post removed successfully!');
+        } else {
+          // If removal is not successful, display an error message
+          console.error('Failed to remove post:', response.statusText);
+        }
+      })
+      .catch(error => {
+        console.error('Error removing post:', error);
+      });
+    } else {
+      console.error('Post ID not found.');
+    }
+  }
 </script>
 
 </body>
 </html>
+{% endblock %}

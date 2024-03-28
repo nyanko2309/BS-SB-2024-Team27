@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link href="data: image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADIyMmQyMjKwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADg4OAkzMzOeMzMzewAAAAAAAAAAAAAAADIyMoQzMzPMNDQ0PzIyMvIAAAAAAAAAAAAAAAAAAAAAAAAAADU1NRMzMzP5Nzc3FzQ0NE4zMzP+AAAAAAAAAAAyMjLsAAAAAAAAAAA0NDQ/MjIy8gAAAAAAAAAAAAAAAAAAAAAyMjLOVVVVAzIyMvsyMjKNMzMzmjExMR8AAAAAMzMz+TAwMCoAAAAAAAAAADQ0ND8yMjLyAAAAAAAAAAAxMTEaMzMz/wAAAAAyMjLiMjIyXzMzM60zMzMUAAAAAAAAAAAyMjL8NDQ0IgAAAAAAAAAANDQ0PzIyMvIxMTEaMzMz/wAAAAAAAAAAMjIyLTIyMowyMjLxAAAAAAAAAAAAAAAAAAAAADMzM/4xMTEaAAAAAAAAAAAxMTFXMzMz/wAAAAAAAAAAMjIyZTIyMuIyMjI9AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMzMz/zMzMxQvLy8bMzMz/gAAAAAAAAAAMjIyZjIyMuIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAzMzP/MzMz/gAAAAAAAAAAMjIyZjIyMuEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALy8vIDIyMmYzMzPuMzMz/wAAAAAAAAAAMjIyZTMzM+4zMzPQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMzMz/TIyMlEAAAAAAAAAAAAAAAAAAAAAMjIyZTMzM/8AAAAAMjIyfTMzM9AAAAAAAAAAAAAAAAAAAAAAMjIypjQ0ND8AAAAAMjIyvjIyMkIAAAAAMDAwRDIyMuIyMjJMMjIy7AAAAAAzMzN7MzMz/zMzM/8AAAAAAAAAADMzM/8AAAAAMzMz/jMzMx4yMjK7Ly8vIAAAAAAyMjLIAAAAADIyMkwyMjLsAAAAAAAAAAAxMTFhMjIyhAAAAAAzMzP/MzMz/jIyMhkAAAAAMzMzXjMzM5UAAAAAMjIyywAAAAAAAAAAMzMz/wAAAAAAAAAAAAAAADMzM/8AAAAAMjIysDIyMhkAAAAAMzMzUDMzM+kAAAAAMjIyoTMzM0AAAAAAAAAAADIyMpczMzPwMzMzBQAAAAAzMzNVMzMzlQAAAAAAAAAAMzMzUDMzM+oAAAAAMjIyhzIyMuMAAAAAAAAAAAAAAAAAAAAAMzMzCjIyMvUzMzOzMzMz/wAAAAAAAAAAAAAAADIyMpIzMzP/MjIy+zIyMmUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMTExPgAAAAEAAAAA7/cAAJftAAC70QAAvdUAAN65AADvdwAA9u8AAPnfAADznwAAv28AAG6zAABW3QAAOt0AAHXOAADp8QAAx/8AAA==" rel="icon" type="image/x-icon">
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>עמוד הרשמה</title>
+    <title>1Tjobs</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -27,7 +29,7 @@
             text-align: center;
             margin-bottom: 20px;
         }
-        input[type="text"],
+        input[type="email"],
         input[type="password"] {
             width: 100%;
             padding: 10px;
@@ -48,18 +50,57 @@
         input[type="submit"]:hover {
             background-color: #45a049;
         }
+        .success {
+            color: green; /* Set the color for success messages */
+        }
+        .errors {
+            color: red;
+            margin-top: 10px;
+        }
+        .banned-email {
+            color: red;
+            font-size: 12px;
+            text-align: center;
+            margin-top: 10px;
+        }
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
-    <form action="#" method="POST">
-        <h2>Registration Form</h2>
-        <label for="email">Email:</label>
-        <input type="text" id="email" name="email" placeholder="הכנס כתובת מייל" required>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" placeholder="הכנס סיסמא חדשה" required>
-        <label for="confirm_password">Confirm Password:</label>
-        <input type="password" id="confirm_password" name="confirm_password" placeholder="הכנס סיסמא חדשה שוב" required>
-        <input type="submit" value="הרשם">
-    </form>
+
+<form method="POST" action="{% url 'submit' %}">
+    {% csrf_token %}
+    <h2>1Tjobs</h2>
+
+    <label for="email">אימייל</label>
+    <input type="email" id="email" name="mail" placeholder="הכנס כתובת מייל" required>
+    <label for="password">סיסמא</label>
+    <input type="password" id="password" name="password" placeholder="הכנס סיסמא חדשה" required>
+
+    <button type="submit" class="save-button">הרשמה</button>
+
+    {% if banned_email %}
+<div class="banned-email">אימייל זה חסום</div> <!-- Moved the message here -->
+{% endif %}
+
+{% if messages %}
+<div class="errors">
+    <ul>
+        {% for message in messages %}
+            <li class="{% if message.tags == 'success' %}success{% else %}errors{% endif %}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endif %}
+</form>
 </body>
 </html>

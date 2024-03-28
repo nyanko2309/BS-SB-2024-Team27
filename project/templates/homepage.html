@@ -2,227 +2,248 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<title>!TJOBS 14:46</title>
+<title>1Tjobs</title>
 <style>
-
-  /* Your existing CSS styles */
-
-  /* Additional CSS styles for black rectangles around buttons */
-  .navbar-buttons {
-    display: flex;
-    border: 1px solid black; /* Add black border around buttons */
-    border-radius: 5px; /* Add border radius to buttons */
+  /* Global styles */
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
   }
 
-  .navbar-buttons a {
-    text-decoration: none;
+  /* Content container */
+  .content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Total number of posts */
+  .total-posts {
+    font-size: 18px;
     padding: 10px;
-    margin-right: 10px;
+    margin-bottom: 20px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
   }
 
-  /* Additional CSS styles for dropdown menu */
-  .dropdown-container {
-    position: relative; /* Set position relative to allow absolute positioning of dropdown */
-    display: inline-block; /* Ensure inline block display for proper alignment */
-    margin-left: 20px; /* Adjust margin as needed */
-  }
-
-  .dropdown-menu {
-    display: none; /* Hide dropdown menu by default */
-    position: absolute; /* Position the dropdown menu */
-    top: 100%; /* Position the menu below the dropdown container */
-    left: 0; /* Align the menu with the left edge of the container */
-    background-color: #fff; /* Set background color */
-    border: 1px solid #ccc; /* Add border */
-    border-radius: 5px; /* Add border radius */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add box shadow */
-    padding: 10px; /* Add padding */
-    z-index: 1; /* Ensure the menu appears above other elements */
-  }
-
-  .dropdown-container.active .dropdown-menu {
-    display: block; /* Show dropdown menu when parent container has 'active' class */
-  }
-
-  .dropdown-item {
-    display: block; /* Display dropdown items as block elements */
-    padding: 8px 12px; /* Add padding */
-    color: #333; /* Set text color */
-    text-decoration: none; /* Remove underline */
-    transition: background-color 0.3s; /* Add transition for hover effect */
-  }
-
-  .dropdown-item:hover {
-    background-color: #f0f0f0; /* Change background color on hover */
-  }
-
-  /* Your existing CSS styles */
-
-  /* Additional CSS styles for posts container */
-  .posts-container {
-    max-height: 400px; /* Set maximum height for posts container */
-    overflow-y: auto; /* Add vertical scrollbar when content exceeds container height */
-  }
-
-  .posts {
+  /* Search and filter */
+  .search-filter {
     display: flex;
-    flex-wrap: wrap; /* Allow posts to wrap to the next row */
-    gap: 20px; /* Add space between posts */
+    align-items: center;
+    margin-bottom: 20px;
   }
-
-  .post {
-    width: calc(33.33% - 20px); /* Set width for each post (3 posts in a row) */
-    border: 1px solid black;
+  .search-input {
+    flex: 1;
     padding: 10px;
-    box-sizing: border-box; /* Include padding and border in the total width */
-    position: relative; /* Position the post */
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  .filter-select, .search-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin-left: 10px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
   }
 
-  .post-image {
-    width: 100px;
-    height: 100px;
-    background-color: #ccc; /* Placeholder background color */
+  /* Posts container */
+  /* Individual post */
+.post {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out;
+    width: calc(50% - 20px);
+    position: relative;
+}
+
+.post:hover {
+    transform: translateY(-5px);
+}
+
+.post-content {
+    padding: 20px;
+    max-height: 230px; /* Limit the height */
+    overflow: hidden;
+    width: 100%; /* Add this line to occupy full width */
+}
+
+
+.post-info {
     margin-bottom: 10px;
-  }
+}
 
-  .post-content {
-    font-size: 14px;
-  }
+.description-short {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
 
-  /* Additional CSS styles for favorites button */
+.favorites-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    color: #888;
+}
+
+.favorites-button.active {
+    color: red;
+}
+
+
   .favorites-button {
-    position: absolute; /* Position the button */
-    top: 10px; /* Adjust top position */
-    right: 10px; /* Adjust right position */
-    cursor: pointer; /* Change cursor to pointer on hover */
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    color: #888;
   }
-
   .favorites-button.active {
-    color: red; /* Set the color to black when button is active (pressed) */
+    color: red;
   }
 </style>
 </head>
+<link href="data: image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADIyMmQyMjKwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADg4OAkzMzOeMzMzewAAAAAAAAAAAAAAADIyMoQzMzPMNDQ0PzIyMvIAAAAAAAAAAAAAAAAAAAAAAAAAADU1NRMzMzP5Nzc3FzQ0NE4zMzP+AAAAAAAAAAAyMjLsAAAAAAAAAAA0NDQ/MjIy8gAAAAAAAAAAAAAAAAAAAAAyMjLOVVVVAzIyMvsyMjKNMzMzmjExMR8AAAAAMzMz+TAwMCoAAAAAAAAAADQ0ND8yMjLyAAAAAAAAAAAxMTEaMzMz/wAAAAAyMjLiMjIyXzMzM60zMzMUAAAAAAAAAAAyMjL8NDQ0IgAAAAAAAAAANDQ0PzIyMvIxMTEaMzMz/wAAAAAAAAAAMjIyLTIyMowyMjLxAAAAAAAAAAAAAAAAAAAAADMzM/4xMTEaAAAAAAAAAAAxMTFXMzMz/wAAAAAAAAAAMjIyZTIyMuIyMjI9AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMzMz/zMzMxQvLy8bMzMz/gAAAAAAAAAAMjIyZjIyMuIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAzMzP/MzMz/gAAAAAAAAAAMjIyZjIyMuEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALy8vIDIyMmYzMzPuMzMz/wAAAAAAAAAAMjIyZTMzM+4zMzPQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMzMz/TIyMlEAAAAAAAAAAAAAAAAAAAAAMjIyZTMzM/8AAAAAMjIyfTMzM9AAAAAAAAAAAAAAAAAAAAAAMjIypjQ0ND8AAAAAMjIyvjIyMkIAAAAAMDAwRDIyMuIyMjJMMjIy7AAAAAAzMzN7MzMz/zMzM/8AAAAAAAAAADMzM/8AAAAAMzMz/jMzMx4yMjK7Ly8vIAAAAAAyMjLIAAAAADIyMkwyMjLsAAAAAAAAAAAxMTFhMjIyhAAAAAAzMzP/MzMz/jIyMhkAAAAAMzMzXjMzM5UAAAAAMjIyywAAAAAAAAAAMzMz/wAAAAAAAAAAAAAAADMzM/8AAAAAMjIysDIyMhkAAAAAMzMzUDMzM+kAAAAAMjIyoTMzM0AAAAAAAAAAADIyMpczMzPwMzMzBQAAAAAzMzNVMzMzlQAAAAAAAAAAMzMzUDMzM+oAAAAAMjIyhzIyMuMAAAAAAAAAAAAAAAAAAAAAMzMzCjIyMvUzMzOzMzMz/wAAAAAAAAAAAAAAADIyMpIzMzP/MjIy+zIyMmUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMTExPgAAAAEAAAAA7/cAAJftAAC70QAAvdUAAN65AADvdwAA9u8AAPnfAADznwAAv28AAG6zAABW3QAAOt0AAHXOAADp8QAAx/8AAA==" rel="icon" type="image/x-icon">
+
 <body>
-<!-- Start of navigation bar -->
-<div class="section-regular neutral-100">
-<div class="w-layout-blockcontainer w-container">
-<div class="navbar-buttons">
-  <!-- Navigation links -->
-  <a href="homepage.html" aria-current="page" class="nav-link w-nav-link w--current">Home</a>
-  <a href="profilepage.html" class="nav-link w-nav-link">Profile</a>
-  <a href="posts.html" class="nav-link w-nav-link">My Posts</a>
-  <a href="helppage.html" class="nav-link w-nav-link">Help</a>
-  <a href="TOS.html" class="nav-link w-nav-link">terms</a>
-  <a href="/" class="nav-link w-nav-link">logout</a>
-
-</div>
+{% include 'toolbar.html' %}
 <!-- End of navigation bar -->
+{% block content %}
+<!-- Start of content block -->
+<div class="content">
+    <!-- Show total number of posts -->
+    <div class="total-posts">מספר מודעות קיימות: {{ posts|length }}</div>
 
-<!-- Start of search form -->
-<form action="/search" class="search-2 w-form" style="position: relative; margin-top: 30px;margin-bottom: 30px;">
-  <label for="search">Search</label>
-  <input class="w-input" maxlength="256" name="query" placeholder="Search…" type="search" id="search" required=""/>
-  <input type="submit" class="w-button" value="Search"/>
-  <!-- Start of dropdown menu container -->
-  <div class="dropdown-container">
-    <!-- Button to open dropdown menu -->
-    <button class="dropdown-button">Menu</button>
-    <!-- Dropdown menu -->
-    <div class="dropdown-menu">
-      <!-- Dropdown items -->
-      <a href="#" class="dropdown-item">Option 1</a>
-      <a href="#" class="dropdown-item">Option 2</a>
-      <a href="#" class="dropdown-item">Option 3</a>
+    <!-- Start of search and filter lines -->
+    <div class="search-filter">
+        <!-- Search line -->
+        <input type="text" class="search-input" placeholder="...חיפוש">
+        <!-- Search button -->
+        <button class="search-button">חפש</button>
+        <!-- Filter line -->
+        <select class="filter-select">
+            <option value="">...סנן לפי</option>
+            <option value="location">מיקום</option>
+            <option value="work_hours">שעות עבודה</option>
+            <option value="phys_lvl">רמת פיזיות</option>
+            <option value="kind_of_job">סוג משרה</option>
+            <option value="category">קטגוריה</option>
+            <option value="phone">פלאפון</option>
+        </select>
     </div>
-  </div>
-  <!-- End of dropdown menu container -->
-</form>
-<!-- End of search form -->
-</div>
-</div>
+    <!-- End of search and filter lines -->
 
-<div class="user-input-area">
-  <!-- User input area can go here -->
-</div>
+    <!-- Start of posts container -->
+    <div class="posts">
+        {% for post in posts %}
+        <div class="post" data-description="{{ post.description }}" data-location="{{ post.location }}" data-work-hours="{{ post.work_hours }}" data-phys-lvl="{{ post.phys_lvl }}" data-kind-of-job="{{ post.kind_of_job }}" data-category="{{ post.category }}">
+            <div class="post-content">
+                <!-- Post information -->
+                <div class="post-info">Description: <span class="description-short">{{ post.description }}</span></div>
+                <div class="post-info">Location: {{ post.location }}</div>
+                <div class="post-info">Work hours: {{ post.work_hours }}</div>
+                <div class="post-info">Physical lvl: {{ post.phys_lavl }}</div>
+                <div class="post-info">Kind of job: {{ post.kind_of_job }}</div>
+                <div class="post-info">Category: {{ post.category }}</div>
+                <div class="post-info">Phone: {{ post.phone }}</div>
+                <!-- Favorites button -->
+                <div class="favorites-button {% if post.id|add:0 in favorites %}active {% endif %}" data-post-id="{{ post.id }}">☆</div>
 
-<!-- Start of posts container -->
-<div class="posts-container">
-  <div class="posts">
-    <!-- Add more posts -->
-    <div class="post">
-      <div class="post-image"></div>
-      <div class="post-content">
-        <!-- Post information -->
-        <div class="post-info">Name: John Doe</div>
-        <div class="post-info">Title: Frontend Developer</div>
-        <div class="post-info">Location: San Francisco</div>
-        <div class="post-info">Salary: $100k - $120k</div>
-         <!-- Favorites button -->
-        <div class="favorites-button">☆</div>
-      </div>
+            </div>
+        </div>
+        {% endfor %}
     </div>
-
-    <div class="post">
-      <div class="post-image"></div>
-      <div class="post-content">
-        <!-- Post information -->
-        <div class="post-info">Name: John Doe</div>
-        <div class="post-info">Title: Frontend Developer</div>
-        <div class="post-info">Location: San Francisco</div>
-        <div class="post-info">Salary: $100k - $120k</div>
-         <!-- Favorites button -->
-        <div class="favorites-button">☆</div>
-      </div>
-    </div>
-
-    <div class="post">
-      <div class="post-image"></div>
-      <div class="post-content">
-        <!-- Post information -->
-        <div class="post-info">Name: John Doe</div>
-        <div class="post-info">Title: Frontend Developer</div>
-        <div class="post-info">Location: San Francisco</div>
-        <div class="post-info">Salary: $100k - $120k</div>
-         <!-- Favorites button -->
-        <div class="favorites-button">☆</div>
-      </div>
-    </div>
-
-    <!-- Repeat the above post structure to add more posts -->
-  </div>
+    <!-- End of posts container -->
 </div>
-<!-- End of posts container -->
+<!-- End of content block -->
 
-<!-- JavaScript to handle dropdown menu -->
+<!-- JavaScript to handle favorites button and search -->
 <script>
-  document.addEventListener('DOMContentLoaded', function()
-  {
-    const dropdownButton = document.querySelector('.dropdown-button');
-    const dropdownMenu = document.querySelector('.dropdown-menu');
+    document.addEventListener('DOMContentLoaded', function() {
+        const favoritesButtons = document.querySelectorAll('.favorites-button');
+        const searchButton = document.querySelector('.search-button');
+        const showFullDescriptionButtons = document.querySelectorAll('.show-full-description');
 
-    dropdownButton.addEventListener('click', function() {
-      // Toggle 'active' class on dropdown container to show/hide dropdown menu
-      dropdownMenu.parentElement.classList.toggle('active');
+        favoritesButtons.forEach(function(button) {
+            button.addEventListener('click', function() {
+                const postId = this.dataset.postId;
+
+                fetch('/add_to_favorites/', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-CSRFToken': getCookie('csrftoken')
+                    },
+                    body: JSON.stringify({ postId: postId })
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.success !== undefined) {
+                        // Toggle the active class based on the response
+                        button.classList.toggle('active');
+                    } else {
+                        throw new Error('Response format is incorrect');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+            });
+        });
+
+        // Add event listener to search button
+        searchButton.addEventListener('click', function() {
+            const searchInput = document.querySelector('.search-input').value.toLowerCase();
+            const posts = document.querySelectorAll('.post');
+
+            posts.forEach(function(post) {
+                const description = post.dataset.description.toLowerCase();
+                const location = post.dataset.location.toLowerCase();
+                const workHours = post.dataset.workHours.toLowerCase();
+                const physLvl = post.dataset.physLvl.toLowerCase();
+                const kindOfJob = post.dataset.kindOfJob.toLowerCase();
+                const category = post.dataset.category.toLowerCase();
+                const phone = post.dataset.phone.toLowerCase();
+
+                if (description.includes(searchInput) || location.includes(searchInput) || workHours.includes(searchInput) || physLvl.includes(searchInput) || kindOfJob.includes(searchInput) || category.includes(searchInput) || phone.includes(searchInput)) {
+                    post.style.display = 'block';
+                } else {
+                    post.style.display = 'none';
+                }
+            });
+
+        });
+
+
+
+        // Function to get CSRF token
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+        }
     });
-  });
-
-
-
-  document.addEventListener('DOMContentLoaded', function()
-  {
-  const favoritesButtons = document.querySelectorAll('.favorites-button');
-
-  favoritesButtons.forEach(function(button) {
-    button.addEventListener('click', function() {
-      // Toggle the 'active' class on the clicked favorites button
-      this.classList.toggle('active');
-    });
-  });
-  });
-
-
-
 </script>
 
 </body>
 </html>
+{% endblock %}
