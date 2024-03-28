@@ -1,69 +1,61 @@
 <!DOCTYPE html>
 <html lang="he">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>תנאי השימוש</title>
-  <style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1Tjobs</title>
+<style>
     body {
-      direction: rtl;
-      text-align: right;
-      font-family: 'Arial', sans-serif;
-      background-color: #ffffff;
-      margin: 0;
-      padding: 0;
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
     }
-    h1 {
-      text-align: center;
-      color: #000000;
-      margin-top: 30px;
-      font-weight: bold;
-
+    .container {
+        width: 80%;
+        margin: 20px auto;
+        text-align: center;
+    }
+    p {
+        font-size: 18px;
+        line-height: 1.6;
+        margin-bottom: 10px; /* Added margin for separation */
+    }
+    .thank-you {
+        margin-top: 50px;
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center; /* Center align the thank you message */
     }
     ul {
-      padding: 20px 40px;
-      list-style-type: none;
-      margin: 0;
-      padding-left: 0;
+        padding: 0;
+        list-style-type: none; /* Remove default list style */
+        margin: 0 auto;
+        max-width: 400px; /* Adjusted width for better alignment */
     }
     li {
-      font-size: 24px;
-      margin-bottom: 10px;
-      color: #000000;
-      position: relative;
-      padding-right: 20px;
-      line-height: 1.6;
+        font-size: 18px;
+        margin-bottom: 10px;
+        color: #000000;
+        position: relative;
+        padding-right: 20px;
+        line-height: 1.6;
     }
-    li:before {
-      content: "•";
-      color: #000000;
-      font-size: 30px;
-      position: absolute;
-      right: 0;
-      top: 8px;
-    }
-    .logo {
-      display: block;
-      margin: 0 auto;
-      max-width: 300px;
-      height: auto;
-      margin-bottom: 30px;
-    }
-  </style>
+</style>
 </head>
 <body>
-<!-- toolbar.html -->
-{% extends 'toolbar.html' %}
-{% block content %}
 
-  <img src="LOGO.png" alt="לוגו של האתר" class="logo">
-  <h1>תנאי השימוש</h1>
+<!-- Include toolbar -->
+{% include 'toolbar.html' %}
 
-  <ul>
-    <li>להתנהל בכבוד</li>
-    <li>לא לרמות</li>
-    <li>לפרסם עד 5 מודעות בשבוע</li>
-  </ul>
+<div class="container">
+    <h1>תנאי השימוש</h1>
 
-</body></html>
-{% endblock %}
+    <ul>
+        <li>להתנהל בכבוד</li>
+        <li>לא לרמות</li>
+        <li>עד 8 מודעות פתוחות</li>
+    </ul>
+</div>
+
+</body>
+</html>

@@ -4,9 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17b05228-a801-4f64-a2c6-a7e172e53ba5" name="Changes" comment="arrs for fav and my posts">
+    <list default="true" id="17b05228-a801-4f64-a2c6-a7e172e53ba5" name="Changes" comment=".">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/project/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/project/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/project/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/project/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/project/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/templates/create_post.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/create_post.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/templates/posts.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/posts.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,9 +34,13 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
+  &quot;history&quot;: [
+    {
+      &quot;state&quot;: &quot;OPEN&quot;
+    }
+  ],
   &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;OmerGitHub99&quot;
+    &quot;state&quot;: &quot;OPEN&quot;
   }
 }</component>
   <component name="GithubPullRequestsUISettings">
@@ -44,8 +52,8 @@
     </option>
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
-        <option name="accountId" value="871abaff-c807-41b2-b163-4a048e97aaf6" />
-        <option name="url" value="https://github.com/nyanko2309/BS-SB-2024-Team27" />
+        <option name="accountId" value="f6ac3456-86c0-4bce-a893-0df248719996" />
+        <option name="url" value="https://github.com/nyanko2309/BS-SB-2024-Team27.git" />
       </UrlAndAccount>
     </option>
   </component>
@@ -57,7 +65,7 @@
   &quot;associatedIndex&quot;: 8
 }</component>
   <component name="ProjectId" id="2d8uQBY4AZOywM0MDXttwc0iGB3" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -69,15 +77,16 @@
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;hakaton-Vitaly-new1&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;yana&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/97254/PycharmProjects/project&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;
   }
 }</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-5a2391486177-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.13763.11" />
+        <option value="bundled-python-sdk-50da183f06c8-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.13135.95" />
       </set>
     </attachedChunks>
   </component>
@@ -290,63 +299,143 @@
       <option name="project" value="LOCAL" />
       <updated>1710620079581</updated>
     </task>
-    <task id="LOCAL-00026" summary="arrs for fav and my posts">
+    <task id="LOCAL-00026" summary="favorites">
       <option name="closed" value="true" />
-      <created>1710678222720</created>
+      <created>1710671070610</created>
       <option name="number" value="00026" />
       <option name="presentableId" value="LOCAL-00026" />
       <option name="project" value="LOCAL" />
-      <updated>1710678222720</updated>
+      <updated>1710671070610</updated>
     </task>
-    <task id="LOCAL-00027" summary="arrs for fav and my posts">
+    <task id="LOCAL-00027" summary="favorites">
       <option name="closed" value="true" />
-      <created>1710679982465</created>
+      <created>1710838871405</created>
       <option name="number" value="00027" />
       <option name="presentableId" value="LOCAL-00027" />
       <option name="project" value="LOCAL" />
-      <updated>1710679982465</updated>
+      <updated>1710838871405</updated>
     </task>
-    <task id="LOCAL-00028" summary="arrs for fav and my posts">
+    <task id="LOCAL-00028" summary="תיקון לעמוד LOGIN">
       <option name="closed" value="true" />
-      <created>1710680247493</created>
+      <created>1710839408192</created>
       <option name="number" value="00028" />
       <option name="presentableId" value="LOCAL-00028" />
       <option name="project" value="LOCAL" />
-      <updated>1710680247493</updated>
+      <updated>1710839408192</updated>
     </task>
-    <task id="LOCAL-00029" summary="arrs for fav and my posts">
+    <task id="LOCAL-00029" summary="תיקון לעמוד LOGIN">
       <option name="closed" value="true" />
-      <created>1710682122305</created>
+      <created>1710839574043</created>
       <option name="number" value="00029" />
       <option name="presentableId" value="LOCAL-00029" />
       <option name="project" value="LOCAL" />
-      <updated>1710682122305</updated>
+      <updated>1710839574043</updated>
     </task>
-    <task id="LOCAL-00030" summary="arrs for fav and my posts">
+    <task id="LOCAL-00030" summary="תיקון לדף HELP">
       <option name="closed" value="true" />
-      <created>1710961362491</created>
+      <created>1710841538666</created>
       <option name="number" value="00030" />
       <option name="presentableId" value="LOCAL-00030" />
       <option name="project" value="LOCAL" />
-      <updated>1710961362491</updated>
+      <updated>1710841538666</updated>
     </task>
-    <task id="LOCAL-00031" summary="arrs for fav and my posts">
+    <task id="LOCAL-00031" summary="תיקון לדף HELP">
       <option name="closed" value="true" />
-      <created>1711032145479</created>
+      <created>1710841608083</created>
       <option name="number" value="00031" />
       <option name="presentableId" value="LOCAL-00031" />
       <option name="project" value="LOCAL" />
-      <updated>1711032145479</updated>
+      <updated>1710841608083</updated>
     </task>
-    <task id="LOCAL-00032" summary="arrs for fav and my posts">
+    <task id="LOCAL-00032" summary="תיקון לתנאי השימוש">
       <option name="closed" value="true" />
-      <created>1711032364128</created>
+      <created>1710842104416</created>
       <option name="number" value="00032" />
       <option name="presentableId" value="LOCAL-00032" />
       <option name="project" value="LOCAL" />
-      <updated>1711032364128</updated>
+      <updated>1710842104416</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="הוספת כפתור מחיקת משתמש שעובד">
+      <option name="closed" value="true" />
+      <created>1710844575478</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1710844575478</updated>
+    </task>
+    <task id="LOCAL-00034" summary="הוספת חסימת מייל">
+      <option name="closed" value="true" />
+      <created>1710847010916</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1710847010916</updated>
+    </task>
+    <task id="LOCAL-00035" summary="הוספת שורת חיפוש וסינון ומספר מודעות קיימות בדף הבית">
+      <option name="closed" value="true" />
+      <created>1710852039662</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1710852039662</updated>
+    </task>
+    <task id="LOCAL-00036" summary="הוספת שאלות ותשובות נפוצות">
+      <option name="closed" value="true" />
+      <created>1710854969870</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1710854969870</updated>
+    </task>
+    <task id="LOCAL-00037" summary="תיקוני FRONT">
+      <option name="closed" value="true" />
+      <created>1710857202405</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1710857202405</updated>
+    </task>
+    <task id="LOCAL-00038" summary="עוד שיפורים לפרונט">
+      <option name="closed" value="true" />
+      <created>1710858398453</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1710858398453</updated>
+    </task>
+    <task id="LOCAL-00039" summary=".">
+      <option name="closed" value="true" />
+      <created>1710860229426</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1710860229426</updated>
+    </task>
+    <task id="LOCAL-00040" summary=".">
+      <option name="closed" value="true" />
+      <created>1710860485743</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1710860485743</updated>
+    </task>
+    <task id="LOCAL-00041" summary=".">
+      <option name="closed" value="true" />
+      <created>1711192210390</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1711192210390</updated>
+    </task>
+    <task id="LOCAL-00042" summary=".">
+      <option name="closed" value="true" />
+      <created>1711192423968</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1711192423968</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -364,7 +453,18 @@
     <MESSAGE value="helper function returns a userId by credentials" />
     <MESSAGE value="Login" />
     <MESSAGE value="test" />
-    <MESSAGE value="arrs for fav and my posts" />
-    <option name="LAST_COMMIT_MESSAGE" value="arrs for fav and my posts" />
+    <MESSAGE value="homepage" />
+    <MESSAGE value="favorites" />
+    <MESSAGE value="תיקון לעמוד LOGIN" />
+    <MESSAGE value="תיקון לדף HELP" />
+    <MESSAGE value="תיקון לתנאי השימוש" />
+    <MESSAGE value="הוספת כפתור מחיקת משתמש שעובד" />
+    <MESSAGE value="הוספת חסימת מייל" />
+    <MESSAGE value="הוספת שורת חיפוש וסינון ומספר מודעות קיימות בדף הבית" />
+    <MESSAGE value="הוספת שאלות ותשובות נפוצות" />
+    <MESSAGE value="תיקוני FRONT" />
+    <MESSAGE value="עוד שיפורים לפרונט" />
+    <MESSAGE value="." />
+    <option name="LAST_COMMIT_MESSAGE" value="." />
   </component>
 </project>
