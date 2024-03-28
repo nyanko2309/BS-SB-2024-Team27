@@ -4,92 +4,91 @@
 <meta charset="utf-8"/>
 <title>1Tjobs</title>
 <style>
-
-  /* Your existing CSS styles */
-
-  /* Additional CSS styles for black rectangles around buttons */
-  .navbar-buttons {
-    display: flex;
-    border: 1px solid black; /* Add black border around buttons */
-    border-radius: 5px; /* Add border radius to buttons */
+  /* Global styles */
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f8f8;
   }
 
-  .navbar-buttons a {
-    text-decoration: none;
-    padding: 10px;
-    margin-right: 10px;
-  }
-
-  /* Additional CSS styles for posts container */
   .posts-container {
-    max-height: 400px; /* Set maximum height for posts container */
-    overflow-y: auto; /* Add vertical scrollbar when content exceeds container height */
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
 
   .posts {
     display: flex;
-    flex-wrap: wrap; /* Allow posts to wrap to the next row */
-    gap: 20px; /* Add space between posts */
+    flex-wrap: wrap;
+    gap: 20px;
   }
 
   .post {
-    width: calc(33.33% - 20px); /* Set width for each post (3 posts in a row) */
-    border: 1px solid black;
-    padding: 10px;
-    box-sizing: border-box; /* Include padding and border in the total width */
-    position: relative; /* Ensure position relative for absolute positioning */
+    width: calc(33.33% - 20px);
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    position: relative;
   }
 
-  .post-image {
-    width: 100px;
-    height: 100px;
-    background-color: #ccc; /* Placeholder background color */
-    margin-bottom: 10px;
-  }
+
 
   .post-content {
+    padding: 20px;
     font-size: 14px;
   }
 
-  /* Additional CSS styles for plus button */
-  .create-post-button {
-    position: fixed; /* Position the button */
-    bottom: 20px; /* Adjust bottom position */
-    right: 20px; /* Adjust right position */
-    background-color: #4caf50; /* Button background color */
-    color: #fff; /* Button text color */
-    border: none; /* Remove button border */
-    border-radius: 50%; /* Make button round */
-    width: 50px; /* Set button width */
-    height: 50px; /* Set button height */
-    font-size: 24px; /* Set button font size */
-    cursor: pointer; /* Change cursor to pointer on hover */
-    display: flex; /* Make the button a flex container */
-    justify-content: center; /* Center content horizontally */
-    align-items: center; /* Center content vertically */
-    z-index: 999; /* Ensure the button appears above other elements */
+  .post-info {
+    margin-bottom: 10px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 
-  /* Additional CSS styles for remove button */
   .remove-button {
-    position: absolute; /* Position the button relative to its parent post */
-    top: 5px; /* Adjust top position */
-    right: 5px; /* Adjust right position */
-    background-color: red; /* Button background color */
-    color: #fff; /* Button text color */
-    border: none; /* Remove button border */
-    border-radius: 50%; /* Make button round */
-    width: 20px; /* Set button width */
-    height: 20px; /* Set button height */
-    font-size: 12px; /* Set button font size */
-    cursor: pointer; /* Change cursor to pointer on hover */
-    display: flex; /* Make the button a flex container */
-    justify-content: center; /* Center content horizontally */
-    align-items: center; /* Center content vertically */
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: red;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
+  /* Plus button styles */
+  .create-post-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
 </style>
 </head>
+<link href="data: image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADIyMmQyMjKwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADg4OAkzMzOeMzMzewAAAAAAAAAAAAAAADIyMoQzMzPMNDQ0PzIyMvIAAAAAAAAAAAAAAAAAAAAAAAAAADU1NRMzMzP5Nzc3FzQ0NE4zMzP+AAAAAAAAAAAyMjLsAAAAAAAAAAA0NDQ/MjIy8gAAAAAAAAAAAAAAAAAAAAAyMjLOVVVVAzIyMvsyMjKNMzMzmjExMR8AAAAAMzMz+TAwMCoAAAAAAAAAADQ0ND8yMjLyAAAAAAAAAAAxMTEaMzMz/wAAAAAyMjLiMjIyXzMzM60zMzMUAAAAAAAAAAAyMjL8NDQ0IgAAAAAAAAAANDQ0PzIyMvIxMTEaMzMz/wAAAAAAAAAAMjIyLTIyMowyMjLxAAAAAAAAAAAAAAAAAAAAADMzM/4xMTEaAAAAAAAAAAAxMTFXMzMz/wAAAAAAAAAAMjIyZTIyMuIyMjI9AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMzMz/zMzMxQvLy8bMzMz/gAAAAAAAAAAMjIyZjIyMuIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAzMzP/MzMz/gAAAAAAAAAAMjIyZjIyMuEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALy8vIDIyMmYzMzPuMzMz/wAAAAAAAAAAMjIyZTMzM+4zMzPQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMzMz/TIyMlEAAAAAAAAAAAAAAAAAAAAAMjIyZTMzM/8AAAAAMjIyfTMzM9AAAAAAAAAAAAAAAAAAAAAAMjIypjQ0ND8AAAAAMjIyvjIyMkIAAAAAMDAwRDIyMuIyMjJMMjIy7AAAAAAzMzN7MzMz/zMzM/8AAAAAAAAAADMzM/8AAAAAMzMz/jMzMx4yMjK7Ly8vIAAAAAAyMjLIAAAAADIyMkwyMjLsAAAAAAAAAAAxMTFhMjIyhAAAAAAzMzP/MzMz/jIyMhkAAAAAMzMzXjMzM5UAAAAAMjIyywAAAAAAAAAAMzMz/wAAAAAAAAAAAAAAADMzM/8AAAAAMjIysDIyMhkAAAAAMzMzUDMzM+kAAAAAMjIyoTMzM0AAAAAAAAAAADIyMpczMzPwMzMzBQAAAAAzMzNVMzMzlQAAAAAAAAAAMzMzUDMzM+oAAAAAMjIyhzIyMuMAAAAAAAAAAAAAAAAAAAAAMzMzCjIyMvUzMzOzMzMz/wAAAAAAAAAAAAAAADIyMpIzMzP/MjIy+zIyMmUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMTExPgAAAAEAAAAA7/cAAJftAAC70QAAvdUAAN65AADvdwAA9u8AAPnfAADznwAAv28AAG6zAABW3QAAOt0AAHXOAADp8QAAx/8AAA==" rel="icon" type="image/x-icon">
+
 <body>
 {% extends 'toolbar.html' %}
 <!-- End of navigation bar -->
@@ -98,7 +97,7 @@
 <div class="posts-container">
   <div class="posts">
     {% for post in posts %}
-      <div class="post" data-description="{{ post.description }}" data-location="{{ post.location }}" data-work-hours="{{ post.work_hours }}" data-phys-lvl="{{ post.phys_lvl }}" data-kind-of-job="{{ post.kind_of_job }}" data-category="{{ post.category }}">
+      <div class="post" data-description="{{ post.description }}" data-location="{{ post.location }}" data-work-hours="{{ post.work_hours }}" data-phys-lvl="{{ post.phys_lvl }}" data-kind-of-job="{{ post.kind_of_job }}" data-category="{{ post.category }}" data-phone="{{ post.phone }}">
           <div class="post-image"></div>
           <div class="post-content">
               <!-- Post information -->
@@ -108,8 +107,9 @@
               <div class="post-info">Physical lvl: {{ post.phys_lvl }}</div>
               <div class="post-info">Kind of job: {{ post.kind_of_job }}</div>
               <div class="post-info">Category: {{ post.category }}</div>
+              <div class="post-info">Phone: {{ post.phone }}</div>
               <!-- Remove button -->
-              <button class="remove-button" onclick="removePost(event)" data-post-id="{{ post.id }}" href="{% url 'remove_post' post.id %}">X</button>
+              <button class="remove-button" onclick="removePost(event)" data-post-id="{{ post.id }}">X</button>
           </div>
       </div>
     {% endfor %}

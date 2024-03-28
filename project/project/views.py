@@ -274,3 +274,7 @@ def remove_post(request, post_id):
     else:
         messages.error(request, 'User not logged in!')
     return redirect('myposts')
+
+
+def rating(request):
+    return render(request, 'rating.html')
