@@ -90,7 +90,6 @@ def login_button(request):
         mail = request.POST.get('mail')
         password = request.POST.get('password')
         user_id = getIdByUserCredentials(mail, password)
-
         if isinstance(user_id, int):
             request.session['global_user_id'] = user_id
             return redirect('homepage')
@@ -132,8 +131,11 @@ def register(request):
 def myposts(request):
 
         global_user_id = request.session.get('global_user_id')
+        print("GUID: ", global_user_id)
         if global_user_id:
+            print("yes")
             user = User.objects.get(id=global_user_id)
+            print('got the user')
             my_post_ids = user.my_posts  # List of post IDs belonging to the user
 
             # Filter posts based on user's my_posts list
