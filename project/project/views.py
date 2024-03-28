@@ -272,47 +272,36 @@ def edit_post(request, post_id):
     return render(request, 'create_post.html', context)
 
 
+from django.contrib import messages
+
+
+from django.contrib import messages
 
 def create_post_button(request):
     global_user_id = request.session.get('global_user_id')
     user = User.objects.get(id=global_user_id)
+
     if request.method == 'POST':
         form = PostForm(request.POST)
-        post_id = request.POST.get('post_id', None)
         if form.is_valid():
-
-            if post_id.isdigit():  # Check if post_id can be converted to an integer
-                print("=================", post_id)
-                p = Post.objects.get(id=int(post_id))
-                p.location = form.cleaned_data.get('location',None)
-                p.work_hours = form.cleaned_data.get('working_hours',None)
-                p.payment = form.cleaned_data.get('salary',None)
-                p.phys_lvl = form.cleaned_data.get('physicality',None)
-                p.kind_of_job = form.cleaned_data.get('job_type',None)
-                p.job_category = form.cleaned_data.get('job_category',None)
-                p.description = form.cleaned_data.get('description',None)
-                p.phone = form.cleaned_data.get('phone',None)
-                p.save()
-                return redirect('myposts')
-            else:
-             if len(user.my_posts) <= 10:
+            if len(user.my_posts) <= 3:
                 saved_post = form.save()
                 saved_post_id = saved_post.id
                 addtoaarr(user.my_posts, saved_post_id)
                 user.save()
+                messages.success(request, 'המודעה פורסמה בהצלחה.')
                 return redirect('myposts')
-             else:
-                # Display error message
-                messages.error(request, 'Too many posts from one user.')
+            else:
+                messages.error(request, 'ניתן ליצור עד 4 מודעות בלבד.')
                 return redirect('create_post')
         else:
-            # Display form errors
-            messages.error(request, 'Form is not valid. Please correct the errors.')
+            messages.error(request, 'הטופס אינו תקין. נא לתקן את השגיאות.')
             print(form.errors)
     else:
         form = PostForm()
 
-    return render(request, 'posts.html', {'form': form})
+    return render(request, 'create_post.html', {'form': form})
+
 
 
 def remove_post(request, post_id):

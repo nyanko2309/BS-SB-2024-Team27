@@ -108,6 +108,8 @@
 {% include 'toolbar.html' %}
     <h1>יצירת מודעה</h1>
 
+    <div id="errorMessage" class="error-message" style="display: none;">ניתן ליצור עד 4 מודעות בלבד.</div>
+
     <div class="form-container">
         <form id="myForm" method="POST" action="{% url 'create_post_button' %}">
             {% csrf_token %}
@@ -167,17 +169,6 @@
             <a href="{% url 'myposts' %}" class="back-button">חזור למודעות שלי</a>
         </div>
 
-        <!-- Error message -->
-        <div id="errorMessage" class="error-message">ניתן ליצור עד 4 מודעות בלבד.</div>
-
-
-{% if errors %}
-  <ul class="errorlist">
-    {% for message in errors %}
-      <li>{{ message }}</li>
-    {% endfor %}
-  </ul>
-{% endif %}
 
         <!-- JavaScript to handle form submission -->
         <script>
@@ -195,7 +186,13 @@
                     }
                 });
             });
-
+             {% if form.errors %}
+                    {% for field in form %}
+                        {% for error in field.errors %}
+                            errorMessage.style.display = "block";
+                        {% endfor %}
+                    {% endfor %}
+                {% endif %}
         </script>
     </div>
 </body>
