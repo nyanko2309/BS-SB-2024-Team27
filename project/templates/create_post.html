@@ -7,7 +7,7 @@
     <style>
         body {
             direction: rtl;
-            text-align: right;
+            text-align: left;
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
@@ -39,6 +39,7 @@
         input[type="number"],
         textarea,
         select {
+            text-align: left;
             width: 100%;
             padding: 10px;
             font-size: 16px;
@@ -95,18 +96,14 @@
             margin-bottom: 15px;
             text-align: center;
         }
-        /* Override toolbar categories alignment */
-        .toolbar-categories {
-            text-align: left; /* Align toolbar categories to the left */
-            margin-left: 20px; /* Add some left margin for indentation */
-        }
+
     </style>
 </head>
 <link href="data: image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADIyMmQyMjKwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADg4OAkzMzOeMzMzewAAAAAAAAAAAAAAADIyMoQzMzPMNDQ0PzIyMvIAAAAAAAAAAAAAAAAAAAAAAAAAADU1NRMzMzP5Nzc3FzQ0NE4zMzP+AAAAAAAAAAAyMjLsAAAAAAAAAAA0NDQ/MjIy8gAAAAAAAAAAAAAAAAAAAAAyMjLOVVVVAzIyMvsyMjKNMzMzmjExMR8AAAAAMzMz+TAwMCoAAAAAAAAAADQ0ND8yMjLyAAAAAAAAAAAxMTEaMzMz/wAAAAAyMjLiMjIyXzMzM60zMzMUAAAAAAAAAAAyMjL8NDQ0IgAAAAAAAAAANDQ0PzIyMvIxMTEaMzMz/wAAAAAAAAAAMjIyLTIyMowyMjLxAAAAAAAAAAAAAAAAAAAAADMzM/4xMTEaAAAAAAAAAAAxMTFXMzMz/wAAAAAAAAAAMjIyZTIyMuIyMjI9AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMzMz/zMzMxQvLy8bMzMz/gAAAAAAAAAAMjIyZjIyMuIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAzMzP/MzMz/gAAAAAAAAAAMjIyZjIyMuEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALy8vIDIyMmYzMzPuMzMz/wAAAAAAAAAAMjIyZTMzM+4zMzPQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMzMz/TIyMlEAAAAAAAAAAAAAAAAAAAAAMjIyZTMzM/8AAAAAMjIyfTMzM9AAAAAAAAAAAAAAAAAAAAAAMjIypjQ0ND8AAAAAMjIyvjIyMkIAAAAAMDAwRDIyMuIyMjJMMjIy7AAAAAAzMzN7MzMz/zMzM/8AAAAAAAAAADMzM/8AAAAAMzMz/jMzMx4yMjK7Ly8vIAAAAAAyMjLIAAAAADIyMkwyMjLsAAAAAAAAAAAxMTFhMjIyhAAAAAAzMzP/MzMz/jIyMhkAAAAAMzMzXjMzM5UAAAAAMjIyywAAAAAAAAAAMzMz/wAAAAAAAAAAAAAAADMzM/8AAAAAMjIysDIyMhkAAAAAMzMzUDMzM+kAAAAAMjIyoTMzM0AAAAAAAAAAADIyMpczMzPwMzMzBQAAAAAzMzNVMzMzlQAAAAAAAAAAMzMzUDMzM+oAAAAAMjIyhzIyMuMAAAAAAAAAAAAAAAAAAAAAMzMzCjIyMvUzMzOzMzMz/wAAAAAAAAAAAAAAADIyMpIzMzP/MjIy+zIyMmUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMTExPgAAAAEAAAAA7/cAAJftAAC70QAAvdUAAN65AADvdwAA9u8AAPnfAADznwAAv28AAG6zAABW3QAAOt0AAHXOAADp8QAAx/8AAA==" rel="icon" type="image/x-icon">
 
 <body>
 {% include 'toolbar.html' %}
-    <h1>יצירת מודעה</h1>
+    <h1>post creation</h1>
 
     <div class="form-container">
         <form id="myForm" method="POST" action="{% url 'create_post_button' %}">
@@ -116,85 +113,76 @@
             <input type="hidden" id="post-id" name="post_id" value="{{post_id}}">
 
             <div class="form-group">
-                <label for="location">מיקום:</label>
+                <label for="location">location</label>
                 <input type="text" id="location" name="location">
             </div>
             <div class="form-group">
-                <label for="working-hours">שעות עבודה:</label>
-                <input type="text" id="working-hours" name="working-hours">
+                <label for="work_hours">working hours</label>
+                <input type="text" id="work_hours" name="work_hours">
             </div>
             <div class="form-group">
-                <label for="salary">שכר:</label>
-                <input type="text" id="salary" name="salary">
+                <label for="payment">payment</label>
+                <input type="text" id="payment" name="payment">
             </div>
             <div class="form-group">
-                <label for="physicality">רמת פיזיות העבודה (0-10):</label>
-                <input type="number" id="physicality" name="physicality" min="0" max="10">
+                <label for="phys_lvl">physical level (0-10)</label>
+                <input type="number" id="phys_lvl" name="phys_lvl" min="0" max="10">
             </div>
             <div class="form-group">
-                <label for="job-type">סוג משרה:</label>
-                <select id="job-type" name="job-type">
-                    <option value="אחר">אחר</option>
-                    <option value="חד-פעמי">חד-פעמי</option>
-                    <option value="כמה פעמים בשבוע">כמה פעמים בשבוע</option>
-                    <option value="זמנית עד תאריך מסוים">זמנית עד תאריך מסוים</option>
+                <label for="kind_of_job">kind of job</label>
+                <select id="kind_of_job" name="kind_of_job">
+                    <option value="other">other</option>
+                    <option value="one time">one time</option>
+                    <option value="few times a week">few times a week</option>
+                    <option value="temporary">temporary</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="job-category">קטגוריה:</label>
-                <select id="job-category" name="job-category">
-                    <option value="אחר">אחר</option>
-                    <option value="שמרטפות">שמרטפות</option>
-                    <option value="טיול עם חיות">טיול עם חיות</option>
-                    <option value="לימודים">לימודים</option>
-                    <option value="עזרה כללית">עזרה כללית</option>
-                    <option value="ספורט">ספורט</option>
+                <label for="category">category</label>
+                <select id="category" name="category">
+                    <option value="other">other</option>
+                    <option value="babysitting">babysitting</option>
+                    <option value="dog walking">dog walking</option>
+                    <option value="study">study</option>
+                    <option value="general help">general help</option>
+                    <option value="sports">sports</option>
                 </select>
             </div>
             <div class="form-group">
-                <label for="description">תיאור המשרה:</label>
+                <label for="description">description</label>
                 <textarea id="description" name="description" rows="4"></textarea>
             </div>
             <div class="form-group">
-                <label for="phone">פלאפון:</label>
+                <label for="phone">phone</label>
                 <input type="text" id="phone" name="phone">
             </div>
 
-            <button type="submit" class="save-button">פרסם</button>
+            <button type="submit" class="save-button">post</button>
         </form>
 
         <div class="button-container">
-            <a href="{% url 'myposts' %}" class="back-button">חזור למודעות שלי</a>
+            <a href="{% url 'myposts' %}" class="back-button">back to my posts</a>
         </div>
 
-        <!-- Error message -->
-        <div id="errorMessage" class="error-message">ניתן ליצור עד 4 מודעות בלבד.</div>
-
-
-{% if errors %}
-  <ul class="errorlist">
-    {% for message in errors %}
-      <li>{{ message }}</li>
-    {% endfor %}
-  </ul>
-{% endif %}
 
         <!-- JavaScript to handle form submission -->
         <script>
-            document.addEventListener("DOMContentLoaded", function() {
-                var form = document.getElementById("myForm");
-                var errorMessage = document.getElementById("errorMessage");
+            function showSuccessMessage() {
+        alert("Post created successfully!");
+    }
 
-                form.addEventListener("submit", function(event) {
-                    // Check if the form is valid
-                    if (!form.checkValidity()) {
-                        // Prevent the default form submission
-                        event.preventDefault();
-                        // Display the error message
-                        errorMessage.style.display = "block";
-                    }
-                });
-            });
+    // Function to handle form submission
+    document.addEventListener("DOMContentLoaded", function() {
+        var form = document.getElementById("myForm");
+
+        form.addEventListener("submit", function(event) {
+            // Check if the form is valid
+            if (form.checkValidity()) {
+                // Call the function to display the success message
+                showSuccessMessage();
+            }
+        });
+    });
 
         </script>
     </div>

@@ -112,14 +112,13 @@
 <div class="posts-container">
   <div class="posts">
     {% for post in posts %}
-      <div class="post" data-description="{{ post.description }}" data-location="{{ post.location }}" data-work-hours="{{ post.work_hours }}" data-phys-lvl="{{ post.phys_lvl }}" data-kind-of-job="{{ post.kind_of_job }}" data-category="{{ post.category }}" data-phone="{{ post.phone }}">
-          <div class="post-image"></div>
+      <div class="post" data-description="{{ post.description }}" data-location="{{ post.location }}" data-work_hours="{{ post.work_hours }}" data-phys_lvl="{{ post.phys_lvl }}" data-kind_of_job="{{ post.kind_of_job }}" data-category="{{ post.category }}" data-phone="{{ post.phone }}">
           <div class="post-content">
               <!-- Post information -->
-              <div class="post-info">Description:
-{{ post.description }}</div>
+              <div class="post-info">Description: {{ post.description }}</div>
               <div class="post-info">Location: {{ post.location }}</div>
               <div class="post-info">Work hours: {{ post.work_hours }}</div>
+              <div class="post-info">Payment: {{ post.payment }}</div>
               <div class="post-info">Physical lvl: {{ post.phys_lvl }}</div>
               <div class="post-info">Kind of job: {{ post.kind_of_job }}</div>
               <div class="post-info">Category: {{ post.category }}</div>
@@ -133,13 +132,34 @@
     {% endfor %}
   </div>
 </div>
+<div id="user-open-posts-count" style="display: none;">{{ open_posts_count }}</div>
+
 <!-- End of posts container -->
 
 <!-- Plus button for creating new posts -->
-<a href="{% url 'create_post' %}" class="create-post-button">+</a>
+<a href="{% url 'create_post' %}" class="create-post-button" onclick="checkOpenPosts()">+</a>
 
 <!-- JavaScript to handle remove and edit buttons -->
 <script>
+    function checkOpenPosts()
+    {
+        // Fetch the number of open posts for the user from the DOM
+        const userOpenPostsCount = parseInt(document.getElementById('user-open-posts-count').textContent);
+
+        // Define the maximum allowed open posts
+        const maxOpenPosts = 4;
+
+        // Check if the user has more than the maximum allowed open posts
+        if (userOpenPostsCount >= maxOpenPosts) {
+            // Display an error message informing the user
+            alert("You cannot have more than four open posts.");
+            event.preventDefault();
+        } else {
+            // Allow the user to create a new post
+            window.location.href = '{% url 'create_post' %}';
+        }
+    }
+
   function removePost(event) {
     // Get the post ID from the data attribute
     const postId = event.target.dataset.postId;
@@ -185,6 +205,24 @@
     }
 }
 
+function fetchUpdatedOpenPostsCount() {
+        fetch('/get_open_posts_count/')
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error('Network response was not ok');
+            }
+        })
+        .then(data => {
+            // Update the displayed count of open posts
+            document.getElementById('user-open-posts-count').textContent = data.open_posts_count;
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred while fetching the updated count of open posts.');
+        });
+    }
   function editPost(event) {
     const postId = event.target.dataset.postId;
     if (postId) {

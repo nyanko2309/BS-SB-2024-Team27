@@ -109,23 +109,25 @@
 <!-- Start of content block -->
 <div class="content">
     <!-- Show total number of posts -->
-    <div class="total-posts">מספר מודעות קיימות: {{ posts|length }}</div>
+    <div class="total-posts">total posts:  {{ posts|length }}</div>
 
     <!-- Start of search and filter lines -->
     <div class="search-filter">
         <!-- Search line -->
-        <input type="text" class="search-input" placeholder="...חיפוש">
+        <input type="text" class="search-input" placeholder="search...">
         <!-- Search button -->
-        <button class="search-button">חפש</button>
+        <button class="search-button">search</button>
         <!-- Filter line -->
         <select class="filter-select">
-            <option value="">...סנן לפי</option>
-            <option value="location">מיקום</option>
-            <option value="work_hours">שעות עבודה</option>
-            <option value="phys_lvl">רמת פיזיות</option>
-            <option value="kind_of_job">סוג משרה</option>
-            <option value="category">קטגוריה</option>
-            <option value="phone">פלאפון</option>
+            <option value="">filter by...</option>
+            <option value="description">description</option>
+            <option value="location">location</option>
+            <option value="work_hours">work hours</option>
+            <option value="phys_lvl">physical level</option>
+            <option value="payment">payment</option>
+            <option value="kind_of_job">kind of job</option>
+            <option value="category">category</option>
+            <option value="phone">phone</option>
         </select>
 
     </div>
@@ -133,15 +135,16 @@
 
     <!-- Start of posts container -->
     <div class="posts">
+        {% if posts %}
         {% for post in posts %}
-        <div class="post" data-description="{{ post.description }}" data-location="{{ post.location }}" data-work-hours="{{ post.work_hours }}" data-phys-lvl="{{ post.phys_lvl }}" data-kind-of-job="{{ post.kind_of_job }}" data-category="{{ post.category }}">
-            <div class="post-image"></div>
+        <div class="post" data-description="{{ post.description }}" data-location="{{ post.location }}" data-work-hours="{{ post.work_hours }}" data-phys-lvl="{{ post.phys_lvl }}" data-kind-of-job="{{ post.kind_of_job }}" data-category="{{ post.category }}" data-phone="{{ post.phone }}" data-payment="{{ post.payment }}">
             <div class="post-content">
                 <!-- Post information -->
                 <div class="post-info">Description: {{ post.description }}</div>
                 <div class="post-info">Location: {{ post.location }}</div>
                 <div class="post-info">Work hours: {{ post.work_hours }}</div>
                 <div class="post-info">Physical lvl: {{ post.phys_lvl }}</div>
+                <div class="post-info">Payment: {{ post.payment }}</div>
                 <div class="post-info">Kind of job: {{ post.kind_of_job }}</div>
                 <div class="post-info">Category: {{ post.category }}</div>
                 <div class="post-info">Phone: {{ post.phone }}</div>
@@ -150,16 +153,18 @@
             </div>
         </div>
         {% endfor %}
+        {% else %}
+        <p class="no-posts-message" style="display: none;">No posts fit your request.</p>
+        {% endif %}
     </div>
-    <!-- End of posts container -->
 </div>
 <!-- End of content block -->
-
-<!-- JavaScript to handle favorites button and search -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         const favoritesButtons = document.querySelectorAll('.favorites-button');
         const searchButton = document.querySelector('.search-button');
+        const filterSelect = document.querySelector('.filter-select');
+        const noPostsMessage = document.querySelector('.no-posts-message');
 
         favoritesButtons.forEach(function(button) {
             button.addEventListener('click', function() {
@@ -196,22 +201,22 @@
         // Add event listener to search button
         searchButton.addEventListener('click', function() {
             const searchInput = document.querySelector('.search-input').value.toLowerCase();
+            const filterOption = filterSelect.value.toLowerCase();
             const posts = document.querySelectorAll('.post');
+            let hasPosts = false;
 
             posts.forEach(function(post) {
-                const description = post.dataset.description.toLowerCase();
-                const location = post.dataset.location.toLowerCase();
-                const workHours = post.dataset.workHours.toLowerCase();
-                const physLvl = post.dataset.physLvl.toLowerCase();
-                const kindOfJob = post.dataset.kindOfJob.toLowerCase();
-                const category = post.dataset.category.toLowerCase();
-
-                if (description.includes(searchInput) || location.includes(searchInput) || workHours.includes(searchInput) || physLvl.includes(searchInput) || kindOfJob.includes(searchInput) || category.includes(searchInput)) {
+                const fieldValue = post.dataset[filterOption].toLowerCase();
+                if (fieldValue.includes(searchInput)) {
                     post.style.display = 'block';
+                    hasPosts = true;
                 } else {
                     post.style.display = 'none';
                 }
             });
+
+            // Toggle no posts message visibility
+            noPostsMessage.style.display = hasPosts ? 'none' : 'block';
         });
 
         // Function to get CSRF token

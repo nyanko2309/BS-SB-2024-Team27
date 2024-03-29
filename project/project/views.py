@@ -38,7 +38,10 @@ def removefromarr(arr, id):
     if id in arr:
         arr.remove(id)
 
+
 """gets avg rating from all users"""
+
+
 def get_average_rating():
     all_ratings = User.objects.exclude(site_rating=0).values_list('site_rating', flat=True)
     if all_ratings:
@@ -46,6 +49,7 @@ def get_average_rating():
     else:
         average_rating = 0
     return average_rating
+
 
 """ goes to profile,then showing id from db that has user.id """
 
@@ -170,9 +174,10 @@ def myposts(request):
         my_post_ids = user.my_posts  # List of post IDs belonging to the user
 
         # Filter posts based on user's my_posts list
-        posts = Post.objects.filter(id__in=my_post_ids)
+        filtered_posts = Post.objects.filter(id__in=my_post_ids)
+        my_posts_count = len(filtered_posts)
 
-        context = {'posts': posts}
+        context = {'posts': filtered_posts, 'open_posts_count': my_posts_count}
         return render(request, 'posts.html', context)
     else:
         # Handle case where user is not logged in
@@ -273,12 +278,12 @@ def is_not_allowed_email(email):
     else:
         return False
 
+
 def edit_post(request, post_id):
     context = {
         'post_id': post_id,
     }
     return render(request, 'create_post.html', context)
-
 
 
 def create_post_button(request):
@@ -292,31 +297,27 @@ def create_post_button(request):
             if post_id.isdigit():  # Check if post_id can be converted to an integer
                 print("=================", post_id)
                 p = Post.objects.get(id=int(post_id))
-                p.location = form.cleaned_data.get('location',None)
-                p.work_hours = form.cleaned_data.get('working_hours',None)
-                p.payment = form.cleaned_data.get('salary',None)
-                p.phys_lvl = form.cleaned_data.get('physicality',None)
-                p.kind_of_job = form.cleaned_data.get('job_type',None)
-                p.job_category = form.cleaned_data.get('job_category',None)
-                p.description = form.cleaned_data.get('description',None)
-                p.phone = form.cleaned_data.get('phone',None)
+                p.location = form.cleaned_data.get('location', None)
+                p.work_hours = form.cleaned_data.get('working_hours', None)
+                p.payment = form.cleaned_data.get('salary', None)
+                p.phys_lvl = form.cleaned_data.get('physicality', None)
+                p.kind_of_job = form.cleaned_data.get('job_type', None)
+                p.job_category = form.cleaned_data.get('job_category', None)
+                p.description = form.cleaned_data.get('description', None)
+                p.phone = form.cleaned_data.get('phone', None)
                 p.save()
                 return redirect('myposts')
             else:
-             if len(user.my_posts) <= 10:
-                saved_post = form.save()
-                saved_post_id = saved_post.id
-                addtoaarr(user.my_posts, saved_post_id)
-                user.save()
-                return redirect('myposts')
-             else:
-                # Display error message
-                messages.error(request, 'Too many posts from one user.')
-                return redirect('create_post')
+                if len(user.my_posts) <= 3:
+                    saved_post = form.save()
+                    saved_post_id = saved_post.id
+                    addtoaarr(user.my_posts, saved_post_id)
+                    user.save()
+                    return redirect('myposts')
+                else:
+                    return redirect('create_post')
         else:
-            # Display form errors
-            messages.error(request, 'Form is not valid. Please correct the errors.')
-            print(form.errors)
+            pass
     else:
         form = PostForm()
 
@@ -332,30 +333,26 @@ def remove_post(request, post_id):
             removefromarr(user.my_posts, post_id)
             user.save()
             post.delete()
-            messages.success(request, 'Post removed successfully!')
-        else:
-            messages.error(request, 'Post not found in user\'s posts!')
-    else:
-        messages.error(request, 'User not logged in!')
     return redirect('myposts')
 
 
 def rate_site(request):
     global_user_id = request.session.get('global_user_id')
     if global_user_id:
-      user = User.objects.get(id=global_user_id)
+        user = User.objects.get(id=global_user_id)
 
-    context = {'avg':get_average_rating(),
-               'rating':user.site_rating}
-    return render(request, 'rating.html',context)
+    context = {'avg': get_average_rating(),
+               'rating': user.site_rating}
+    return render(request, 'rating.html', context)
 
-def submit_rating(request,rating):
+
+def submit_rating(request, rating):
     print("!!!!!!!!!!!!!!!")
     global_user_id = request.session.get('global_user_id')
     if global_user_id:
-      user = User.objects.get(id=global_user_id)
-      user.site_rating = rating
-      user.save()
-      return redirect('rating')
+        user = User.objects.get(id=global_user_id)
+        user.site_rating = rating
+        user.save()
+        return redirect('rating')
     else:
         messages.error(request, 'User not logged in!')
