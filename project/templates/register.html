@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link href="data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADIyMmQyMjKwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADg4OAkzMzOeMzMzewAAAAAAAAAAAAAAADIyMoQzMzPMNDQ0PzIyMvIAAAAAAAAAAAAAAAAAAAAAAAAAADU1NRMzMzP5Nzc3FzQ0NE4zMzP+AAAAAAAAAAAyMjLsAAAAAAAAAAA0NDQ/MjIy8gAAAAAAAAAAAAAAAAAAAAAyMjLOVVVVAzIyMvsyMjKNMzMzmjExMR8AAAAAMzMz+TAwMCoAAAAAAAAAADQ0ND8yMjLyAAAAAAAAAAAxMTEaMzMz/wAAAAAyMjLiMjIyXzMzM60zMzMUAAAAAAAAAAAyMjL8NDQ0IgAAAAAAAAAANDQ0PzIyMvIxMTEaMzMz/wAAAAAAAAAAMjIyLTIyMowyMjLxAAAAAAAAAAAAAAAAAAAAADMzM/4xMTEaAAAAAAAAAAAxMTFXMzMz/wAAAAAAAAAAMjIyZTIyMuIyMjI9AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMzMz/zMzMxQvLy8bMzMz/gAAAAAAAAAAMjIyZjIyMuIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAzMzP/MzMz/gAAAAAAAAAAMjIyZjIyMuEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALy8vIDIyMmYzMzPuMzMz/wAAAAAAAAAAMjIyZTMzM+4zMzPQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMzMz/TIyMlEAAAAAAAAAAAAAAAAAAAAAMjIyZTMzM/8AAAAAMjIyfTMzM9AAAAAAAAAAAAAAAAAAAAAAMjIypjQ0ND8AAAAAMjIyvjIyMkIAAAAAMDAwRDIyMuIyMjJMMjIy7AAAAAAzMzN7MzMz/zMzM/8AAAAAAAAAADMzM/8AAAAAMzMz/jMzMx4yMjK7Ly8vIAAAAAAyMjLIAAAAADIyMkwyMjLsAAAAAAAAAAAxMTFhMjIyhAAAAAAzMzP/MzMz/jIyMhkAAAAAMzMzXjMzM5UAAAAAMjIyywAAAAAAAAAAMzMz/wAAAAAAAAAAAAAAADMzM/8AAAAAMjIysDIyMhkAAAAAMzMzUDMzM+kAAAAAMjIyoTMzM0AAAAAAAAAAADIyMpczMzPwMzMzBQAAAAAzMzNVMzMzlQAAAAAAAAAAMzMzUDMzM+oAAAAAMjIyhzIyMuMAAAAAAAAAAAAAAAAAAAAAMzMzCjIyMvUzMzOzMzMz/wAAAAAAAAAAAAAAADIyMpIzMzP/MjIy+zIyMmUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMTExPgAAAAEAAAAA7/cAAJftAAC70QAAvdUAAN65AADvdwAA9u8AAPnfAADznwAAv28AAG6zAABW3QAAOt0AAHXOAADp8QAAx/8AAA==" rel="icon" type="image/x-icon">
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>1Tjobs</title>
@@ -63,7 +61,7 @@
             text-align: center;
             margin-top: 10px;
         }
-        button {
+        button.register-button {
             background-color: #4caf50;
             color: #fff;
             padding: 10px 15px;
@@ -74,6 +72,19 @@
             margin-top: 10px;
             width: 100%; /* Make the button full width */
         }
+        button.register-button:hover {
+            background-color: #45a049;
+        }
+        a.login-link {
+            text-decoration: none;
+            margin-top: 10px;
+            color: #333;
+            font-size: 14px;
+            display: block;
+            text-align: center;
+        }
+
+
     </style>
 </head>
 <body>
@@ -82,17 +93,17 @@
     {% csrf_token %}
     <h2>1Tjobs</h2>
 
-    <label for="email">אימייל</label>
-    <input type="email" id="email" name="mail" placeholder="הכנס כתובת מייל" required>
-    <label for="password">סיסמא</label>
-    <input type="password" id="password" name="password" placeholder="הכנס סיסמא חדשה" required>
+    <label for="email">Email</label>
+    <input type="email" id="email" name="mail" placeholder="Enter your email" required>
+    <label for="password">Password</label>
+    <input type="password" id="password" name="password" placeholder="Enter a new password" required>
 
-    <button type="submit" class="save-button">register</button>
+    <button type="submit" class="register-button">Register</button>
     <!-- Button to redirect to the login page -->
-    <button onclick="redirectToLoginPage()">Already have an account? Login here</button>
+    <a href="{% url 'login_page' %}" class="login-link">Already have an account? Login here</a>
 
     {% if banned_email %}
-        <div class="banned-email">אימייל זה חסום</div> <!-- Moved the message here -->
+        <div class="banned-email">This email is banned</div> <!-- Moved the message here -->
     {% endif %}
 
     {% if messages %}
@@ -106,13 +117,6 @@
     {% endif %}
 
 </form>
-
-<script>
-    function redirectToLoginPage() {
-        // Redirect the user to the login page
-        window.location.href = "{% url 'login_page' %}";
-    }
-</script>
 
 </body>
 </html>
