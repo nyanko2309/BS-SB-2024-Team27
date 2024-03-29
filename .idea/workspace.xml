@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17b05228-a801-4f64-a2c6-a7e172e53ba5" name="Changes" comment="fixed rating">
+    <list default="true" id="17b05228-a801-4f64-a2c6-a7e172e53ba5" name="Changes" comment="favorites fixed">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/project/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/project/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/project/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/favorites.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/favorites.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/templates/TOS.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/TOS.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/templates/create_post.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/create_post.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,14 +100,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1709402008753</updated>
-    </task>
-    <task id="LOCAL-00006" summary="test">
-      <option name="closed" value="true" />
-      <created>1709811930518</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1709811930518</updated>
     </task>
     <task id="LOCAL‎-00007" summary="test">
       <option name="closed" value="true" />
@@ -494,7 +485,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711712281960</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="favorites fixed">
+      <option name="closed" value="true" />
+      <created>1711713715293</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1711713715295</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -526,6 +525,7 @@
     <MESSAGE value="test" />
     <MESSAGE value="fixed d.b also post edit workd" />
     <MESSAGE value="fixed rating" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed rating" />
+    <MESSAGE value="favorites fixed" />
+    <option name="LAST_COMMIT_MESSAGE" value="favorites fixed" />
   </component>
 </project>
