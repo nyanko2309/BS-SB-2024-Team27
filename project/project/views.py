@@ -155,17 +155,8 @@ def submit(request):
         form = RegistrationForm()
     return render(request, 'register.html', {'form': form})
 
-
-"""onclick register button"""
-
-
 def register(request):
     return render(request, 'register.html')
-
-
-"""to do fix!!!!!!!!!"""
-"""goesto myposts html,"""
-
 
 def myposts(request):
     global_user_id = request.session.get('global_user_id')
