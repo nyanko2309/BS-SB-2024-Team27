@@ -13,6 +13,5 @@ class User(models.Model):
     description = models.TextField()
     favorites = models.JSONField(default=list)
     my_posts = models.JSONField(default=list)
-    phone = models.TextField(null=True, blank=True)
     site_rating = models.IntegerField(default=0, choices=[(i, i) for i in range(6)])
 
