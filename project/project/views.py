@@ -196,7 +196,7 @@ def myfavorites(request):
             post.is_favorite = True
 
         context = {'posts': posts, 'favorites': favorites_ids}
-        return render(request, 'homepage.html', context)
+        return render(request, 'favorites.html', context)
     else:
         # Handle case where user is not logged in
         return JsonResponse({'error': 'User not logged in'}, status=401)
@@ -216,7 +216,7 @@ def add_to_favorites(request):
             # Retrieve the user object
             user = User.objects.get(id=global_user_id)
 
-            # Add the post to user's favorites
+            # Add  or remove the post to user's favorites
             if post_id:
                 if post_id not in user.favorites:
                     addtoaarr(user.favorites, post_id)
