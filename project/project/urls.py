@@ -28,6 +28,8 @@ urlpatterns = [
     path('delete_account/', views.delete_account, name='delete_account'),
     path('remove_post/<int:post_id>/', views.remove_post, name='remove_post'),
     path('rating/', views.rate_site, name='rating'),
+    path('submit_rating/<int:rating>/', views.submit_rating, name='submit_rating'),
+
 ]
 
 

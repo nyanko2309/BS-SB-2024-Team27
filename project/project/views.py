@@ -38,6 +38,14 @@ def removefromarr(arr, id):
     if id in arr:
         arr.remove(id)
 
+"""gets avg rating from all users"""
+def get_average_rating():
+    all_ratings = User.objects.exclude(site_rating=0).values_list('site_rating', flat=True)
+    if all_ratings:
+        average_rating = sum(all_ratings) / len(all_ratings)
+    else:
+        average_rating = 0
+    return average_rating
 
 """ goes to profile,then showing id from db that has user.id """
 
@@ -333,19 +341,21 @@ def remove_post(request, post_id):
 
 
 def rate_site(request):
-    if request.method == 'POST' and request.is_ajax():
-        user = request.user
-        rating_value = int(request.POST.get('rating', 0))
-        if 0 <= rating_value <= 5 and user.is_authenticated:
-            user.site_rating = rating_value
-            user.save()
-            return JsonResponse({'success': True})
-    return JsonResponse({'success': False})
+    global_user_id = request.session.get('global_user_id')
+    if global_user_id:
+      user = User.objects.get(id=global_user_id)
 
-def get_average_rating(request):
-    all_ratings = User.objects.exclude(site_rating=0).values_list('site_rating', flat=True)
-    if all_ratings:
-        average_rating = sum(all_ratings) / len(all_ratings)
+    context = {'avg':get_average_rating(),
+               'rating':user.site_rating}
+    return render(request, 'rating.html',context)
+
+def submit_rating(request,rating):
+    print("!!!!!!!!!!!!!!!")
+    global_user_id = request.session.get('global_user_id')
+    if global_user_id:
+      user = User.objects.get(id=global_user_id)
+      user.site_rating = rating
+      user.save()
+      return redirect('rating')
     else:
-        average_rating = 0
-    return JsonResponse({'average_rating': average_rating})
+        messages.error(request, 'User not logged in!')
