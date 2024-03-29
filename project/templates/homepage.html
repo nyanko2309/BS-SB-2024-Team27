@@ -3,7 +3,6 @@
 <head>
 <meta charset="utf-8"/>
 <title>1Tjobs</title>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
 
 <style>
   /* Global styles */
@@ -77,12 +76,6 @@
   .post:hover {
     transform: translateY(-5px);
   }
-  .post-image {
-    width: 100%;
-    height: 200px;
-    background-color: #f0f0f0;
-    border-bottom: 1px solid #ddd;
-  }
   .post-content {
     padding: 20px;
   }
@@ -137,7 +130,6 @@
     <div class="posts">
         {% for post in posts %}
         <div class="post" data-description="{{ post.description }}" data-location="{{ post.location }}" data-work-hours="{{ post.work_hours }}" data-phys-lvl="{{ post.phys_lvl }}" data-kind-of-job="{{ post.kind_of_job }}" data-category="{{ post.category }}">
-            <div class="post-image"></div>
             <div class="post-content">
                 <!-- Post information -->
                 <div class="post-info">Description: {{ post.description }}</div>
