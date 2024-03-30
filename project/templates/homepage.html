@@ -17,7 +17,7 @@
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-    background-color: #fff;
+    background-color: white;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
@@ -26,8 +26,7 @@
   .total-posts {
     font-size: 18px;
     padding: 10px;
-    margin-bottom: 20px;
-    background-color: #f0f0f0;
+
     border-radius: 5px;
   }
 
@@ -44,24 +43,38 @@
     border: 1px solid #ccc;
     border-radius: 5px;
   }
-  .filter-select, .search-button {
+ .filter-select:hover,
+.search-button:hover {
+    filter: brightness(65%); /* Reduce brightness on hover */
+}
+
+  .search-button {
     padding: 10px 20px;
     font-size: 16px;
     margin-left: 10px;
-    background-color: #4caf50;
+    background-color: black;
     color: #fff;
-    border: none;
+    border: black;
     border-radius: 5px;
     cursor: pointer;
   }
-
+    .filter-select
+    {
+    padding: 10px 20px;
+    font-size: 16px;
+    margin-left: 10px;
+    background-color: black;
+    color: white;
+    border: blue;
+    border-radius: 5px;
+    cursor: pointer;
+  }
   /* Posts container */
   .posts {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
   }
-
   /* Individual post */
   .post {
     background-color: #fff;
@@ -74,12 +87,6 @@
   }
   .post:hover {
     transform: translateY(-5px);
-  }
-  .post-image {
-    width: 100%;
-    height: 200px;
-    background-color: #f0f0f0;
-    border-bottom: 1px solid #ddd;
   }
   .post-content {
     padding: 20px;
@@ -96,8 +103,9 @@
     color: #888;
   }
   .favorites-button.active {
-    color: red;
+    color: orange;
   }
+
 </style>
 </head>
     <link href="data: image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADIyMmQyMjKwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADg4OAkzMzOeMzMzewAAAAAAAAAAAAAAADIyMoQzMzPMNDQ0PzIyMvIAAAAAAAAAAAAAAAAAAAAAAAAAADU1NRMzMzP5Nzc3FzQ0NE4zMzP+AAAAAAAAAAAyMjLsAAAAAAAAAAA0NDQ/MjIy8gAAAAAAAAAAAAAAAAAAAAAyMjLOVVVVAzIyMvsyMjKNMzMzmjExMR8AAAAAMzMz+TAwMCoAAAAAAAAAADQ0ND8yMjLyAAAAAAAAAAAxMTEaMzMz/wAAAAAyMjLiMjIyXzMzM60zMzMUAAAAAAAAAAAyMjL8NDQ0IgAAAAAAAAAANDQ0PzIyMvIxMTEaMzMz/wAAAAAAAAAAMjIyLTIyMowyMjLxAAAAAAAAAAAAAAAAAAAAADMzM/4xMTEaAAAAAAAAAAAxMTFXMzMz/wAAAAAAAAAAMjIyZTIyMuIyMjI9AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMzMz/zMzMxQvLy8bMzMz/gAAAAAAAAAAMjIyZjIyMuIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAzMzP/MzMz/gAAAAAAAAAAMjIyZjIyMuEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALy8vIDIyMmYzMzPuMzMz/wAAAAAAAAAAMjIyZTMzM+4zMzPQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMzMz/TIyMlEAAAAAAAAAAAAAAAAAAAAAMjIyZTMzM/8AAAAAMjIyfTMzM9AAAAAAAAAAAAAAAAAAAAAAMjIypjQ0ND8AAAAAMjIyvjIyMkIAAAAAMDAwRDIyMuIyMjJMMjIy7AAAAAAzMzN7MzMz/zMzM/8AAAAAAAAAADMzM/8AAAAAMzMz/jMzMx4yMjK7Ly8vIAAAAAAyMjLIAAAAADIyMkwyMjLsAAAAAAAAAAAxMTFhMjIyhAAAAAAzMzP/MzMz/jIyMhkAAAAAMzMzXjMzM5UAAAAAMjIyywAAAAAAAAAAMzMz/wAAAAAAAAAAAAAAADMzM/8AAAAAMjIysDIyMhkAAAAAMzMzUDMzM+kAAAAAMjIyoTMzM0AAAAAAAAAAADIyMpczMzPwMzMzBQAAAAAzMzNVMzMzlQAAAAAAAAAAMzMzUDMzM+oAAAAAMjIyhzIyMuMAAAAAAAAAAAAAAAAAAAAAMzMzCjIyMvUzMzOzMzMz/wAAAAAAAAAAAAAAADIyMpIzMzP/MjIy+zIyMmUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMTExPgAAAAEAAAAA7/cAAJftAAC70QAAvdUAAN65AADvdwAA9u8AAPnfAADznwAAv28AAG6zAABW3QAAOt0AAHXOAADp8QAAx/8AAA==" rel="icon" type="image/x-icon">
@@ -109,12 +117,12 @@
 <!-- Start of content block -->
 <div class="content">
     <!-- Show total number of posts -->
-    <div class="total-posts">total posts:  {{ posts|length }}</div>
+    <div class="total-posts">Total posts:  {{ posts|length }}</div>
 
     <!-- Start of search and filter lines -->
     <div class="search-filter">
         <!-- Search line -->
-        <input type="text" class="search-input" placeholder="search...">
+        <input type="text" class="search-input" placeholder="type...">
         <!-- Search button -->
         <button class="search-button">search</button>
         <!-- Filter line -->
