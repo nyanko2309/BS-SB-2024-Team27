@@ -53,11 +53,11 @@
     top: 5px;
     right: 5px;
     background-color: red;
-    color: #fff;
+    color: black;
     border: none;
     border-radius: 50%;
-    width: 20px;
-    height: 20px;
+    width: 36px;
+    height: 36px;
     font-size: 12px;
     cursor: pointer;
     display: flex;
@@ -73,9 +73,9 @@
     color: #11111;
     border: none;
     border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    font-size: 15px;
+    width: 36px;
+    height: 36px;
+    font-size: 12px;
     cursor: pointer;
     display: flex;
     justify-content: center;
@@ -88,18 +88,17 @@
     bottom: 20px;
     right: 20px;
     background-color: #4caf50;
-    color: #fff;
+    color: black;
     border: none;
     border-radius: 50%;
     width: 50px;
     height: 50px;
-    font-size: 24px;
+    font-size: 50px;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 999;
-  }
+}
 </style>
 </head>
 <link href="data: image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADIyMmQyMjKwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADg4OAkzMzOeMzMzewAAAAAAAAAAAAAAADIyMoQzMzPMNDQ0PzIyMvIAAAAAAAAAAAAAAAAAAAAAAAAAADU1NRMzMzP5Nzc3FzQ0NE4zMzP+AAAAAAAAAAAyMjLsAAAAAAAAAAA0NDQ/MjIy8gAAAAAAAAAAAAAAAAAAAAAyMjLOVVVVAzIyMvsyMjKNMzMzmjExMR8AAAAAMzMz+TAwMCoAAAAAAAAAADQ0ND8yMjLyAAAAAAAAAAAxMTEaMzMz/wAAAAAyMjLiMjIyXzMzM60zMzMUAAAAAAAAAAAyMjL8NDQ0IgAAAAAAAAAANDQ0PzIyMvIxMTEaMzMz/wAAAAAAAAAAMjIyLTIyMowyMjLxAAAAAAAAAAAAAAAAAAAAADMzM/4xMTEaAAAAAAAAAAAxMTFXMzMz/wAAAAAAAAAAMjIyZTIyMuIyMjI9AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMzMz/zMzMxQvLy8bMzMz/gAAAAAAAAAAMjIyZjIyMuIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAzMzP/MzMz/gAAAAAAAAAAMjIyZjIyMuEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALy8vIDIyMmYzMzPuMzMz/wAAAAAAAAAAMjIyZTMzM+4zMzPQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMzMz/TIyMlEAAAAAAAAAAAAAAAAAAAAAMjIyZTMzM/8AAAAAMjIyfTMzM9AAAAAAAAAAAAAAAAAAAAAAMjIypjQ0ND8AAAAAMjIyvjIyMkIAAAAAMDAwRDIyMuIyMjJMMjIy7AAAAAAzMzN7MzMz/zMzM/8AAAAAAAAAADMzM/8AAAAAMzMz/jMzMx4yMjK7Ly8vIAAAAAAyMjLIAAAAADIyMkwyMjLsAAAAAAAAAAAxMTFhMjIyhAAAAAAzMzP/MzMz/jIyMhkAAAAAMzMzXjMzM5UAAAAAMjIyywAAAAAAAAAAMzMz/wAAAAAAAAAAAAAAADMzM/8AAAAAMjIysDIyMhkAAAAAMzMzUDMzM+kAAAAAMjIyoTMzM0AAAAAAAAAAADIyMpczMzPwMzMzBQAAAAAzMzNVMzMzlQAAAAAAAAAAMzMzUDMzM+oAAAAAMjIyhzIyMuMAAAAAAAAAAAAAAAAAAAAAMzMzCjIyMvUzMzOzMzMz/wAAAAAAAAAAAAAAADIyMpIzMzP/MjIy+zIyMmUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMTExPgAAAAEAAAAA7/cAAJftAAC70QAAvdUAAN65AADvdwAA9u8AAPnfAADznwAAv28AAG6zAABW3QAAOt0AAHXOAADp8QAAx/8AAA==" rel="icon" type="image/x-icon">
@@ -124,7 +123,7 @@
               <div class="post-info">Category: {{ post.category }}</div>
               <div class="post-info">Phone: {{ post.phone }}</div>
               <!-- Remove button -->
-              <button class="remove-button" onclick="removePost(event)" data-post-id="{{ post.id }}">X</button>
+              <button class="remove-button" onclick="removePost(event)" data-post-id="{{ post.id }}">Delete</button>
               <!-- Edit button -->
               <button class="edit-button" onclick="editPost(event)" data-post-id="{{ post.id }}">Edit</button>
           </div>
@@ -137,7 +136,7 @@
 <!-- End of posts container -->
 
 <!-- Plus button for creating new posts -->
-<a href="{% url 'create_post' %}" class="create-post-button" onclick="checkOpenPosts()">+</a>
+<h href="{% url 'create_post' %}" class="create-post-button" onclick="checkOpenPosts()">+</h>
 
 <!-- JavaScript to handle remove and edit buttons -->
 <script>
