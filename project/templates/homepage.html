@@ -52,7 +52,7 @@
     padding: 10px 20px;
     font-size: 16px;
     margin-left: 10px;
-    background-color: #4caf50;
+    background-color: black;
     color: #fff;
     border: black;
     border-radius: 5px;
@@ -156,6 +156,7 @@
                 <div class="post-info">Kind of job: {{ post.kind_of_job }}</div>
                 <div class="post-info">Category: {{ post.category }}</div>
                 <div class="post-info">Phone: {{ post.phone }}</div>
+
                 <!-- Favorites button -->
                 <div class="favorites-button {% if post.id|add:0 in favorites %}active {% endif %}" data-post-id="{{ post.id }}">☆</div>
             </div>
