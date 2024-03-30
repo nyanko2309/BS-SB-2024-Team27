@@ -31,7 +31,3 @@ urlpatterns = [
     path('submit_rating/<int:rating>/', views.submit_rating, name='submit_rating'),
 
 ]
-
-
-
-

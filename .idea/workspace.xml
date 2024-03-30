@@ -4,10 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17b05228-a801-4f64-a2c6-a7e172e53ba5" name="Changes" comment="favorites fixed">
+    <list default="true" id="17b05228-a801-4f64-a2c6-a7e172e53ba5" name="Changes" comment="toolbar appear correct in create post">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/project/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/templates/Login.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/Login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/templates/TOS.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/TOS.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/create_post.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/create_post.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/templates/favorites.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/favorites.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/templates/helppage.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/helppage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/templates/homepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/homepage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/templates/profilepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/profilepage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/templates/rating.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/rating.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/register.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/templates/toolbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/toolbar.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +33,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="favorits_alon" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -49,8 +57,8 @@
     </option>
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
-        <option name="accountId" value="f6ac3456-86c0-4bce-a893-0df248719996" />
-        <option name="url" value="https://github.com/nyanko2309/BS-SB-2024-Team27" />
+        <option name="accountId" value="96ded7ab-34ae-43c8-ae1c-3e7517182eff" />
+        <option name="url" value="https://github.com/nyanko2309/BS-SB-2024-Team27.git" />
       </UrlAndAccount>
     </option>
   </component>
@@ -69,17 +77,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "yana",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/97254/PycharmProjects/project",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;new__alon&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/97254/PycharmProjects/project&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\iluvb\PycharmProjects\BS-SB-2024-Team27\project\icon" />
@@ -88,7 +96,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-d68999036c7f-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.14475.56" />
+        <option value="bundled-python-sdk-5a2391486177-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.13763.11" />
       </set>
     </attachedChunks>
   </component>
@@ -100,22 +108,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1709402008753</updated>
-    </task>
-    <task id="LOCAL‎-00007" summary="test">
-      <option name="closed" value="true" />
-      <created>1709812940308</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL‎-00007" />
-      <option name="project" value="LOCAL‎" />
-      <updated>1709812940308</updated>
-    </task>
-    <task id="LOCAL‎-00008" summary="test">
-      <option name="closed" value="true" />
-      <created>1709831707585</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL‎-00008" />
-      <option name="project" value="LOCAL‎" />
-      <updated>1709831707585</updated>
     </task>
     <task id="LOCAL‎-00009" summary="test">
       <option name="closed" value="true" />
@@ -477,23 +469,39 @@
       <option name="project" value="LOCAL" />
       <updated>1711651924826</updated>
     </task>
-    <task id="LOCAL-00054" summary="fixed rating">
+    <task id="LOCAL-00054" summary="h">
       <option name="closed" value="true" />
-      <created>1711712281960</created>
+      <created>1711724149498</created>
       <option name="number" value="00054" />
       <option name="presentableId" value="LOCAL-00054" />
       <option name="project" value="LOCAL" />
-      <updated>1711712281960</updated>
+      <updated>1711724149498</updated>
     </task>
-    <task id="LOCAL-00055" summary="favorites fixed">
+    <task id="LOCAL-00055" summary="register -&gt; login button works">
       <option name="closed" value="true" />
-      <created>1711713715293</created>
+      <created>1711728203202</created>
       <option name="number" value="00055" />
       <option name="presentableId" value="LOCAL-00055" />
       <option name="project" value="LOCAL" />
-      <updated>1711713715295</updated>
+      <updated>1711728203202</updated>
     </task>
-    <option name="localTasksCounter" value="56" />
+    <task id="LOCAL-00056" summary="toolbar appear correct in create post">
+      <option name="closed" value="true" />
+      <created>1711728720863</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1711728720863</updated>
+    </task>
+    <task id="LOCAL-00057" summary="toolbar appear correct in create post">
+      <option name="closed" value="true" />
+      <created>1711730323674</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1711730323674</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -521,11 +529,12 @@
     <MESSAGE value="הוספת שאלות ותשובות נפוצות" />
     <MESSAGE value="תיקוני FRONT" />
     <MESSAGE value="עוד שיפורים לפרונט" />
-    <MESSAGE value="." />
     <MESSAGE value="test" />
     <MESSAGE value="fixed d.b also post edit workd" />
-    <MESSAGE value="fixed rating" />
-    <MESSAGE value="favorites fixed" />
-    <option name="LAST_COMMIT_MESSAGE" value="favorites fixed" />
+    <MESSAGE value="." />
+    <MESSAGE value="h" />
+    <MESSAGE value="register -&gt; login button works" />
+    <MESSAGE value="toolbar appear correct in create post" />
+    <option name="LAST_COMMIT_MESSAGE" value="toolbar appear correct in create post" />
   </component>
 </project>

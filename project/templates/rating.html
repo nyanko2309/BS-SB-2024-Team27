@@ -6,66 +6,122 @@
     <title>Rate the Site</title>
     <!-- Include jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!-- Styles for star icons -->
+    <!-- Styles for star icons and rating section -->
     <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        #ratingContainer {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
         .star {
             cursor: pointer;
             font-size: 30px;
+            color: #ccc;
+            transition: color 0.3s ease;
         }
-        .selected {
+        .star:hover, .selected {
             color: gold;
+        }
+        #submitRating {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        #submitRating:hover {
+            background-color: #45a049;
+        }
+        #averageRating {
+            margin-top: 20px;
+            color: #666;
+        }
+        #ratingMessage {
+            margin-top: 10px;
+            color: #ff6347;
+            font-weight: bold;
+            display: none;
+        }
+        #feedbackContainer {
+            margin-top: 20px;
+            text-align: center;
         }
     </style>
 </head>
+<link href="data: image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADIyMmQyMjKwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADg4OAkzMzOeMzMzewAAAAAAAAAAAAAAADIyMoQzMzPMNDQ0PzIyMvIAAAAAAAAAAAAAAAAAAAAAAAAAADU1NRMzMzP5Nzc3FzQ0NE4zMzP+AAAAAAAAAAAyMjLsAAAAAAAAAAA0NDQ/MjIy8gAAAAAAAAAAAAAAAAAAAAAyMjLOVVVVAzIyMvsyMjKNMzMzmjExMR8AAAAAMzMz+TAwMCoAAAAAAAAAADQ0ND8yMjLyAAAAAAAAAAAxMTEaMzMz/wAAAAAyMjLiMjIyXzMzM60zMzMUAAAAAAAAAAAyMjL8NDQ0IgAAAAAAAAAANDQ0PzIyMvIxMTEaMzMz/wAAAAAAAAAAMjIyLTIyMowyMjLxAAAAAAAAAAAAAAAAAAAAADMzM/4xMTEaAAAAAAAAAAAxMTFXMzMz/wAAAAAAAAAAMjIyZTIyMuIyMjI9AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMzMz/zMzMxQvLy8bMzMz/gAAAAAAAAAAMjIyZjIyMuIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAzMzP/MzMz/gAAAAAAAAAAMjIyZjIyMuEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAALy8vIDIyMmYzMzPuMzMz/wAAAAAAAAAAMjIyZTMzM+4zMzPQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMzMz/TIyMlEAAAAAAAAAAAAAAAAAAAAAMjIyZTMzM/8AAAAAMjIyfTMzM9AAAAAAAAAAAAAAAAAAAAAAMjIypjQ0ND8AAAAAMjIyvjIyMkIAAAAAMDAwRDIyMuIyMjJMMjIy7AAAAAAzMzN7MzMz/zMzM/8AAAAAAAAAADMzM/8AAAAAMzMz/jMzMx4yMjK7Ly8vIAAAAAAyMjLIAAAAADIyMkwyMjLsAAAAAAAAAAAxMTFhMjIyhAAAAAAzMzP/MzMz/jIyMhkAAAAAMzMzXjMzM5UAAAAAMjIyywAAAAAAAAAAMzMz/wAAAAAAAAAAAAAAADMzM/8AAAAAMjIysDIyMhkAAAAAMzMzUDMzM+kAAAAAMjIyoTMzM0AAAAAAAAAAADIyMpczMzPwMzMzBQAAAAAzMzNVMzMzlQAAAAAAAAAAMzMzUDMzM+oAAAAAMjIyhzIyMuMAAAAAAAAAAAAAAAAAAAAAMzMzCjIyMvUzMzOzMzMz/wAAAAAAAAAAAAAAADIyMpIzMzP/MjIy+zIyMmUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAMTExPgAAAAEAAAAA7/cAAJftAAC70QAAvdUAAN65AADvdwAA9u8AAPnfAADznwAAv28AAG6zAABW3QAAOt0AAHXOAADp8QAAx/8AAA==" rel="icon" type="image/x-icon">
 <body>
-    {% extends 'toolbar.html' %}
-    <!-- End of navigation bar -->
-    {% block content %}
-    <div id="ratingContainer">
-        <h1>Rate the Site</h1>
-        <div>
-            <p>Your Rating:</p>
-            <span class="star" data-value="1">&#9733;</span>
-            <span class="star" data-value="2">&#9733;</span>
-            <span class="star" data-value="3">&#9733;</span>
-            <span class="star" data-value="4">&#9733;</span>
-            <span class="star" data-value="5">&#9733;</span>
-        </div>
-        <button id="submitRating" class="submit_rating">Submit Rating</button>
-        <input type="hidden" id="ratingValue" name="ratingValue"> <!-- Hidden input field to store the rating value -->
-        <p id="averageRating">Average Rating: {{ avg }}</p>
-        <p id="ratingMessage" style="display: none;"></p>
+
+{% extends 'toolbar.html' %}
+{% block content %}
+<div id="toolbar">
+    <!-- Your toolbar content goes here -->
+</div>
+
+<div id="ratingContainer">
+    <h1>Rate the Site</h1>
+    <div>
+        <p>Your Rating:</p>
+        <span class="star" data-value="1">&#9733;</span>
+        <span class="star" data-value="2">&#9733;</span>
+        <span class="star" data-value="3">&#9733;</span>
+        <span class="star" data-value="4">&#9733;</span>
+        <span class="star" data-value="5">&#9733;</span>
     </div>
+    <button id="submitRating" class="submit_rating">Submit Rating</button>
+    <input type="hidden" id="ratingValue" name="ratingValue"> <!-- Hidden input field to store the rating value -->
+    <p id="averageRating">Average Rating: {{ avg }}</p>
+    <p id="ratingMessage" style="display: none;"></p>
+</div>
+<div id="feedbackContainer">
+    <div>
+        please send us your thoughts to the email : 1TJobsCrew@gmail.com"<br>
+        Thank you :)
+    </div>
+</div>
 
-    <script>
-        $(document).ready(function() {
-            // Get the user's rating from the backend
-            var userRating = {{ rating }};
+<script>
+    $(document).ready(function() {
+        // Get the user's rating from the backend
+        var userRating = {{ rating }};
 
-            // If the user has a rating, select the corresponding star button
-            if (userRating) {
-                $('.star[data-value="' + userRating + '"]').addClass('selected').prevAll('.star').addClass('selected');
-                $('#ratingValue').val(userRating);
-            }
+        // If the user has a rating, select the corresponding star button
+        if (userRating) {
+            $('.star[data-value="' + userRating + '"]').addClass('selected').prevAll('.star').addClass('selected');
+            $('#ratingValue').val(userRating);
+        }
 
-            $('.star').click(function() {
-                // Remove selected class from all stars
-                $('.star').removeClass('selected');
-                // Add selected class to clicked star and previous stars
-                $(this).addClass('selected').prevAll('.star').addClass('selected');
-                // Set the value of the selected star in a hidden input field
-                $('#ratingValue').val($(this).data('value'));
-
-                // Print the selected star's value to the console
-                console.log('Selected star value:', $(this).data('value'));
-            });
-
-            $('#submitRating').click(function() {
-                // Redirect to the submit URL with the rating value
-                window.location.href = `/submit_rating/${$('#ratingValue').val()}/`;
-            });
+        $('.star').click(function() {
+            // Remove selected class from all stars
+            $('.star').removeClass('selected');
+            // Add selected class to clicked star and previous stars
+            $(this).addClass('selected').prevAll('.star').addClass('selected');
+            // Set the value of the selected star in a hidden input field
+            $('#ratingValue').val($(this).data('value'));
         });
-    </script>
-    {% endblock %}
+
+        $('#submitRating').click(function() {
+            // Redirect to the submit URL with the rating value
+            window.location.href = `/submit_rating/${$('#ratingValue').val()}/`;
+        });
+    });
+</script>
+{% endblock %}
 </body>
 </html>
