@@ -170,71 +170,76 @@
 <!-- End of content block -->
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        const favoritesButtons = document.querySelectorAll('.favorites-button');
-        const searchButton = document.querySelector('.search-button');
-        const filterSelect = document.querySelector('.filter-select');
-        const noPostsMessage = document.querySelector('.no-posts-message');
+    const favoritesButtons = document.querySelectorAll('.favorites-button');
+    const searchButton = document.querySelector('.search-button');
+    const filterSelect = document.querySelector('.filter-select');
+    const noPostsMessage = document.querySelector('.no-posts-message');
 
-        favoritesButtons.forEach(function(button) {
-            button.addEventListener('click', function() {
-                const postId = this.dataset.postId;
+    favoritesButtons.forEach(function(button) {
+        button.addEventListener('click', function() {
+            const postId = this.dataset.postId;
 
-                fetch('/add_to_favorites/', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-CSRFToken': getCookie('csrftoken')
-                    },
-                    body: JSON.stringify({ postId: postId })
-                })
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    if (data.success !== undefined) {
-                        // Toggle the active class based on the response
-                        button.classList.toggle('active');
-                    } else {
-                        throw new Error('Response format is incorrect');
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-            });
-        });
-
-        // Add event listener to search button
-        searchButton.addEventListener('click', function() {
-            const searchInput = document.querySelector('.search-input').value.toLowerCase();
-            const filterOption = filterSelect.value.toLowerCase();
-            const posts = document.querySelectorAll('.post');
-            let hasPosts = false;
-
-            posts.forEach(function(post) {
-                const fieldValue = post.dataset[filterOption].toLowerCase();
-                if (fieldValue.includes(searchInput)) {
-                    post.style.display = 'block';
-                    hasPosts = true;
-                } else {
-                    post.style.display = 'none';
+            fetch('/add_to_favorites/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken')
+                },
+                body: JSON.stringify({ postId: postId })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
                 }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success !== undefined) {
+                    // Toggle the active class based on the response
+                    button.classList.toggle('active');
+                } else {
+                    throw new Error('Response format is incorrect');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
             });
+        });
+    });
 
-            // Toggle no posts message visibility
-            noPostsMessage.style.display = hasPosts ? 'none' : 'block';
+    // Add event listener to search button
+    searchButton.addEventListener('click', function() {
+        const searchInput = document.querySelector('.search-input').value.toLowerCase();
+        const posts = document.querySelectorAll('.post');
+        let hasPosts = false;
+
+        posts.forEach(function(post) {
+            let postContent = '';
+            for (const key in post.dataset) {
+                if (Object.hasOwnProperty.call(post.dataset, key)) {
+                    postContent += post.dataset[key].toLowerCase();
+                }
+            }
+            if (postContent.includes(searchInput)) {
+                post.style.display = 'block';
+                hasPosts = true;
+            } else {
+                post.style.display = 'none';
+            }
         });
 
-        // Function to get CSRF token
-        function getCookie(name) {
-            const value = `; ${document.cookie}`;
-            const parts = value.split(`; ${name}=`);
-            if (parts.length === 2) return parts.pop().split(';').shift();
-        }
+        // Toggle no posts message visibility
+        noPostsMessage.style.display = hasPosts ? 'none' : 'block';
     });
+
+    // Function to get CSRF token
+    function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+    }
+});
+
 </script>
 
 </body>
