@@ -4,18 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17b05228-a801-4f64-a2c6-a7e172e53ba5" name="Changes" comment="toolbar appear correct in create post">
+    <list default="true" id="17b05228-a801-4f64-a2c6-a7e172e53ba5" name="Changes" comment=".">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/project/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/Login.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/Login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/TOS.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/TOS.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/favorites.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/favorites.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/helppage.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/helppage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/homepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/homepage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/profilepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/profilepage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/rating.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/rating.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/register.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/register.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/toolbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/toolbar.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,22 +98,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1709402008753</updated>
-    </task>
-    <task id="LOCAL‎-00009" summary="test">
-      <option name="closed" value="true" />
-      <created>1709833579603</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL‎-00009" />
-      <option name="project" value="LOCAL‎" />
-      <updated>1709833579603</updated>
-    </task>
-    <task id="LOCAL-00010" summary="test">
-      <option name="closed" value="true" />
-      <created>1709837889354</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1709837889354</updated>
     </task>
     <task id="LOCAL-00011" summary="test">
       <option name="closed" value="true" />
@@ -501,7 +475,23 @@
       <option name="project" value="LOCAL" />
       <updated>1711730323674</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="translated to english">
+      <option name="closed" value="true" />
+      <created>1711790864822</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1711790864822</updated>
+    </task>
+    <task id="LOCAL-00059" summary=".">
+      <option name="closed" value="true" />
+      <created>1711791122319</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1711791122319</updated>
+    </task>
+    <option name="localTasksCounter" value="60" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -531,10 +521,11 @@
     <MESSAGE value="עוד שיפורים לפרונט" />
     <MESSAGE value="test" />
     <MESSAGE value="fixed d.b also post edit workd" />
-    <MESSAGE value="." />
     <MESSAGE value="h" />
     <MESSAGE value="register -&gt; login button works" />
     <MESSAGE value="toolbar appear correct in create post" />
-    <option name="LAST_COMMIT_MESSAGE" value="toolbar appear correct in create post" />
+    <MESSAGE value="translated to english" />
+    <MESSAGE value="." />
+    <option name="LAST_COMMIT_MESSAGE" value="." />
   </component>
 </project>
