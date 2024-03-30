@@ -283,10 +283,10 @@ def create_post_button(request):
     if request.method == 'POST':
         form = PostForm(request.POST)
         post_id = request.POST.get('post_id', None)
+
         if form.is_valid():
 
             if post_id.isdigit():  # Check if post_id can be converted to an integer
-                print("=================", post_id)
                 p = Post.objects.get(id=int(post_id))
                 p.location = form.cleaned_data.get('location', None)
                 p.work_hours = form.cleaned_data.get('working_hours', None)
