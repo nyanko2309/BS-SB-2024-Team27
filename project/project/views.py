@@ -142,12 +142,12 @@ def submit(request):
             email = form.cleaned_data['mail']
             # Check if the email is not allowed
             if is_not_allowed_email(email):
-                messages.error(request, 'אימייל זה חסום')
+                messages.error(request, 'This email is blocked!')
             else:
                 user = form.save(commit=False)
                 user.mail = email
                 user.save()
-                messages.success(request, 'ההרשמה בוצעה בהצלחה')
+                messages.success(request, 'Successful Registration!')
                 return redirect('login_page')
         else:
             print("Form is not valid!")
