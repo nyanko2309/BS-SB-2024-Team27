@@ -286,7 +286,6 @@ def create_post_button(request):
         if form.is_valid():
 
             if post_id.isdigit():  # Check if post_id can be converted to an integer
-                print("=================", post_id)
                 p = Post.objects.get(id=int(post_id))
                 p.location = form.cleaned_data.get('location', None)
                 p.work_hours = form.cleaned_data.get('working_hours', None)
@@ -299,8 +298,10 @@ def create_post_button(request):
                 p.save()
                 return redirect('myposts')
             else:
-                if len(user.my_posts) <= 3:
-                    saved_post = form.save()
+                if len(user.my_posts) <= 10:#max 10 posts per person
+                    saved_post = form.save(commit=False)
+                    saved_post.mail = user.mail
+                    saved_post.save()
                     saved_post_id = saved_post.id
                     addtoaarr(user.my_posts, saved_post_id)
                     user.save()
