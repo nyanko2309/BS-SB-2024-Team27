@@ -1,7 +1,7 @@
 from login.models import User
 from django.http import JsonResponse
 from posts.models import Post
-from django.shortcuts import render, redirect
+from django.shortcuts import render
 from login.forms import RegistrationForm
 import json
 from django.contrib.auth import logout
