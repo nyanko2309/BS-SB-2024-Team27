@@ -271,8 +271,10 @@ def is_not_allowed_email(email):
 
 
 def edit_post(request, post_id):
+    p=Post.objects.get(id=post_id)
     context = {
         'post_id': post_id,
+        'post':p,
     }
     return render(request, 'create_post.html', context)
 
@@ -286,21 +288,22 @@ def create_post_button(request):
         if form.is_valid():
 
             if post_id.isdigit():  # Check if post_id can be converted to an integer
-                print("=================", post_id)
                 p = Post.objects.get(id=int(post_id))
                 p.location = form.cleaned_data.get('location', None)
-                p.work_hours = form.cleaned_data.get('working_hours', None)
-                p.payment = form.cleaned_data.get('salary', None)
-                p.phys_lvl = form.cleaned_data.get('physicality', None)
-                p.kind_of_job = form.cleaned_data.get('job_type', None)
-                p.job_category = form.cleaned_data.get('job_category', None)
+                p.work_hours = form.cleaned_data.get('work_hours', None)
+                p.payment = form.cleaned_data.get('payment', None)
+                p.phys_lvl = form.cleaned_data.get('phys_lvl', None)
+                p.kind_of_job = form.cleaned_data.get('kind_of_job', None)
+                p.category = form.cleaned_data.get('category', None)
                 p.description = form.cleaned_data.get('description', None)
                 p.phone = form.cleaned_data.get('phone', None)
                 p.save()
                 return redirect('myposts')
             else:
-                if len(user.my_posts) <= 3:
-                    saved_post = form.save()
+                if len(user.my_posts) <= 10:#max 10 posts per person
+                    saved_post = form.save(commit=False)
+                    saved_post.mail = user.mail
+                    saved_post.save()
                     saved_post_id = saved_post.id
                     addtoaarr(user.my_posts, saved_post_id)
                     user.save()

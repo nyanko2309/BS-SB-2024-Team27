@@ -1,6 +1,7 @@
 from django.db import models
 
 class Post(models.Model):
+    mail = models.EmailField(null=True, blank=True)
     description = models.TextField(null=True, blank=True)
     location = models.TextField(null=True, blank=True)
     payment = models.TextField(null=True, blank=True)
@@ -9,4 +10,3 @@ class Post(models.Model):
     kind_of_job = models.TextField(null=True, blank=True)
     category = models.TextField(null=True, blank=True)
     phone = models.TextField(null=True, blank=True)
-
