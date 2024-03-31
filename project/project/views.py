@@ -271,8 +271,10 @@ def is_not_allowed_email(email):
 
 
 def edit_post(request, post_id):
+    p=Post.objects.get(id=post_id)
     context = {
         'post_id': post_id,
+        'post':p,
     }
     return render(request, 'create_post.html', context)
 
@@ -288,11 +290,11 @@ def create_post_button(request):
             if post_id.isdigit():  # Check if post_id can be converted to an integer
                 p = Post.objects.get(id=int(post_id))
                 p.location = form.cleaned_data.get('location', None)
-                p.work_hours = form.cleaned_data.get('working_hours', None)
-                p.payment = form.cleaned_data.get('salary', None)
-                p.phys_lvl = form.cleaned_data.get('physicality', None)
-                p.kind_of_job = form.cleaned_data.get('job_type', None)
-                p.job_category = form.cleaned_data.get('job_category', None)
+                p.work_hours = form.cleaned_data.get('work_hours', None)
+                p.payment = form.cleaned_data.get('payment', None)
+                p.phys_lvl = form.cleaned_data.get('phys_lvl', None)
+                p.kind_of_job = form.cleaned_data.get('kind_of_job', None)
+                p.category = form.cleaned_data.get('category', None)
                 p.description = form.cleaned_data.get('description', None)
                 p.phone = form.cleaned_data.get('phone', None)
                 p.save()
