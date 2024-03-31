@@ -5,7 +5,7 @@
     <meta charset="utf-8"/>
     <title>1Tjobs</title>
     <style>
-        /* Common styles */
+
 body {
     font-family: Copperplate;
     margin: 0;
@@ -14,7 +14,7 @@ body {
     background-color: #f4f4f4;
 }
 
-/* Home button styles */
+
 .navbar-buttons {
     display: flex;
     background-color: black;
@@ -25,36 +25,28 @@ body {
     text-decoration: none;
     padding: 10px 15px;
     margin-right: 10px;
-    color: white; /* Black text color */
-    border: 2px solid transparent; /* Transparent border */
+    color: white;
+    border: 2px solid transparent;
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    position: relative; /* Required for pseudo-element */
-    overflow: hidden; /* Hide overflow to prevent animation overflow */
-    transition: color 0.3s ease, background-color 0.3s ease; /* Smooth transitions */
+    position: relative;
+    overflow: hidden;
+    transition: color 0.3s ease, background-color 0.3s ease;
 }
-
-/* Hover effect */
 .navbar-buttons a:hover::after {
     background-color: grey;
 }
-
 .navbar-buttons a:hover {
-    filter: brightness(65%); /* Reduce brightness on hover */
+    filter: brightness(65%);
 }
-
 .navbar-buttons a.logout-link {
-    color: red; /* Red text color for logout link */
+    color: red;
 }
-
-
-/* Styles specific to the homepage */
 .posts-container {
     max-height: 400px;
     overflow-y: auto;
 }
-
 .posts {
     display: flex;
     flex-wrap: wrap;
@@ -108,10 +100,5 @@ body {
     <!-- Include a block for the main content -->
     {% block content %}
     {% endblock %}
-
-    <!-- Your JavaScript code -->
-    <script>
-        // Your JavaScript code
-    </script>
 </body>
 </html>

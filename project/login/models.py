@@ -1,10 +1,4 @@
 from django.db import models
-# Create your models here.
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
-
-
-# every change run python manage.py makemigrations
-# pythone manage.py migrate
 class User(models.Model):
     name = models.TextField(null=True)
     mail = models.EmailField(unique=True)
