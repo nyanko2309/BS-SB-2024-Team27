@@ -4,15 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17b05228-a801-4f64-a2c6-a7e172e53ba5" name="Changes" comment="toolbar appear correct in create post">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/project/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/posts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/posts/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/project/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/project/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/favorites.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/favorites.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/homepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/homepage.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/posts.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/posts.html" afterDir="false" />
-    </list>
+    <list default="true" id="17b05228-a801-4f64-a2c6-a7e172e53ba5" name="Changes" comment="mail apears in post" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -104,14 +96,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1709402008753</updated>
-    </task>
-    <task id="LOCAL-00021" summary="test">
-      <option name="closed" value="true" />
-      <created>1709899306775</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1709899306775</updated>
     </task>
     <task id="LOCAL-00022" summary="test">
       <option name="closed" value="true" />
@@ -497,7 +481,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711878701957</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="mail apears in post">
+      <option name="closed" value="true" />
+      <created>1711884033447</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1711884033447</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -536,6 +528,7 @@
     <MESSAGE value="small changes" />
     <MESSAGE value="." />
     <MESSAGE value="toolbar appear correct in create post" />
-    <option name="LAST_COMMIT_MESSAGE" value="toolbar appear correct in create post" />
+    <MESSAGE value="mail apears in post" />
+    <option name="LAST_COMMIT_MESSAGE" value="mail apears in post" />
   </component>
 </project>
