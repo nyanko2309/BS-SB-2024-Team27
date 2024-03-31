@@ -150,7 +150,7 @@ def submit(request):
                 messages.success(request, 'Successful Registration!')
                 return redirect('login_page')
         else:
-            print("Form is not valid!")
+            messages.success(request, 'This email already exists!')
     else:
         form = RegistrationForm()
     return render(request, 'register.html', {'form': form})
