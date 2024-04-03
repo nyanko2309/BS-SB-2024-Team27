@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17b05228-a801-4f64-a2c6-a7e172e53ba5" name="Changes" comment="mail apears in post">
+    <list default="true" id="17b05228-a801-4f64-a2c6-a7e172e53ba5" name="Changes" comment="edit noe shows perv and does not restart">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/project/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/project/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/project/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/templates/create_post.html" beforeDir="false" afterPath="$PROJECT_DIR$/project/templates/create_post.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,8 +48,8 @@
     </option>
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
-        <option name="accountId" value="96ded7ab-34ae-43c8-ae1c-3e7517182eff" />
-        <option name="url" value="https://github.com/nyanko2309/BS-SB-2024-Team27.git" />
+        <option name="accountId" value="f6ac3456-86c0-4bce-a893-0df248719996" />
+        <option name="url" value="https://github.com/nyanko2309/BS-SB-2024-Team27" />
       </UrlAndAccount>
     </option>
   </component>
@@ -101,14 +99,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1709402008753</updated>
-    </task>
-    <task id="LOCAL-00023" summary="test">
-      <option name="closed" value="true" />
-      <created>1710066151141</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1710066151141</updated>
     </task>
     <task id="LOCAL-00024" summary="test">
       <option name="closed" value="true" />
@@ -494,7 +484,15 @@
       <option name="project" value="LOCAL" />
       <updated>1711884492332</updated>
     </task>
-    <option name="localTasksCounter" value="72" />
+    <task id="LOCAL-00072" summary="mail apears in post">
+      <option name="closed" value="true" />
+      <created>1711889880354</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1711889880355</updated>
+    </task>
+    <option name="localTasksCounter" value="73" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
