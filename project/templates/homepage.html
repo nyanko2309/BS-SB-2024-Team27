@@ -4,7 +4,6 @@
 <meta charset="utf-8"/>
 <title>1Tjobs</title>
 <style>
-  /* Global styles */
   body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -117,7 +116,7 @@
 <!-- Start of content block -->
 <div class="content">
     <!-- Show total number of posts -->
-    <div class="total-posts">Total posts:  {{ posts|length }}</div>
+    <div class="total-posts">Total posts:  {{ posts|length }}  |  Site version : v1.00</div>
 
     <!-- Start of search and filter lines -->
     <div class="search-filter">
@@ -148,6 +147,7 @@
         <div class="post" data-description="{{ post.description }}" data-location="{{ post.location }}" data-work-hours="{{ post.work_hours }}" data-phys-lvl="{{ post.phys_lvl }}" data-kind-of-job="{{ post.kind_of_job }}" data-category="{{ post.category }}" data-phone="{{ post.phone }}" data-payment="{{ post.payment }}">
             <div class="post-content">
                 <!-- Post information -->
+                <div class="post-info">contact mail: {{ post.mail}}</div>
                 <div class="post-info">Description: {{ post.description }}</div>
                 <div class="post-info">Location: {{ post.location }}</div>
                 <div class="post-info">Work hours: {{ post.work_hours }}</div>

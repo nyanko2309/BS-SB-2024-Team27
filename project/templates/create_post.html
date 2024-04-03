@@ -121,47 +121,50 @@
 
             <div class="form-group">
                 <label for="location">Location</label>
-                <input type="text" id="location" name="location">
+                <input type="text" id="location" name="location"  value="{{ post.location|default_if_none:'' }}">
             </div>
             <div class="form-group">
                 <label for="work_hours">Working hours</label>
-                <input type="text" id="work_hours" name="work_hours">
+                <input type="text" id="work_hours" name="work_hours" value="{{ post.work_hours|default_if_none:'' }}">
             </div>
             <div class="form-group">
                 <label for="payment">Payment</label>
-                <input type="text" id="payment" name="payment">
+                <input type="text" id="payment" name="payment" value="{{ post.payment|default_if_none:'' }}">
             </div>
             <div class="form-group">
                 <label for="phys_lvl">Physical level (0-10)</label>
-                <input type="number" id="phys_lvl" name="phys_lvl" min="0" max="10">
+                <input type="number" id="phys_lvl" name="phys_lvl" min="0" max="10" value="{{ post.phys_lvl|default_if_none:'' }}">
             </div>
             <div class="form-group">
-                <label for="kind_of_job">Kind of job</label>
-                <select id="kind_of_job" name="kind_of_job">
-                    <option value="other">other</option>
-                    <option value="one time">one time</option>
-                    <option value="few times a week">few times a week</option>
-                    <option value="temporary">temporary</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="category">Category</label>
-                <select id="category" name="category">
-                    <option value="other">other</option>
-                    <option value="babysitting">babysitting</option>
-                    <option value="dog walking">dog walking</option>
-                    <option value="study">study</option>
-                    <option value="general help">general help</option>
-                    <option value="sports">sports</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="description">Short description</label>
-                <textarea id="description" name="description" maxlength="30" placeholder="Up to 30 characters"></textarea>
-            </div>
+    <label for="kind_of_job">Kind of job</label>
+    <select id="kind_of_job" name="kind_of_job">
+        <option value="other">Other</option>
+        <option value="one time" {% if post.kind_of_job == 'one time' %}selected="selected"{% endif %}>One Time</option>
+        <option value="few times a week" {% if post.kind_of_job == 'few times a week' %}selected="selected"{% endif %}>Few Times a Week</option>
+        <option value="temporary" {% if post.kind_of_job == 'temporary' %}selected="selected"{% endif %}>Temporary</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="category">Category</label>
+    <select id="category" name="category">
+        <option value="other">Other</option>
+        <option value="babysitting" {% if post.category == 'babysitting' %}selected="selected"{% endif %}>Babysitting</option>
+        <option value="dog walking" {% if post.category == 'dog walking' %}selected="selected"{% endif %}>Dog Walking</option>
+        <option value="study" {% if post.category == 'study' %}selected="selected"{% endif %}>Study</option>
+        <option value="general help" {% if post.category == 'general help' %}selected="selected"{% endif %}>General Help</option>
+        <option value="sports" {% if post.category == 'sports' %}selected="selected"{% endif %}>Sports</option>
+    </select>
+</div>
+
+<div class="form-group">
+    <label for="description">Short description</label>
+    <textarea id="description" name="description" maxlength="30">{{ post.description|default_if_none:'' }}</textarea>
+</div>
+
             <div class="form-group">
                 <label for="phone">Phone</label>
-                <input type="text" id="phone" name="phone">
+                <input type="text" id="phone" name="phone" value="{{ post.phone|default_if_none:'' }}">
             </div>
 
             <button type="submit" class="save-button">Post</button>
@@ -196,4 +199,3 @@
 </body>
 </html>
     {% endblock %}
-
