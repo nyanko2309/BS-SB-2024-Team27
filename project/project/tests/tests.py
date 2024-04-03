@@ -9,8 +9,10 @@ from project.views import addtoaarr
 from project.views import removefromarr
 from project.views import register
 from project.views import is_not_allowed_email
-from project.views import delete_account
 from project.views import get_average_rating
+from project.views import delete_account
+from project.views import rate_site
+from project.views import submit_rating
 from django.contrib.auth import authenticate
 import json
 from posts.models import Post
@@ -19,12 +21,14 @@ from login.forms import RegistrationForm
 from django.contrib.auth.models import User
 from unittest.mock import patch, MagicMock
 from django.http import JsonResponse
+from django.contrib.sessions.middleware import SessionMiddleware
+from django.core.handlers.base import BaseHandler
+from django.contrib.messages.storage.fallback import FallbackStorage
 
 
 class TestSite(TestCase):
     def setUp(self):
         self.factory = RequestFactory()
-        self.user = User.objects.create_user(username='testuser', email='test@example.com', password='Aa123')
 
     @patch('project.views.messages.success')  # -tests submit function
     def test_submit_working(self, mock_success):
@@ -38,7 +42,34 @@ class TestSite(TestCase):
         data = {'mail': 'test@example.com', 'password': 'Aa123'}
         request = self.factory.post(reverse('login_button'), data)
         response = login_button(request)
+        mock_error.assert_called_once_with(request, 'Invalid credentials. Please try again.')
         self.assertEqual(response.status_code, 200)
+
+
+    @patch('project.views.getIdByUserCredentials') # -tests login button function
+    def test_login_button_working(self, mock_get_id):
+        # Mock the getIdByUserCredentials function to return an integer user ID
+        mock_get_id.return_value = 123  # Assuming 123 is the user ID
+
+        # Create a request with session support
+        request = self.factory.post(reverse('login_button'))
+        request.session = {}  # Initialize an empty session dictionary
+
+        # Create a SessionMiddleware instance with the get_response parameter
+        middleware = SessionMiddleware(get_response=BaseHandler().get_response)
+        middleware.process_request(request)
+        request.session.save()
+
+        data = {'mail': 'user@unittest.com', 'password': 'Aa123'}
+        request.POST = data
+
+        response = login_button(request)
+
+        # Assert that the response redirects to the homepage (status code 302)
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.url, reverse('homepage'))
+
+
 
     @patch('project.views.User.objects.get')  # -tests save profile changes function
     def test_save_profile_changes_success(self, mock_user_get):
@@ -118,7 +149,7 @@ class TestSite(TestCase):
         request = self.factory.get('/get_average_rating')
 
         # Call the view function
-        response = get_average_rating(request)
+        response = get_average_rating()
 
         # Check if the response is a JSON response
         self.assertIsInstance(response, JsonResponse)
@@ -153,5 +184,49 @@ class TestSite(TestCase):
         content = json.loads(response.content)
         self.assertEqual(content, {'error': 'User not logged in'})
 
+    @patch('project.views.get_average_rating')
+    @patch('project.views.User.objects.get')
+    def test_rate_site_authenticated_user(self, mock_get_user, mock_get_average_rating):
+        # Mock the user object
+        user_id = 1  # Assuming user ID 1
+        mock_user = MagicMock(spec=User)
+        mock_user.site_rating = 4.5  # Assuming site rating is 4.5 for the user
+        mock_get_user.return_value = mock_user
+
+        # Create a mock session object
+        session = {}
+        session['global_user_id'] = user_id
+
+        # Create a request with the session
+        request = self.factory.get(reverse('rating'))
+        request.session = session
+
+        # Mock the return value of get_average_rating function
+        mock_get_average_rating.return_value = 4.5
+
+        # Call the view function
+        response = rate_site(request)
+
+        # Assert that the response status code is 200
+        self.assertEqual(response.status_code, 200)
 
 
+    @patch('project.views.User.objects.get')
+    def test_submit_rating_authenticated_user(self, mock_get_user):
+        # Mock the user object
+        user_id = 1  # Assuming user ID 1
+        mock_user = MagicMock(spec=User)
+        mock_get_user.return_value = mock_user
+
+        # Create a mock session object
+        session = {}
+        session['global_user_id'] = user_id
+        # Create a request with session support
+        request = self.factory.get(reverse('submit_rating', kwargs={'rating': 4}))  # Adjust the rating value as needed
+        request.session = {'global_user_id': 1}  # Assuming user ID 1 is authenticated
+
+        # Call the view function
+        response = submit_rating(request, rating=4)
+
+        # Assert the response status code or any other expected behavior
+        self.assertEqual(response.status_code, 302)  # Assuming the view redirects after successful rating submission

@@ -48,7 +48,7 @@ def get_average_rating():
         average_rating = sum(all_ratings) / len(all_ratings)
     else:
         average_rating = 0
-    return average_rating
+    return JsonResponse({'average_rating': average_rating})
 
 
 """ goes to profile,then showing id from db that has user.id """
@@ -163,11 +163,9 @@ def myposts(request):
     if global_user_id:
         user = User.objects.get(id=global_user_id)
         my_post_ids = user.my_posts  # List of post IDs belonging to the user
-
         # Filter posts based on user's my_posts list
         filtered_posts = Post.objects.filter(id__in=my_post_ids)
         my_posts_count = len(filtered_posts)
-
         context = {'posts': filtered_posts, 'open_posts_count': my_posts_count}
         return render(request, 'posts.html', context)
     else:
@@ -332,9 +330,9 @@ def remove_post(request, post_id):
 
 def rate_site(request):
     global_user_id = request.session.get('global_user_id')
+    print(global_user_id)
     if global_user_id:
         user = User.objects.get(id=global_user_id)
-
     context = {'avg': get_average_rating(),
                'rating': user.site_rating}
     return render(request, 'rating.html', context)
