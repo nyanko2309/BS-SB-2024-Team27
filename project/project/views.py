@@ -46,6 +46,7 @@ def get_average_rating():
     all_ratings = User.objects.exclude(site_rating=0).values_list('site_rating', flat=True)
     if all_ratings:
         average_rating = sum(all_ratings) / len(all_ratings)
+        return average_rating
     else:
         average_rating = 0
     return JsonResponse({'average_rating': average_rating})
@@ -339,7 +340,6 @@ def rate_site(request):
 
 
 def submit_rating(request, rating):
-    print("!!!!!!!!!!!!!!!")
     global_user_id = request.session.get('global_user_id')
     if global_user_id:
         user = User.objects.get(id=global_user_id)

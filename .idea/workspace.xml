@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17b05228-a801-4f64-a2c6-a7e172e53ba5" name="Changes" comment="test" />
+    <list default="true" id="17b05228-a801-4f64-a2c6-a7e172e53ba5" name="Changes" comment="edit noe shows perv and does not restart">
+      <change beforePath="$PROJECT_DIR$/project/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/project/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/project/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/project/views.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,7 +24,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="favorits_alon" />
+        <entry key="$PROJECT_DIR$" value="yana" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -45,7 +48,7 @@
     </option>
     <option name="selectedUrlAndAccountId">
       <UrlAndAccount>
-        <option name="accountId" value="871abaff-c807-41b2-b163-4a048e97aaf6" />
+        <option name="accountId" value="f6ac3456-86c0-4bce-a893-0df248719996" />
         <option name="url" value="https://github.com/nyanko2309/BS-SB-2024-Team27" />
       </UrlAndAccount>
     </option>
@@ -65,17 +68,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;hakaton-Vitaly-new1&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/97254/PycharmProjects/project&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "hakaton",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/97254/PycharmProjects/project",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\iluvb\PycharmProjects\BS-SB-2024-Team27\project\icon" />
@@ -84,7 +87,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-5a2391486177-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.13763.11" />
+        <option value="bundled-python-sdk-50da183f06c8-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.13135.95" />
       </set>
     </attachedChunks>
   </component>
@@ -96,14 +99,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1709402008753</updated>
-    </task>
-    <task id="LOCAL-00024" summary="test">
-      <option name="closed" value="true" />
-      <created>1710085891690</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1710085891690</updated>
     </task>
     <task id="LOCAL-00025" summary="test">
       <option name="closed" value="true" />
@@ -481,15 +476,23 @@
       <option name="project" value="LOCAL" />
       <updated>1711884492332</updated>
     </task>
-    <task id="LOCAL-00072" summary="test">
+    <task id="LOCAL-00072" summary="mail apears in post">
       <option name="closed" value="true" />
-      <created>1712176113090</created>
+      <created>1711889880354</created>
       <option name="number" value="00072" />
       <option name="presentableId" value="LOCAL-00072" />
       <option name="project" value="LOCAL" />
-      <updated>1712176113090</updated>
+      <updated>1711889880355</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="edit noe shows perv and does not restart">
+      <option name="closed" value="true" />
+      <created>1712150132821</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1712150132822</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -504,7 +507,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="helper function returns a userId by credentials" />
     <MESSAGE value="Login" />
     <MESSAGE value="homepage" />
     <MESSAGE value="favorites" />
@@ -517,6 +519,7 @@
     <MESSAGE value="הוספת שאלות ותשובות נפוצות" />
     <MESSAGE value="תיקוני FRONT" />
     <MESSAGE value="עוד שיפורים לפרונט" />
+    <MESSAGE value="test" />
     <MESSAGE value="fixed d.b also post edit workd" />
     <MESSAGE value="h" />
     <MESSAGE value="register -&gt; login button works" />
@@ -528,7 +531,7 @@
     <MESSAGE value="." />
     <MESSAGE value="toolbar appear correct in create post" />
     <MESSAGE value="mail apears in post" />
-    <MESSAGE value="test" />
-    <option name="LAST_COMMIT_MESSAGE" value="test" />
+    <MESSAGE value="edit noe shows perv and does not restart" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit noe shows perv and does not restart" />
   </component>
 </project>
