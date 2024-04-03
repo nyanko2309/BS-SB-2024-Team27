@@ -140,27 +140,20 @@ class TestSite(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'create_post.html')
 
-    @patch('project.views.User.objects.exclude')
-    def test_get_average_rating(self, mock_exclude):
-        # Mock the values_list method to return sample ratings
-        mock_exclude.return_value.values_list.return_value = [3, 4, 5]
-
-        # Create a mock GET request
-        request = self.factory.get('/get_average_rating')
+    @patch('login.models.User.objects')
+    def test_get_average_rating(self, mock_user_objects):
+        # Mocking User.objects.exclude().values_list() to return some ratings
+        mock_user_objects.exclude().values_list.return_value = [2, 3, 5]
 
         # Call the view function
         response = get_average_rating()
 
-        # Check if the response is a JSON response
+        # Assert that the response is a JsonResponse object
         self.assertIsInstance(response, JsonResponse)
 
-        # Parse the content of the response as JSON
-        content = response.content.decode('utf-8')
-        data = json.loads(content)
-
-        # Check if the JSON response contains the correct average rating
-        expected_average_rating = (3 + 4 + 5) / 3
-        self.assertEqual(data['average_rating'], expected_average_rating)
+        # Check if the JsonResponse contains the correct average rating
+        data = response.content.decode('utf-8')
+        self.assertEqual(data, '{"average_rating": 3.3333333333333335}')
 
     def test_email_not_allowed(self):
         # Test when the email is in the not allowed list
