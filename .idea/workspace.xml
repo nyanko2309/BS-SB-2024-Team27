@@ -7,6 +7,8 @@
     <list default="true" id="17b05228-a801-4f64-a2c6-a7e172e53ba5" name="Changes" comment="edit noe shows perv and does not restart">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/project/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project/project/tests/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/project/project/tests/tests.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +78,7 @@
     "git-widget-placeholder": "hakaton",
     "ignore.virus.scanning.warn.message": "true",
     "last_opened_file_path": "C:/Users/97254/PycharmProjects/project",
-    "settings.editor.selected.configurable": "Shelf.Project.Settings"
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -99,6 +101,14 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1709402008753</updated>
+    </task>
+    <task id="LOCAL-00025" summary="test">
+      <option name="closed" value="true" />
+      <created>1710620079581</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1710620079581</updated>
     </task>
     <task id="LOCAL-00026" summary="favorites">
       <option name="closed" value="true" />
@@ -484,15 +494,7 @@
       <option name="project" value="LOCAL" />
       <updated>1712150132822</updated>
     </task>
-    <task id="LOCAL-00074" summary="new things oe something">
-      <option name="closed" value="true" />
-      <created>1712151903654</created>
-      <option name="number" value="00074" />
-      <option name="presentableId" value="LOCAL-00074" />
-      <option name="project" value="LOCAL" />
-      <updated>1712151903654</updated>
-    </task>
-    <option name="localTasksCounter" value="75" />
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -507,6 +509,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="Login" />
     <MESSAGE value="homepage" />
     <MESSAGE value="favorites" />
     <MESSAGE value="תיקון לעמוד LOGIN" />
@@ -531,7 +534,6 @@
     <MESSAGE value="toolbar appear correct in create post" />
     <MESSAGE value="mail apears in post" />
     <MESSAGE value="edit noe shows perv and does not restart" />
-    <MESSAGE value="new things oe something" />
-    <option name="LAST_COMMIT_MESSAGE" value="new things oe something" />
+    <option name="LAST_COMMIT_MESSAGE" value="edit noe shows perv and does not restart" />
   </component>
 </project>
