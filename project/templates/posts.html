@@ -4,49 +4,51 @@
 <meta charset="utf-8"/>
 <title>1Tjobs</title>
 <style>
-  /* Global styles */
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f8f8f8;
-  }
+/* Global styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f8f8;
+}
 
-  .posts-container {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
+.posts-container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 
-  .posts {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
+.posts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
 
-  .post {
-    position: relative;
-    width: calc(33.33% - 20px);
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
+.post {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease-in-out;
+  width: calc(50% - 20px);
+}
 
-  .post-content {
-    padding: 20px;
-    font-size: 14px;
-  }
+.post:hover {
+  transform: translateY(-5px);
+}
 
-  .post-info {
-    margin-bottom: 10px;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-  }
+.post-content {
+  padding: 20px;
+}
+
+.post-info {
+  margin-bottom: 10px;
+  word-wrap: break-word;
+}
 
   .remove-button {
     position: absolute;

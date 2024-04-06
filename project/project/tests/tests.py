@@ -28,21 +28,37 @@ from django.contrib.messages.storage.fallback import FallbackStorage
 
 class TestSite(TestCase):
     def setUp(self):
+        # setUp() initializes an instance variable self.factory with an instance of Django's RequestFactory class.
+        # This is a utility provided by Django for creating mock requests in tests. By doing this in the setUp() method,
+        # every test method within the test case will have access to the self.factory instance for creating
+        # mock requests without duplicating this setup code in each test method.
         self.factory = RequestFactory()
 
     @patch('project.views.messages.success')  # -tests submit function
     def test_submit_working(self, mock_success):
+        # we enter a name and a password as data
         data = {'mail': "test@example.com", 'password': "Aa123"}
+        # .post() is a method inside self factory that simulates a POST request.
+        # reverse('submit'): retrieves the URL associated with the name 'submit' like a normal request would.
         request = self.factory.post(reverse('submit'), data)
+        # we send the request to the into the submit function, it returns as a code and references it with response
         response = submit(request)
+        # the unit test checks if the response variable is code 302 which is the code we want
+        # code 302 means a redirect response which is what our function does if the registration was successful
         self.assertEqual(response.status_code, 302)
 
     @patch('project.views.messages.error')  # -tests login button function
     def test_login_button_not_working(self, mock_error):
+        # we enter a name and a password as data, this user does not exist in the db
         data = {'mail': 'test@example.com', 'password': 'Aa123'}
+        # .post() is a method inside self factory that simulates a POST request.
+        # reverse('login'): retrieves the URL associated with the name 'submit' like a normal request would.
         request = self.factory.post(reverse('login_button'), data)
+        # we send the request to the into the submit function, it returns as a code and references it with response
         response = login_button(request)
+        # this line is used to see if we have reached the fail message in the function
         mock_error.assert_called_once_with(request, 'Invalid credentials. Please try again.')
+        # the function returns code 200 id login was unsuccessful which is what the inittest checks
         self.assertEqual(response.status_code, 200)
 
 
@@ -50,45 +66,48 @@ class TestSite(TestCase):
     def test_login_button_working(self, mock_get_id):
         # Mock the getIdByUserCredentials function to return an integer user ID
         mock_get_id.return_value = 123  # Assuming 123 is the user ID
-
-        # Create a request with session support
+        # .post() is a method inside self factory that simulates a POST request.
+        # reverse('login_button'): retrieves the URL associated with the name 'submit' like a normal request would.
         request = self.factory.post(reverse('login_button'))
-        request.session = {}  # Initialize an empty session dictionary
-
-        # Create a SessionMiddleware instance with the get_response parameter
+        # Initialize an empty session dictionary
+        request.session = {}
+        # Creates a SessionMiddleware instance. This middleware is responsible for managing sessions in Django.
         middleware = SessionMiddleware(get_response=BaseHandler().get_response)
+        # Processes the request through the session middleware.
         middleware.process_request(request)
+        #  Saves the session.
         request.session.save()
-
+        # Creates a dictionary containing login credentials for a user.
+        # this is a special user we created and attempt to login to, its a real user in our db
         data = {'mail': 'user@unittest.com', 'password': 'Aa123'}
+        # Assigns the data dictionary to the POST attribute of the request object, simulating form data submission.
         request.POST = data
-
+        #  Calls the login_button view function with the prepared request object.
         response = login_button(request)
-
         # Assert that the response redirects to the homepage (status code 302)
         self.assertEqual(response.status_code, 302)
+        # Asserts that the URL the user is redirected to is the homepage.
         self.assertEqual(response.url, reverse('homepage'))
 
 
 
     @patch('project.views.User.objects.get')  # -tests save profile changes function
     def test_save_profile_changes_success(self, mock_user_get):
-        # Mocking the user object returned by User.objects.get
+        # Mocking the user object returned by User.objects.get which has
+        # the structure of a User model instance.
         mock_user = MagicMock(spec=User)
         mock_user.name = 'John'
         mock_user.age = 30
         mock_user.mail = 'john@example.com'
         mock_user.description = 'Test description'
         mock_user_get.return_value = mock_user
-
+        # Setting attributes of the mock user object to simulate a user retrieved from the database.
         data = {'name': 'John Doe', 'age': 35, 'mail': 'johndoe@example.com', 'description': 'New description'}
         session = self.client.session
         session['global_user_id'] = 1
         session.save()
-
         # Making a POST request to the view function
         response = self.client.post(reverse('save_profile_changes'), data)
-
         # Asserting the response
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.content, b'{"message": "Profile changes saved successfully"}')
@@ -140,27 +159,20 @@ class TestSite(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, 'create_post.html')
 
-    @patch('project.views.User.objects.exclude')
-    def test_get_average_rating(self, mock_exclude):
-        # Mock the values_list method to return sample ratings
-        mock_exclude.return_value.values_list.return_value = [3, 4, 5]
-
-        # Create a mock GET request
-        request = self.factory.get('/get_average_rating')
+    @patch('login.models.User.objects')
+    def test_get_average_rating(self, mock_user_objects):
+        # Mocking User.objects.exclude().values_list() to return some ratings
+        mock_user_objects.exclude().values_list.return_value = [2, 3, 5]
 
         # Call the view function
         response = get_average_rating()
 
-        # Check if the response is a JSON response
+        # Assert that the response is a JsonResponse object
         self.assertIsInstance(response, JsonResponse)
 
-        # Parse the content of the response as JSON
-        content = response.content.decode('utf-8')
-        data = json.loads(content)
-
-        # Check if the JSON response contains the correct average rating
-        expected_average_rating = (3 + 4 + 5) / 3
-        self.assertEqual(data['average_rating'], expected_average_rating)
+        # Check if the JsonResponse contains the correct average rating
+        data = response.content.decode('utf-8')
+        self.assertEqual(data, '{"average_rating": 3.3333333333333335}')
 
     def test_email_not_allowed(self):
         # Test when the email is in the not allowed list
