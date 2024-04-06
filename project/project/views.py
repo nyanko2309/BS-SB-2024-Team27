@@ -42,13 +42,15 @@ def removefromarr(arr, id):
 """gets avg rating from all users"""
 
 
-def get_average_rating():
+def get_average_rating():  # ---works with no arguments, but needs a request parameter for unit test , try request=None?
     all_ratings = User.objects.exclude(site_rating=0).values_list('site_rating', flat=True)
     if all_ratings:
         average_rating = sum(all_ratings) / len(all_ratings)
+
+        # return average_rating  # --two returns? line 49 and line 53?
     else:
         average_rating = 0
-    return JsonResponse({'average_rating': average_rating})
+    return average_rating
 
 
 """ goes to profile,then showing id from db that has user.id """
@@ -155,8 +157,10 @@ def submit(request):
         form = RegistrationForm()
     return render(request, 'register.html', {'form': form})
 
+
 def register(request):
     return render(request, 'register.html')
+
 
 def myposts(request):
     global_user_id = request.session.get('global_user_id')
@@ -269,10 +273,10 @@ def is_not_allowed_email(email):
 
 
 def edit_post(request, post_id):
-    p=Post.objects.get(id=post_id)
+    p = Post.objects.get(id=post_id)
     context = {
         'post_id': post_id,
-        'post':p,
+        'post': p,
     }
     return render(request, 'create_post.html', context)
 
@@ -298,7 +302,7 @@ def create_post_button(request):
                 p.save()
                 return redirect('myposts')
             else:
-                if len(user.my_posts) <= 10:#max 10 posts per person
+                if len(user.my_posts) <= 10:  # max 10 posts per person
                     saved_post = form.save(commit=False)
                     saved_post.mail = user.mail
                     saved_post.save()
@@ -339,7 +343,6 @@ def rate_site(request):
 
 
 def submit_rating(request, rating):
-    print("!!!!!!!!!!!!!!!")
     global_user_id = request.session.get('global_user_id')
     if global_user_id:
         user = User.objects.get(id=global_user_id)

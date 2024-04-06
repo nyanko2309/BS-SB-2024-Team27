@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="17b05228-a801-4f64-a2c6-a7e172e53ba5" name="Changes" comment="edit noe shows perv and does not restart">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_03_2024_12_18__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_03_2024_12_18__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/project/db.sqlite3" afterDir="false" />
-    </list>
+    <list default="true" id="17b05228-a801-4f64-a2c6-a7e172e53ba5" name="Changes" comment="." />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,7 +21,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="favorits_alon" />
+        <entry key="$PROJECT_DIR$" value="yana" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -74,7 +70,7 @@
     &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;yana&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;new__alon&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/97254/PycharmProjects/project&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;
@@ -88,7 +84,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-50da183f06c8-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.13135.95" />
+        <option value="bundled-python-sdk-5a2391486177-d3b881c8e49f-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-233.13763.11" />
       </set>
     </attachedChunks>
   </component>
@@ -100,54 +96,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1709402008753</updated>
-    </task>
-    <task id="LOCAL-00024" summary="test">
-      <option name="closed" value="true" />
-      <created>1710085891690</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1710085891690</updated>
-    </task>
-    <task id="LOCAL-00025" summary="test">
-      <option name="closed" value="true" />
-      <created>1710620079581</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1710620079581</updated>
-    </task>
-    <task id="LOCAL-00026" summary="favorites">
-      <option name="closed" value="true" />
-      <created>1710671070610</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1710671070610</updated>
-    </task>
-    <task id="LOCAL-00027" summary="favorites">
-      <option name="closed" value="true" />
-      <created>1710838871405</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1710838871405</updated>
-    </task>
-    <task id="LOCAL-00028" summary="תיקון לעמוד LOGIN">
-      <option name="closed" value="true" />
-      <created>1710839408192</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1710839408192</updated>
-    </task>
-    <task id="LOCAL-00029" summary="תיקון לעמוד LOGIN">
-      <option name="closed" value="true" />
-      <created>1710839574043</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1710839574043</updated>
     </task>
     <task id="LOCAL-00030" summary="תיקון לדף HELP">
       <option name="closed" value="true" />
@@ -493,7 +441,55 @@
       <option name="project" value="LOCAL" />
       <updated>1711889880355</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="edit noe shows perv and does not restart">
+      <option name="closed" value="true" />
+      <created>1712150132821</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1712150132822</updated>
+    </task>
+    <task id="LOCAL-00074" summary="fixed showing things">
+      <option name="closed" value="true" />
+      <created>1712326639726</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1712326639726</updated>
+    </task>
+    <task id="LOCAL-00075" summary="fixed showing things">
+      <option name="closed" value="true" />
+      <created>1712386824585</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1712386824586</updated>
+    </task>
+    <task id="LOCAL-00076" summary="hak@hak.com&#10;hak">
+      <option name="closed" value="true" />
+      <created>1712388442192</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1712388442192</updated>
+    </task>
+    <task id="LOCAL-00077" summary=".">
+      <option name="closed" value="true" />
+      <created>1712402330516</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1712402330516</updated>
+    </task>
+    <task id="LOCAL-00078" summary=".">
+      <option name="closed" value="true" />
+      <created>1712403153433</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1712403153433</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -508,9 +504,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="helper function returns a userId by credentials" />
-    <MESSAGE value="Login" />
-    <MESSAGE value="homepage" />
     <MESSAGE value="favorites" />
     <MESSAGE value="תיקון לעמוד LOGIN" />
     <MESSAGE value="תיקון לדף HELP" />
@@ -530,9 +523,12 @@
     <MESSAGE value="up to 30 chrs description" />
     <MESSAGE value="create post updates" />
     <MESSAGE value="small changes" />
-    <MESSAGE value="." />
     <MESSAGE value="toolbar appear correct in create post" />
     <MESSAGE value="mail apears in post" />
-    <option name="LAST_COMMIT_MESSAGE" value="mail apears in post" />
+    <MESSAGE value="edit noe shows perv and does not restart" />
+    <MESSAGE value="fixed showing things" />
+    <MESSAGE value="hak@hak.com&#10;hak" />
+    <MESSAGE value="." />
+    <option name="LAST_COMMIT_MESSAGE" value="." />
   </component>
 </project>
