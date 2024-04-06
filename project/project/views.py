@@ -46,11 +46,11 @@ def get_average_rating():  # ---works with no arguments, but needs a request par
     all_ratings = User.objects.exclude(site_rating=0).values_list('site_rating', flat=True)
     if all_ratings:
         average_rating = sum(all_ratings) / len(all_ratings)
-        return  average_rating
+
         # return average_rating  # --two returns? line 49 and line 53?
     else:
         average_rating = 0
-    return JsonResponse({'average_rating': average_rating})
+    return average_rating
 
 
 """ goes to profile,then showing id from db that has user.id """

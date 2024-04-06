@@ -167,12 +167,11 @@ class TestSite(TestCase):
         # Call the view function
         response = get_average_rating()
 
-        # Assert that the response is a JsonResponse object
-        self.assertIsInstance(response, JsonResponse)
+        # Assert that the response is a float
+        self.assertIsInstance(response, float)
 
-        # Check if the JsonResponse contains the correct average rating
-        data = response.content.decode('utf-8')
-        self.assertEqual(data, '{"average_rating": 3.3333333333333335}')
+        # Check if the response contains the correct average rating
+        self.assertAlmostEqual(response, 3.3333333333333335)
 
     def test_email_not_allowed(self):
         # Test when the email is in the not allowed list
