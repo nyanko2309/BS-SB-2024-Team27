@@ -1,0 +1,20 @@
+READ ME - 1TJOBS
+
+the project will give a platform for searching and finding a temporary or one-time gig jobs
+We will use data bases for the users and posts of the jobs
+
+1. writing the overall schema
+2. creation of DB
+3. developing the site using Django
+
+* RUNNING THE SITE:
+To run the program you will write: python project\manage.py runserver
+
+* USING THE SITE:
+you navagate through the menu, and if you need help there is a help button
+
+changes:
+1. upped the capacity of allowed posts from 4 to 10
+2. changed language to English
+3. removed photos from the original design
+
